@@ -1,0 +1,155 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <form id='storyForm' action="{{ path('story_details', { id: id})}}" method="POST" enctype='multipart/form-data' >
+
+        <div class="grid-x grid-margin-x mt50">
+
+            <div class='cell large-3'>
+                <div class="grid-x grid-margin-x">
+                    <div class="cell large-12" >
+                        <div id="storyDetailsLeftContainer">
+                            <div class='imgContainer'>
+                                <img id="imgStoryPic" src="{{ story.getFileWebPath != '' ? story.getFileWebPath : '/assets/img/placeholder-image.png' }}" class='profilePic'/>
+                            </div>
+                            <div class="mt50">
+                                <h6>Update story photo</h6>
+                            </div>
+                            <div class='mt10'>
+                                <label for='storyPic' class='button'>Upload Photo</label>
+                                <input id="storyPic" type='file' name="story_photo" style="display:none;" accept="image/png, image/gif, image/jpeg">
+                                <div class=' mt10'>
+                                    <button class='button save-button'>Save Photo</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="cell large-12" >
+                    <div class="mt20 audio-player-container">
+                            <div ><h6>Play Audio</h6></div>
+                            <div>
+                                <audio controls style='width:100%'>
+                                <source src="{{ story.schedule.getFileWebPath != '' ? story.schedule.getFileWebPath : '/assets/audio/default.mp3' }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="cell  large-12" >
+                    <div class="mt20 share-container">
+                        <div class='title'>Share this on:</div>
+                        <div class='input-div'>
+                            <span id='clipboard'>{{ global_url ~ path('story_telling', { id:story.idencoded})}}</span><a href="javascript:void(0);" class="button" id="copyToClipBoard">COPY LINK</a>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class='text-right'><small><a href='{{  path('story_telling', { id:story.idencoded})}}'  target="_blank">Preview Story</a> </small></div>
+
+                    </div>
+                    </div>
+                    {# <div class="cell small-12 medium-12" >
+                    <div class="mt20" id="storyDetailsSocialMedia">
+                            <div><h6>Share this on:</h6></div>
+                            <div class='social-icon-container'>
+                                <ul class="ftr-socials">
+                                    <li><img src="/assets/img/facebook (1).png"></li>
+                                    <li><img src="/assets/img/Instagram.png"></li>
+                                    <li><img src="/assets/img/LinkedIn.png"></li>
+                                    <li><img src="/assets/img/tiktok.png"></li>
+                                    <li><img src="/assets/img/twitter.png"></li>
+                                </ul>
+                            </div>
+                            <div class='clearfix'></div>
+                    </div>
+                    </div> #}
+                </div>
+            </div>
+            <div class='cell large-6'>
+                <div class="grid-x grid-margin-x">
+                    <div class="cell large-12" >
+                        <div id='storyDetailsRightContainer'>
+                            <h4> {{ story.schedule.scheduletype}}</h4>
+                            <div class='clearfix'></div>
+                        </div>
+                        <div class='mt40'>
+                            <div class='cell large-12'>
+                                <div class='float-left bolder'>Public</div>
+                                <div class="switch float-right">
+                                       <input class="switch-input" id="isPublic" type="checkbox" name="is_public" {{ story.ispublic ? 'checked' : ''}}>
+                                    <label class="switch-paddle" for="isPublic"></label>
+                                </div>
+                                <div class='clearfix'></div>
+                            </div>
+                        </div>
+
+                        <div class='mt40'>
+                            {% for k, field in story.schedule.scheduleforms %}
+                            <div class='cell large-12'>
+                                <div class='mt10'>
+                                    <div class='text-left profile-info-container'>
+                                        <div class='det-container'>
+                                            <div class='title'>{{field.fieldname}}</div>
+                                            <div class='value'>{{ field.fieldvalue}}</div>
+                                        </div>
+                                        <div class='clear-fix'></div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='cell large-3'>
+                <div class="grid-x grid-margin-x">
+                
+                    <div class="cell large-12" >
+                        <div class='shared-story-container'>
+                            <div>
+                                <h6>Who has the link</h6>
+                            </div>
+
+                            <div id='share-box-container'>
+                                {% for shareStory in story.shareStories %}
+                                    {% if not shareStory.isIsDeleted %}
+                                        <div class='img-container shared-box' data-id={{shareStory.idencoded}} data-name="{{shareStory.user.fullname}}" id='shared-box-{{shareStory.id}}'>
+                                            <img  src="{{ shareStory.user.getFileWebPath ? shareStory.user.getFileWebPath :  '/assets/img/default-profile-pic.jpg' }}" alt="{{ shareStory.user.fullname }}" />
+                                    
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                             </div>
+                            
+                      
+                             <a href='javascript:void(0)'  class='modalBtn' data-src="{{ global_url ~ path('story_ajax_share_form') }}" data-id="{{story.idencoded}}">
+                                <div class='img-container'>
+                                  <i class="fa-solid fa-plus add-btn"></i>
+                                </div>
+                            </a>
+                            <div class='clear-fix'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ form_widget(form._token) }}
+    </form>
+
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+        
+        details.settings.removeShareStoryAjaxUrl = "{{ path('story_ajax_remove_share_story')}}";
+        details.init();
+    });
+//]]>
+</script>
+{% endblock %}

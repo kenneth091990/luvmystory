@@ -1,0 +1,22 @@
+{% extends 'Home/main.html.twig' %}
+
+{% block content %}
+<div class="extender-lines yellow"></div>  
+    <div class="grid-x">
+      <div class="cell large-auto medium-12 small-12">
+        <div class="text-center yellow text-white pt-5 page-text-container welcome">
+            <div  class="buttons pt-5"><h1>Welcome</h1></div>
+            <div><p>We are very happy that <br/>you have decided to tell<br/>and share your story.</p></div>
+
+            <div class="buttons pt-5"><p class="bolder">Let’s get started.</p></div>
+            <div  class="buttons pt-5"><p>Click the link below<br/>to book your 60 minute appointment<br/>with one of our interviewers.</p></div>
+            <div class="buttons pt-5">
+                <a class="button text-yellow" href="{{ path('home_book_now')}}">Book Now</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="extender-lines gray"></div>
+ {% include 'js.html.twig' %}
+   
+{% endblock %}

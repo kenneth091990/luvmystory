@@ -1,0 +1,153 @@
+{% extends 'Home/main.html.twig' %}
+
+{% block content %}
+<div class="grid-container">
+
+  <div class="grid-x grid-margin-x mt50 mb50">
+
+        <div class='cell large-4 '>
+            <div class="grid-x grid-margin-x">
+                <div class="cell large-12" >
+                    <div id="storyDetailsLeftContainer" class="text-center">
+                        <div class='imgContainer'>
+                            <img id="imgStoryTellerPic" src="{{ story.schedule.user.getFileWebPath != '' ?  story.schedule.user.getFileWebPath : '/assets/img/placeholder-image.png' }}" class='profilePic'/>
+                        </div>
+                        <div class="mt50">
+                            <h6>{{ story.schedule.user.fullname|upper}}</h6>
+                            <small>Story Teller</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell large-12" >
+                    <div class="mt20 audio-player-container">
+                        <div ><h6 class='m0'>Play Audio</h6></div>
+                        <div>
+                            <audio controls style='width:100%' class="w-100">
+                            <source src="{{ story.schedule.getFileWebPath != '' ? story.schedule.getFileWebPath : '/assets/audio/default.mp3' }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell  large-12" >
+                    <div class="mt20 share-container">
+                        <div class='title'>Share this on:</div>
+                        <div class='input-div'>
+                            <span id='clipboard'>{{ global_url ~ path('story_telling', { id:story.idencoded})}}</span><a href="javascript:void(0);" class="button" id="copyToClipBoard">COPY LINK</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='cell large-8'>
+            <div class="grid-x grid-margin-x">
+                <div class="cell large-12" >
+                    <div id='storyTellingRightContainer' class='bg-white'>
+                        <div class='imgContainer text-center'>
+                            <img src="{{ story.getFileWebPath != '' ? story.getFileWebPath : '/assets/img/placeholder-image.png' }}" />
+                        </div>
+
+                        <div class='mt40'>
+                            <div class='cell large-12'>
+                                <div class='mt10'>
+                                    <div class='text-left profile-info-container'>
+                                        <div class='det-container'>
+                                            <h5>{{ story.schedule.scheduletype}}</h5>
+                                        </div>
+                                        <div class='float-right'>
+                                            <div class='title text-right'>
+                                                <button class="button button-like {{ userData.id in story.storyLikeUserIds ? 'liked' : ''}}">
+                                                  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                    <span>Like</span>
+                                                </button>
+
+                                                <div class='like-ctr'>
+                                                 <span >
+                                                    {% if likeCtr['ctr'] > 0 %}
+                                                   {{likeCtr['likers'] ~ ' ' ~ (likeCtr['ctr'] > 3 ? ' and  '  ~ ( likeCtr['ctr'] - 3) ~ ' people '  : '')}} like this story.
+                                                    {% endif %}
+                                                    </span> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='clear-fix'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for k, field in story.schedule.scheduleforms %}
+                                <div class='cell large-12'>
+                                    <div class='mt10'>
+                                        <div class='text-left profile-info-container'>
+                                            <div class='det-container'>
+                                                <div class='title'>{{field.fieldname}}</div>
+                                                <div class='value'>{{ field.fieldvalue}}</div>
+                                            </div>
+                                            <div class='clear-fix'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class='cell large-12'>
+                                <div class='mt10'>
+                                    <div class="">
+                                        <div class="tabs-panel is-active">
+                                            <h6>Comments ({{commentCtr}})</h6>
+                                            <div id='commentBox' class='mt20  mb10 linear-background'>
+                                                
+                                            </div>
+                                             
+                                           <form id='commentForm'>
+                                             {# {%  if userData is null %}
+                                               <label>
+                                                    Name
+                                                    <input type='text' id="name"  name="comment[name]" required/>
+                                                </label>
+                                                <label>
+                                                    Email
+                                                    <input type='email' id="email" name="comment[email]" required />
+                                                </label>    
+                                            {% endif %} #}
+
+                                            <div class="textarea-container">
+                                                <textarea placeholder="Write a public comment here..." style=" height: 69px;white-space: pre-wrap!important;" name='comment[message]' id='commentInput'></textarea>
+                                                <input type='hidden' id="id" name="comment[story_id]" required value="{{story.idencoded}}"/>
+                                                <button type="submit" disabled>
+                                                    <img src="/assets/img/send-message.png"  class='red pointer'/>
+                                                </button>
+                                            </div>
+                                           </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+               
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'js.html.twig' %}
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+
+     
+        telling.settings.id = '{{ story.idencoded}}';
+        telling.settings.commentFormAjaxUrl = '{{ path("comment_ajax_form_process")}}';
+        telling.settings.commentsListAjaxUrl = '{{ path("story_comments_ajax_list")}}';
+        telling.settings.likeActionUrl = '{{ path("story_like_like")}}';
+
+        telling.init();
+    });
+//]]>
+</script>
+
+{% endblock %}

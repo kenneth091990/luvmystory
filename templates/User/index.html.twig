@@ -1,0 +1,45 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+       <div class='cell large-12'>
+           <div class='p50'>
+                <h4 class='bold'>Users</h4>
+                <div class="grid-container fluid">
+                    <div class="grid-x grid-margin-x">
+                        <div class='cell large-12'>
+                            <div class='text-right'><a href='{{ path("user_form")}}'>New User</a></div>
+                        </div>
+                        <div class='cell large-12'>
+                            <table id="users-datalist" class=" nowrap" style="width:100%" width="100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>User Type</th>
+                                        <th>Username</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+        users.settings.ajaxUrl = '{{ path('user_ajax_list') }}';
+        users.init();
+    });
+//]]>
+</script>
+{% endblock %}

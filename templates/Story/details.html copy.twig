@@ -1,0 +1,112 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+        <div class='cell large-12'>
+            <div class="mt20">
+                <div class="media-object-section main-section">
+                    <h4>My Story - {{ story.schedule.scheduletype}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class='cell large-8'>
+            <div class="grid-container fluid">
+                <div class="grid-x grid-margin-x">
+                    <div class='cell large-6'>
+                        <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Interviewer</div>
+                                    <div class='value'>{{ story.schedule.calendar}}</div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    {% for k, field in story.schedule.scheduleforms %}
+                        <div class='cell large-12'>
+                            <div class='mt10'>
+                                <div class='text-left profile-info-container'>
+                                    <div class='det-container'>
+                                        <div class='title'>{{field.fieldname}}</div>
+                                        <div class='value'>{{ field.fieldvalue}}</div>
+                                    </div>
+                                    <div class='clear-fix'></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+        <div class='cell large-4'>
+    
+            <div class='updateScheduleContainer mt30'>
+                <form id='scheduleForm' action="{{ path('story_details', { id: id})}}" method="POST" enctype='multipart/form-data' >
+                    <div class='photo-container'>
+                        <div class="grid-x grid-margin-x">
+                            <div class="cell small-12 medium-4" >
+                                <div class='profilePicContainer'>
+                                    <img id="imgStoryPic" src="{{ story.getFileWebPath != '' ? story.getFileWebPath : '/assets/img/placeholder-image.png' }}" class='profilePic'/>
+                                </div>
+                            </div>
+                            <div class="cell small-12 medium-8 self-align-centered" >
+                                <h5>Update Story Photo</h5>
+                                <label for='storyPic' class='button'>Upload Photo</label>
+                                <input id="storyPic" type='file' name="story_photo" style="display:none;" accept="image/png, image/gif, image/jpeg">
+                                
+                            </div>
+                        </div>
+                        <div class="grid-x grid-margin-x">
+                            <div class="cell small-12 medium-12" >
+                                <div class='mt10'>
+                                    <audio controls style='width:100%'>
+                                    <source src="{{ story.schedule.getFileWebPath != '' ? story.schedule.getFileWebPath : '/assets/audio/default.mp3' }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                            {{ form_widget(form._token) }}
+                            
+                            <div class="cell small-12 medium-12" >
+                                <div class='mt20'>
+                                    <button class='button pink large' type="submit"> Update Story</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+       function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgStoryPic').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#storyPic").change(function(){
+            readURL(this);
+        });
+    });
+//]]>
+</script>
+{% endblock %}

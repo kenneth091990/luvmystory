@@ -1,0 +1,18 @@
+ 
+<div class="grid-container fluid">
+
+    {% for comment in comments %}
+
+        <div class="grid-x grid-margin-x pt5 pb5 mb30">
+            <div class='cell large-2'>
+                <div class="circular--portrait">         
+                    <img  src="{{ comment.profilePic}}">
+                </div>
+            </div>
+            <div class='cell large-10'>
+                <h6>{{ comment.commentUser}}</h6>
+                <p>{{ comment.message|nl2br}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>

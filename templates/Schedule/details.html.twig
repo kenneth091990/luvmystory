@@ -1,0 +1,148 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+        <div class='cell large-12'>
+            <div class="mt20">
+                <div class="media-object-section main-section">
+                    <h4>My Story - {{ schedule.scheduletype}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class='cell large-8'>
+            <div class="grid-container fluid">
+                <div class="grid-x grid-margin-x">
+                    <div class='cell large-6'>
+                        <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Interviewer</div>
+                                    <div class='value'>{{ schedule.calendar}}</div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div>
+                        <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Schedule Date</div>
+                                    <div class='value'>{{ schedule.scheduledate}}</div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class='cell large-6'>
+                        <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Price</div>
+                                    <div class='value'>{{ schedule.price}}</div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div>
+                        <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Time</div>
+                                    <div class='value'>{{ schedule.starttime ~ ' - ' ~ schedule.endtime}}</div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div>
+                        {# <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Is Paid</div>
+                                    <div class='value'>{{ schedule.ispaid ? 'Yes' : 'No'}}</div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div> #}
+                    </div>
+          
+                    <div class='cell large-12'>
+                        <div class='mt10'>
+                            <div class='text-left profile-info-container'>
+                                <div class='det-container'>
+                                    <div class='title'>Check Schedule</div>
+                                    <div class='value'><a href="{{schedule.confirmationpage}}" target="_blank">{{schedule.confirmationpage}}</a></div>
+                                </div>
+                                <div class='clear-fix'></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% for k, field in schedule.scheduleforms %}
+                        <div class='cell large-12'>
+                            <div class='mt10'>
+                                <div class='text-left profile-info-container'>
+                                    <div class='det-container'>
+                                        <div class='title'>{{field.fieldname}}</div>
+                                        <div class='value'>{{ field.fieldvalue}}</div>
+                                    </div>
+                                    <div class='clear-fix'></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+        <div class='cell large-4'>
+            {% if userData['type'] == 'Admin' %}
+                <div class='updateScheduleContainer mt30'>
+                    <form id='scheduleForm' action="{{ path('schedule_details', { id: id})}}" method="POST" enctype='multipart/form-data' >
+                        <div class="grid-x grid-margin-x">
+                            <div class="cell small-12 medium-12" >
+                                <div>
+                                    <audio controls style='width:100%'>
+                                    <source src="{{ schedule.getFileWebPath != '' ? schedule.getFileWebPath : '/assets/audio/default.mp3' }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                            <div class="cell small-12 medium-12" >
+                                <div class="grid-x grid-margin-x">
+                                    <div class="cell small-12 medium-12">
+                                        <small class='p10 filename'>upload file ... </small>
+                                    </div>
+                                     <div class="cell small-12 medium-12 text-right" >
+                                        <label for='scheduleFile' class='label-link is-link'>Upload Recorded File</label>
+                                        <input id="scheduleFile" type='file' name="file" style="display:none;"  accept="audio/mp3" >
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_widget(form._token) }}
+                          
+                            <div class="cell small-12 medium-12" >
+                                <div class='mt20'>
+                                    <button class='button pink large' type="submit"> Update Schedule</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+        $('#scheduleFile').change(function() {
+            console.log('waaaa');
+            var filename = $('#scheduleFile').val().replace(/.*(\/|\\)/, '');
+            $('.filename').html(filename  );
+        });
+    });
+//]]>
+</script>
+{% endblock %}

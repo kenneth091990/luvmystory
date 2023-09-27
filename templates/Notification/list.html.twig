@@ -1,0 +1,19 @@
+<div class='text-left'>
+    <h6>Notifications: </h6> 
+    {# {% if unreadNotifications > 0 %}
+        <h6>You have {{ unreadNotifications}} new notification</h6>
+    {% endif %} #}
+    <small class="bolder">Recent</small>
+    <ul class="text-left">
+        {% for notification in notifications %}
+        
+            <li>
+                <a href="{{ path(notification.notificationType == 'Story' ? 'story_details' : 'story_telling'  , {id : notification.story.idencoded })}}" class='{{ notification.isread ? "" : "unread"}}'> 
+                    <div> <span> {{ notification.story.schedule.scheduletype }}</span> has been {{ notification.notificationType == 'Story' ? ' uploaded' : ' shared to you' }}.</div>
+                        <div class='notif-ago'> <small class='text-right'>{{notification.createdat|timeAgo}}</small>
+                    </div>
+                </a> 
+            </li>
+        {% endfor %}
+    </ul>
+</div>

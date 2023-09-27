@@ -1,0 +1,237 @@
+{% extends 'Home/main.html.twig' %}
+
+{% block content %}
+<div class="grid-x">
+       
+        <div class="cell large-12">
+          <!--Question 1-->
+          <div class="grid-x faq-content-container">
+            <div class="cell">
+              <div class="grid-container">
+                <div class="grid-x">
+                  <div class="cell large-12 ">
+                        <h1 class='text-gray mt50 mb50'>Privacy Policy</h1>
+                  </div>
+
+
+                  <div class="cell large-12 text-gray  mb30">
+                        We respect the privacy of our customers and are committed to protecting their information on our websites with the same care
+                        we use for all Luv1 transactions. This document outlines Luv1 Media’s online privacy practices and applies to anyone who visits
+                        our website (<a class='text-pink bolder'>https://LuvMyStory.com</a>). It explains how we may collect information from you online when you visit the Luv1
+                        website and how we may protect and use that information. It does not apply to information collected from other sources,
+                        including off-line information collection.
+                  </div>
+                  <div class="cell large-12 text-gray  mb30">
+                       <div class='page-content-card light-yellow'>
+                             <div class='pp-content-header'>Terms of Use</div>
+                            <div 'pp-content-desc'>Please note that your use of our Site is also subject to our <a href="{{ path('home_terms_of_service')}}" class='text-pink'>Terms of Use</a>.</div>
+                       </div>
+                  </div>
+                  <div class="cell large-12">
+                
+                    <ul class="accordion privacy_policy" data-accordion data-allow-all-closed="true">
+                        <li class="accordion-item mb20" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">How We Collect Your Information</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb10'>
+                                    <div class='content-description text-gray'>
+                                      We collect personal information from you or about you when you provide this information to us directly. For example, we may obtain personal information when you request information regarding products or services from us, register on our website, respond to surveys, or otherwise interact with us.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">How We Use and Share Your Information</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                      We reserve the right to decline to provide access to the Site to any person, or restrict access to any portion of the Site, for any or no reason. By accessing or using the Site, you represent and warrant that you have the full right, power, and authority to enter into and perform these Terms of Use without the consent or approval of any third party. 
+                                    </div>
+                                </div>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Proprietary Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                        We may use and share information collected to:
+                                        <ul>
+                                            <li> Respond to your inquiries and fulfill your requests;</li>
+                                            <li> Send you marketing communications that we believe may be of interest to you;</li>
+                                            <li> Personalize your experience on the Site by presenting content, ads or offers tailored to you;</li>
+                                            <li> Allow you to participate in surveys, contests and similar promotions and to administer these activities; for business purposes, including data analysis, audits, developing and improving products and services, enhancing the Site, identifying usage trends and determining the effectiveness of promotional campaigns.</li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Legal Proceedings</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Proprietary Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                         We will share personal information with third-party companies, organizations or individuals outside of Company if we have a good-faith belief that access, use, preservation or disclosure of the information is reasonably necessary to:
+                                        <ul>
+                                            <li>Meet any applicable law, regulation, subpoena, legal process or governmental request.</li>
+                                            <li> Enforce applicable Terms of Service, including investigation of potential violations.</li>
+                                            <li> Detect, prevent, or otherwise address fraud, security or technical issues.</li>
+                                            <li> Protect against harm to the rights, property or safety of Company, our users, customers or the public as required or permitted by law.</li>
+                                         
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Transfer in the Event of Sale or Change of Control</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                      If the ownership of all or substantially all of our business changes or we otherwise transfer assets relating to our business or the Site to a third party, such as by merger, acquisition, bankruptcy proceeding or otherwise, we may transfer or sell your personal information to the new owner. In such a case, unless permitted otherwise by applicable law, your information would remain subject to the promises made in the applicable privacy policy, unless you agree differently.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                         <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Online Tracking</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                    We and certain trusted service providers operating on our behalf collect information about your activity on our website using automated tracking technologies, including:
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                         <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Automatically Collected Information</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray mb10'>
+                                      When you visit our website, some information is automatically collected from you. This information may include, but is not limited to, some or all of the following items: your Internet Protocol (IP) address and/or domain; type and version of Internet browser software and operating system you use; your general location; date, time, and duration of your Site access; specific pages, buttons, images, videos, links, or forms that you access while visiting the Site; type of device (e.g. iPad, smartphone); mobile carrier and/or Internet Service Provider; and demographic information concerning the country of origin of your Computer and the language(s) used by it.
+                                    </div>
+                                    <div class='content-description text-gray mb10'>
+                                     We use Google Analytics, a web analytics service provided by Google to collect certain information relating to your use of the Site. Google Analytics uses “cookies,” which are text files placed on your computer, to help the website analyze how users use the site. The information generated by the cookies about your use of the website (including your IP address) will be transmitted to and stored by Google on servers in the United States. Google will use this information for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing other services relating to website activity and internet usage. Google may also transfer this information to third parties where required to do so by law, or where such third parties process the information on Google’s behalf. Google will not associate your IP address with any other data held by Google. You may refuse the use of cookies by selecting the appropriate settings on your browser, however, please note that if you do this you may not be able to use the full functionality of this website. By using this website, you consent to the processing of data about you by Google in the manner and for the purposes set out above.  For more information regarding Google Analytics please visit Google’s website, and pages that describe <span class='text-yellow'>Google Analytics</span>.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                          <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Information Collected via Cookies</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray mb10'>
+                                      Cookies are small text files that are placed on your Computer to distinguish you from other visitors to our Site. The use of cookies is a standard practice among websites to collect or track information about your activities while using the website. We and/or our third-party advertising service providers may place cookies or similar files on your hard drive for many of the reasons listed in this Privacy Policy while visiting our Site. Most people do not know that cookies are being placed on their Computers when they visit websites because browsers are typically set to accept cookies. You can choose to have your browser warn you every time a cookie is being sent to you or you can choose not to accept cookies. You can also delete cookies from your Computer at any time. If you refuse cookies, the functionality of our Site may be impacted or become non-functional. Since every browser and Computer are different, you will need to follow your browser’s instructions for disabling or deleting cookies.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                         <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Information Collected via Flash Objects and Other Similar Technology</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                    In addition to using cookies, we and/or our third-party advertising service providers may also use similar technologies to track users’ interactions with our Site. Some of these technologies include web beacons (transparent graphical images placed on a website), pixels, tags, and Flash objects (also referred to as “Local Shared Objects”). Please refer to your browser’s instructions to remove cached Sites, history, and images from your Computer. Deleting or disabling cookies will not remove Flash objects or Local Shared Objects. Instead refer to Adobe’s website for more information on how to control or disable these items. We may partner with third parties such as Google to deliver advertisements and monitor activities on our own website and other websites. We do not, however, track your online activities after you leave our site. We may monitor advertisement “click-throughs,” Web traffic, statistics, and/or other activities in order to improve browsing experiences on our website.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Security</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                       We use industry standard physical, technical, and administrative security measures and safeguards to protect the confidentiality and security of your personal information. However, since the Internet is not a 100 percent secure environment, we cannot guarantee, ensure, or warrant the security of any information you transmit to us.  There is no guarantee that information may not be accessed, disclosed, altered, or destroyed by breach of any of our physical, technical, or managerial safeguards.  It is your responsibility to protect the security of your login information.  Please note that e-mails and other communications you send to us through our Site are not encrypted, and we strongly advise you not to communicate any confidential information through these means.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Third-Party Websites </a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                         Luv1 Media encourages you to be aware when you leave our website and to read the privacy policies and terms of use of any such websites that may collect your personal information. Luv1 Media is not responsible for the privacy or security of these websites, including the accuracy, completeness, or reliability of their information.   </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">No Information from Children Under the Age of 13</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                        If you are under the age of 13, please do not attempt to register with us at this Site or provide any personal information about yourself to us.  If we learn that we have collected personal information from a child under the age of 13, we will promptly delete that information.  If you believe we have collected personal information from a child under the age of 13, please call us at PHONE NUMBER NEEDED.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                          <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Email </a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                        If you provide your email address to us, or if we obtain it from another source, we may use it to respond or update you on your inquiries or to let you know about products and services that may be available to you. If we send you an email advertisement, it will include instructions on how to opt out of receiving such emails in the future. If you elect to opt out of receiving email advertisements, we may still send you emails about your account relationships with us. If your name was previously selected for any of our upcoming email offers, it is possible for you to receive information from Luv1 Media up to 15 business days after your request has been submitted.                              
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                             <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">International Privacy Practices </a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                       Our Site is operated and managed on servers located and operated within the United States. By using and accessing our Sites, residents and citizens of countries and jurisdictions outside of the United States agree and consent to the transfer to and processing of personal information on servers located in the United States, and that the protection of such information may be different than required under the laws of your residence or location.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                          <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Changes to Our Privacy Policy</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                       Our Privacy Policy may change from time to time. We will not reduce your rights under this Privacy Policy without your consent in accordance with applicable law. We will post any privacy policy changes on this page and, if the changes are significant, we will provide a more prominent notice (including, for certain services, email notification of privacy policy changes). We will also keep prior versions of this Privacy Policy in an archive for your review.
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li class="accordion-item mb10" data-accordion-item>
+                            <a href="#" class="accordion-title light-pink text-gray bolder">Questions and How to Contact Us</a>
+                            <div class="accordion-content light-pink" data-tab-content>
+                                <div class='content-card mb20'>
+                                    {# <div class='content-title mb20 mt10 bolder text-gray'>Your Rights</div> #}
+                                    <div class='content-description text-gray'>
+                                    If you have any questions, concerns, complaints or suggestions regarding our Privacy Policy or otherwise need to contact us, please contact us by email michelle@luv1media.com , call us at PHONE NUMBER NEEDED or contact us by US postal mail at the following address:
+LUV 1 Media
+
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                         
+                    </ul>
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Question 1 end-->
+        </div>
+      </div>
+{% include 'js.html.twig' %}
+    
+{% endblock %}

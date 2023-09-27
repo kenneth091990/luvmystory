@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {% include 'Home/header2.html.twig' %}
+
+    <div class="grid-x fullheight">
+      <div class="cell large-6 medium-12 small-12">
+        <div class="grid-x registration-right-side">
+          <div class="registration-form-cage">
+            <h3>Create your account</h3>
+            <small>before telling us your story please sign up by entering your details below.</small>
+            <div style="clear:both"></div>
+            <!--Form-->
+            <form class='mt10' action="{{ path('home_registration')}}" method="POST">
+                <div class="grid-x registration-form-container">
+                  <div class="small-12 cell">
+                  
+                        {{ form_widget(form.first_name) }}
+                  </div>
+                  <div class="small-12 cell">
+                        {{ form_widget(form.last_name) }}
+                  </div>
+                  <div class="small-12 cell">
+                        {{ form_widget(form.email) }}
+                  </div>
+                  <div class="small-12 cell">
+                        {{ form_widget(form.password.first) }}
+                  </div>
+                  <div class="small-12 cell">
+                        {{ form_widget(form.password.second) }}
+                  </div>
+                  <div class="small-12 cell">
+                      <button type='submit' class='button radius expanded pink'>Create Account</button>
+                  </div>
+                  <div class="small-12 cell">
+                    <a href="{{ path('home_forgot_password')}}" class="forgotpass-link">Forgot Password?</a>
+                    <p><span>Already have an account  ?</span>&nbsp;<a href="{{ path('home_login')}}" class="signup-link">Sign in Here</a></p>
+                  </div>
+                </div>
+                
+                {{ form_widget(form._token) }}
+            </form>
+            <!--end form-->
+          </div>
+        </div>
+      </div>
+      <div class="cell large-6 medium-12 small-12 registration-right-grid show-for-large">
+          <div class="registration-right-side fullheight">
+              <div class='text-center pt150'>
+                <h3 class='bolder text-white'>Everyone has a story to tell</h3>
+                <h5 class='bolder text-white'>and only you can tell yours.</h5>
+              </div>
+              <div class='img-wrapper'>
+                <img src="/assets/img/woman-tablet.png" />
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+{% include 'js.html.twig' %}
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $('body').css('padding-top', '0px');
+  });
+</script>    
+    
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <div class="grid-x">
+      <div class="cell large-5 medium-12 small-12">
+        <div class="login-left-side">
+          <img src="/assets/img/login_color.png" />
+          <img src="/assets/img/mystory-logo-pink.png" class="logo_login" />
+        </div>
+      </div>
+      <div class="cell large-7 medium-12 small-12">
+        <div class="grid-x login-right-side">
+          <div class="login-form-cage">
+            <h3>Sign in to LuvMyStory</h3>
+            <div style="clear:both"></div>
+            <!--Form-->
+            <form action={{ path('home_login') }} method="POST">
+                <div class="grid-x login-form-container">
+                  <div class="small-12 cell">
+                        {{ form_widget(form.email) }}
+                  </div>
+                  <div class="small-12 cell">
+                        {{ form_widget(form.password) }}
+                  </div>
+                  <div class="small-12 cell">
+                      <input type="submit" Value="Sign in" class="button">
+                  </div>
+                  <div class="small-12 cell">
+                    <a href="{{ path('home_forgot_password')}}" class="forgotpass-link">Forgot Password?</a>
+                    <p><span>Not A Member?</span>&nbsp;<a href="{{ path('home_registration')}}" class="signup-link">Sign up Here</a></p>
+                  </div>
+                </div>
+                
+                {{ form_widget(form._token) }}
+
+            </form>
+            <!--end form-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+ {% include 'js.html.twig' %}
+   
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'Home/main.html.twig' %}
+
+{% block content %}
+<div class="extender-lines purple"></div>  
+    <div class="grid-x">
+      <div class="cell large-auto medium-6 small-12">
+        <div class="steps-container yellow-fade">
+          <img src="/assets/img/Steps images.png">
+          <div class="steps-content">
+            <h1 class="text-yellow">1</h1>
+            <span class="text-yellow">
+              Book
+            </span>
+            <p>
+             Select and Book your
+              LuvMyStory session
+              through our online
+              scheduling system with
+              a Story Guide.
+            </p>
+                     <div class="buttons pt-2">
+                <a class="button text-yellow border-yellow" href="{{ path('home_book_now')}}">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cell large-auto medium-6 small-12">
+        <div class="steps-container teal-fade">
+          <img src="/assets/img/Steps images (1).png">
+          <div class="steps-content">
+            <h1 class="text-teal">2</h1>
+            <span class="text-teal">
+              Plan
+            </span>
+            <p>
+                While you’re waiting
+                for your appointment,
+                write out some of your
+                memories of the story
+                you want to record.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cell large-auto medium-4 small-12">
+        <div class="steps-container purple-fade">
+          <img src="/assets/img/Steps images plan.png">
+          <div class="steps-content">
+            <h1 class="text-purple">3</h1>
+            <span class="text-purple">
+              Tell
+            </span>
+            <p>
+               At the day and time of
+              your scheduled session,
+              take a deep breath,
+              relax and tell your
+              story in your words
+              and voice.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cell large-auto medium-4 small-12">
+        <div class="steps-container blue-fade">
+          <img src="/assets/img/Steps images tell.png">
+          <div class="steps-content">
+            <h1 class="text-blue">4</h1>
+            <span class="text-blue">
+              Listen
+            </span>
+            <p>
+              Your perfect story will be
+              sound engineered to
+              its highest quality.
+              Now, sit back a listen.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cell large-auto medium-4 small-12">
+        <div class="steps-container pink-fade">
+          <img src="/assets/img/Steps images (4).png">
+          <div class="steps-content">
+            <h1 class="text-pink">5</h1>
+            <span class="text-pink">
+              Share
+            </span>
+            <p>
+             Now, share your story
+with family and
+friends. Ooh, you can
+even attach it to your
+online family tree!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="extender-lines purple"></div>
+{% include 'js.html.twig' %}
+    
+{% endblock %}

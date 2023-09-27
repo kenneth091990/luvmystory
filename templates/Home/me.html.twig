@@ -1,0 +1,51 @@
+
+ {% extends "main.html.twig" %}
+
+{% block content %}
+
+   <div class="grid-x">
+      <div class="cell large-6 medium-12 small-12 small-order-2 large-order-1">
+        <div class="content-container page-content-cage mint-yellow">
+            <div class="grid-x">
+                {# <div class="cell large-5 medium-12 small-12 small-order-2 large-order-1">
+                    <div class="button-container">
+                        <a class="button text-purple">LEARN MORE</a>
+                    </div>
+                </div> #}
+                <div class="cell large-12 medium-12 small-12 small-order-1 large-order-2">
+                    <div class="page-text-container">
+                        <h3>Capture Life's Magic with LuvMyStory!</h3>
+                        <p>
+                             Each of us carries a treasure trove of tales, moments that define, inspire, and transform us. But how often do these stories fade with time, locked away in the corners of our memories? Enter LuvMyStory, your ticket to immortalizing your most cherished moments.
+                             Our professional Story Guides aren't just broadcasters; they are curators of memories, passionately dedicated to drawing out the very essence of your personal journey.                           <br><br>
+                        </p> 
+                        <p>
+                             Whether it's the sheer joy of your wedding day, the intense emotions of your first day at bootcamp, the serendipity of a chance meeting, or the pride of becoming an American citizen, we’re here to ensure your stories live on. 
+                        </p>  
+                        <p>
+                             Don't let those precious memories gather dust. Book a LuvMyStory session and let the world hear your tale. 
+                        </p>
+                        <p>
+                            <span class='bolrder'>Take the first step today. Share your story, and let us make it timeless!</span>
+                        </p>
+                    </div>
+                    <div class="mt30 p40 text-sm-center">
+                        <a class="btn-a text-mint-yellow  font-sm-13" href="{{path('home_book_now')}}">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="cell large-6 medium-12 small-12 right-content small-order-1 large-order-2">
+        {# <div class="mint-yellow-overlay"> </div> #}
+
+        {# <img class="img-logo" src="/assets/img/lovemystory_story.svg" > #}
+        <div class="content-container page-content-container page-content-cage">
+            <div class="img-container mint-yellow"><img src="/assets/img/me.png"></div>
+        </div>
+      </div>
+    </div>
+
+{% include 'js.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<div id="shareWithContainer">
+    <div class="card">
+ 
+        <div class="card-section">
+           <form id='shareForm'>
+                 <h6>Share Story</h6>
+                {# <input type="hidden" id="user" name='shareForm[user]'> #}
+                <input type="email"  name='shareForm[email]' placeholder="Add people to share this story.">
+                <input type="hidden" name='shareForm[id]' value='{{id}}'>
+
+                <button class='button' type='submit'> Done</button>
+           </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script type='text/javascript'>
+
+    $(document).ready(function(){
+
+        var userAutoCompleteUrl = '{{ path("user_autocomplete")}}';
+        var shareFormActionAjaxUrl = '{{ path("story_ajax_share_form_action")}}';
+
+        global.init();
+
+        global.autocomplete.bind(userAutoCompleteUrl,'#user_desc','#user');
+        $('#shareForm').submit(function(e){
+
+            e.preventDefault();
+            _this = $(this);
+            _this.find(':input[type=submit]').prop('disabled', true);
+            var formData = $(this).serialize();
+            $.ajax({
+                url: shareFormActionAjaxUrl,
+                data: formData, 
+                type: "post",
+                dataType: "JSON",
+                success: function(r){
+                    if(r.success){
+
+                        toastr.success(r.msg);
+                        var html = r.html;
+                        $('#share-box-container').append(html);
+                        $('#modal').foundation('close');
+
+                        details.init();
+                    } else {
+                      toastr.error(r.msg);
+                        _this.find(':input[type=submit]').prop('disabled', false);
+
+                    }
+                }
+            });
+        });
+
+    });
+</script>

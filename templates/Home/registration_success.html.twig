@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+<div class="grid-x grid-padding-x align-center-middle text-center fullheight">
+  <div class="cell large-12 text-webkit-center">
+      <div class='reg-success-msg-container'>
+          <img src="/assets/img/check.svg" />
+          <h5 class='text-pink mb40'>That's Great</h5>
+          <h4 class='mb40'>You're account was successfully registered</h4>
+          <span>we sent you an email, please check and click the link to verified your account<span>
+          <div class='pt50'>
+              <a href="{{ path('home_login')}}" class='text-teal text-underline' >LET'S START NOW!</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $('body').css('padding-top', '0px');
+  });
+</script>    
+    
+{% endblock %}

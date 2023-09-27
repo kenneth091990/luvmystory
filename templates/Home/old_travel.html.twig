@@ -1,0 +1,50 @@
+
+ {% extends "main.html.twig" %}
+
+{% block content %}
+
+   <div class="grid-x">
+      <div class="cell large-6 medium-12 small-12 small-order-2 large-order-1">
+        <div class="content-container page-content-cage mint-yellow">
+            <div class="grid-x">
+                {# <div class="cell large-5 medium-12 small-12 small-order-2 large-order-1">
+                    <div class="button-container">
+                        <a class="button text-purple">LEARN MORE</a>
+                    </div>
+                </div> #}
+                <div class="cell large-12 medium-12 small-12 small-order-1 large-order-2">
+                    <div class="page-text-container">
+                        <h3>Travel</h3>
+                        <p>
+                          “Traveling. It leaves you speechless, then turns you into a storyteller.”
+                          <br><br>
+                         Ibn Battuta
+                        </p>   
+                    </div>
+                    <div class="mt30 p40 text-sm-center">
+                        <a class="btn-a text-mint-yellow  font-sm-13" href="{{path('home_book_now')}}">TELL THIS STORY</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="cell large-6 medium-12 small-12 right-content small-order-1 large-order-2">
+          <div class="mint-yellow-overlay"> </div>
+
+        <div class="content-container page-content-container">
+            <div class="img-container mint-yellow"><img src="/assets/img/Travel.jpg"></div>
+        </div>
+      </div>
+    </div>
+     <div class="grid-x grid-main ">
+    <div class="cell large-12">
+        <div class="container">
+            <div class="text-container p30 ">
+                <div class='content-text mt20'>Travel broadens our horizons in a way that no reading matter can ever achieve. With new lands, sights and smells, and the richness of diverse cultures, travel can open our eyes and expand our minds like no other experience in this world. At LuvMyStory, we want to hear about your journey.</div>
+                <div class='content-text mt10 content-text-label'>Where did you go, and what did you do that changed your life and your views on our world? Document your experience so that you and those closest to you can refer to this for a lifetime.</div>
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock %}

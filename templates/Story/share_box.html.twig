@@ -1,0 +1,3 @@
+ <div class='img-container shared-box' data-id={{shareStory.idencoded}} data-name="{{shareStory.user.fullname}}" id='shared-box-{{shareStory.id}}'>
+    <img  src="{{ shareStory.user.getFileWebPath ? shareStory.user.getFileWebPath :  '/assets/img/default-profile-pic.jpg' }}" alt="{{ shareStory.user.fullname }}" />
+</div>

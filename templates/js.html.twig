@@ -1,0 +1,60 @@
+<div class="large reveal" id="modal" data-reveal data-animation-in="slide-in-down normal" > </div>
+
+<script src="/assets/js/vendor/jquery.js"></script>
+<script src="/assets/js/vendor/what-input.js"></script>
+<script src="/assets/js/vendor/foundation.js"></script>
+<script src="/assets/js/app.js"></script>
+<script src="/plugins/mask/mask.min.js"></script>
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="/plugins/devbridge/devbridge.js"></script>
+<script src="/assets/js/global.js?v=3.2.0"></script>
+<script src="/assets/toastr/toastr.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        global.settings.url ='{{ global_url}}';
+        global.settings.notification_url ='{{ global_url ~ path("notification_list")}}';
+
+        global.init();
+        $(".burger-menu").click(function(){
+            $(".menu-device").toggle(500);
+        });
+
+        $(".notification-bell").click(function(){
+            $(".notification").toggle(500);
+        });
+    });
+</script>
+
+
+{% set success_messages =  app.session.flashbag.get('success_messages') %}
+{% if success_messages %}
+    <script type="text/javascript">
+        var msg = ''; 
+        {% for success_message in  success_messages %}
+            msg+= "{{success_message}}" + "\n";
+        {% endfor %}
+        
+        toastr.success(msg);
+
+    </script>
+{% endif %}
+
+{% set error_messages =  app.session.flashbag.get('error_messages') %}
+{% if error_messages %}
+      <script type="text/javascript">
+        var msg = ''; 
+        {% for error_message in  error_messages %}
+                msg+= "{{error_message}}" + "\n";
+        {% endfor %}
+        
+        toastr.error(msg);
+
+    </script>
+{% endif %}
+
+{% if  javascripts is defined %}
+    {% for script in javascripts %}
+        <script src="{{ script }}?v=1.0.3"></script>
+    {% endfor  %}
+{% endif %}
