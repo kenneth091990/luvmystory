@@ -1,0 +1,106 @@
+{% extends 'Home/main.html.twig' %}
+
+{% block content %}
+<div style='min-height:79vh;'>
+    <div class="grid-x">
+    <div class="cell large-12">
+        <!--Question 1-->
+        <div class="grid-x faq-content-container">
+            <div class="cell">
+                <div class="grid-container">
+                    <div class="grid-x">
+                        <div class="cell large-12 ">
+                            <h1 class='text-gray mt50 mb50'>Frequently Asked Questions</h1>
+                        </div>
+
+                        <div class="cell large-12">
+                            <ul class="horizontal tabs" data-tabs id="example-tabs">
+                                <li class="tabs-title is-active bolder"><a href="#panel1v" aria-selected="true">About the site</a></li>
+                                <li class="tabs-title "><a href="#panel2v" class='bolder'>Technical Support</a></li>
+                            </ul>
+                        </div>
+                        <div class="cell large-12 mt20">
+                            <div class="tabs-content vertical" data-tabs-content="example-tabs">
+                                <div class="tabs-panel is-active" id="panel1v">
+                                    <ul class="accordion faq" data-accordion data-allow-all-closed="true">
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: Who can access my story?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: There are 2 options:
+                                            <ul>
+                                                <li>You can make your story public or</li>
+                                                <li>Provide a link to specific people who can then access the story.</li>
+                                            </ul>
+
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: When I share my story, do my friends have to have an account?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: No
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: How long will my story be kept on the site?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: Your story will remain in our archive for 5 years or if you request that it be taken down.
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: How long or short can my video/audio be?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: We generally record 60 minutes of material and our team edits it down to up to 30 minutes.
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: What are the payment options?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: When booking through Acuity, you can pay using Stripe™ or PayPal™.
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: Will there be a renewal or annual fee?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: At the end of the 5th year, you will be invited to renew for a nominal fee for the continued access and security of your story.
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: Are there content restrictions on LuvMyStory?</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: Your story is unique. This recording is intended to be a keepsake.
+                                            We encourage you to share your story and one day, you might decide to share with minors, family members and friends. You may not want your audience to be startled or offended.
+                                            For that reason, we generally invite you not to be too explicitly graphic.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tabs-panel" id="panel2v">
+                                    <ul class="accordion faq" data-accordion data-allow-all-closed="true">
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: Help! I can’t login.</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A:  Contact us at support@luvmystory.com. It will be our pleasure to assist you.
+                                            </div>
+                                        </li>
+                                        <li class="accordion-item mb20" data-accordion-item>
+                                            <a href="#" class="accordion-title text-gray  bg-skyblue">Q: My video/audio won’t play on my Mac/PC.</a>
+                                            <div class="accordion-content text-gray" data-tab-content>
+                                            A: Files are stored in MP4 format which should be compatible on all devices. Please try again and if the problem persists contact us at support@luvmystory.com.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'js.html.twig' %}
+
+    
+{% endblock %}

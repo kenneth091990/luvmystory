@@ -1,0 +1,42 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+       <div class='cell large-12'>
+           <div class='p50'>
+                <div>
+                    <h4 class='bold'>ALL SCHEDULES</h4>
+                </div>
+                <div>
+                     <table id="stories-datalist" class=" nowrap" style="width:100%" width="100%;">
+                        <thead>
+                            <tr>
+                                <th>Recent Stories</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Interviewer</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+        stories.settings.ajaxUrl = '{{ path('schedule_ajax_list') }}';
+        stories.init();
+    });
+//]]>
+</script>
+{% endblock %}

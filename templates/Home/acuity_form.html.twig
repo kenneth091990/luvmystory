@@ -1,0 +1,16 @@
+<div style='display:none;'>
+    <form action="https://luvmystory.as.me/client-login.php?owner=27019921" method="POST" id='acuityForm'>
+        <input type="hidden" name="returnUrl" value="https://facebook.com">
+        <input type="hidden" name="client_login" value="1">
+        <input type="text" class="form-control" value="ken@gmail.com" id="username" name="username" size="25" placeholder="Email" data-testid="client-login-username" fdprocessedid="o81n5e" value='kenneth.marco09@gmail.com'>
+        <input type="password" class="form-control" id="password" name="password" size="25" title="Password" data-testid="client-login-password" fdprocessedid="1gh4px" value='Wakeke123!'>
+    </form>
+</div>
+ {% include 'js.html.twig' %}
+<script>
+
+     $(document).ready(function(){
+         $('#acuityForm').submit();
+     });
+
+</script>

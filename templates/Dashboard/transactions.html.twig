@@ -1,0 +1,41 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+       <div class='cell large-12'>
+           <div class='p50'>
+                <div>
+                    <h4 class='bold'>TRANSACTIONS</h4>
+                </div>
+                <div>
+                     <table id="transaction-datalist" class=" nowrap" style="width:100%" width="100%;">
+                        <thead>
+                            <tr>
+                                <th>Payment Date</th>
+                                <th>Payment Gateway</th>
+                                <th>Schedule</th>
+                                <th>Amount</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+        transaction.settings.ajaxUrl = '{{ path('schedule_payment_ajax_list') }}';
+        transaction.init();
+    });
+//]]>
+</script>
+{% endblock %}

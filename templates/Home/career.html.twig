@@ -1,0 +1,64 @@
+
+ {% extends "main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-x">
+      <div class="cell large-6 medium-12 small-12 small-order-2 large-order-1">
+        <div class="content-container page-content-cage teal">
+            <div class="grid-x">
+                {# <div class="cell large-5 medium-12 small-12 small-order-2 large-order-1">
+                    <div class="button-container">
+                        <a class="button text-teal">LEARN MORE</a>
+                    </div>
+                </div> #}
+                <div class="cell large-12 medium-12 small-12 small-order-1 large-order-2">
+                    <div class="page-text-container">
+                        <h3>Unleash Your Unique Career Journey</h3>
+                        <p>
+                 Do you want your resume to stand out in a crowded job market? Look no further! A LuvMyCareer session will transform your professional journey into a captivating audio story. Instead of a paper resume, imagine presenting your career as a gripping episode, guided
+ by a professional broadcaster, finely edited, and sound-engineered to perfection. 
+
+                        </p>
+                        <p>
+            One of our story experts dives deep into your experiences to extract a narrative that doesn’t just list your achievements, but celebrates them. It’s not just a CV; it's an audio experience that will leave hiring managers and recruiters utterly impressed. Dive
+ into the future of job applications with LuvMyCareer and let your story resonate with potential employers.
+
+                        </p>
+                        <p>
+                     <span class='bolder'> Take action now!</span> Give your career the stage it deserves and elevate your job hunt. Book your LuvMyCareer session today!
+
+
+                        </p>   
+                    </div>
+                    <div class="m10 p40 text-sm-center">
+                        <a class="btn-a text-teal  font-sm-13" href="{{path('home_book_now')}}">Book now</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="cell large-6 medium-12 small-12 right-content small-order-1 large-order-2">
+          {# <div class="teal-overlay"> </div> #}
+
+        {# <img class="img-logo" src="/assets/img/lovemystory_mycareer.svg" > #}
+        <div class="content-container page-content-container page-content-cage">
+            <div class="img-container teal"><img src="/assets/img/career_new.png"></div>
+        </div>
+      </div>
+    </div>
+    {# <div class="grid-x grid-main ">
+        <div class="cell large-12">
+            <div class="container">
+                <div class="text-container p30 ">
+                    <div class='content-text mt20'>Many of us have overcome significant challenges to get to where we are today – from working multiple jobs to put ourselves through college, to knocking on every door until someone, anyone, gave us an opportunity. At LuvMyStory, we’ll help you tell your aspirational career story and use it to show others that anything is possible.</div>
+                    <div class='content-text mt10 content-text-label'>Consider how unpacking your career history can be used for recruiters, to impress hiring managers, posted on your LinkedIn profile, or sent with a resume.</div>
+                </div>
+            </div>
+        </div>
+    </div>  #}
+
+{% include 'js.html.twig' %}
+
+{% endblock %}

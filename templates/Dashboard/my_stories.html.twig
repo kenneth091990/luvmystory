@@ -1,0 +1,39 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+       <div class='cell large-12'>
+           <div class='p50'>
+                <div>
+                    <h4 class='bold'>ALL STORIES</h4>
+                </div>
+                <div>
+                     <table id="stories-datalist" class=" nowrap" style="width:100%" width="100%;">
+                        <thead>
+                            <tr>
+                                <th>Story</th>
+                                <th>Interviewer</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+        stories.settings.ajaxUrl = '{{ path('story_ajax_list') }}';
+        stories.init();
+    });
+//]]>
+</script>
+{% endblock %}

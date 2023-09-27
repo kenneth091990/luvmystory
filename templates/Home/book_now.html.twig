@@ -1,0 +1,44 @@
+{% extends 'Home/main.html.twig' %}
+
+{% block content %}
+
+<div class="extender-lines teal"></div>  
+    <div class="grid-x">
+      <div class="cell large-auto medium-12 small-12 teal">
+          <div class="grid-container">
+            <div class="grid-x grid-margin-x">
+                <div class='cell large-12 large-centered pt-5'>
+                    <img  src="/assets/img/luv1-story_white 1 (1).png" >
+                </div>
+                <div class='cell large-12 large-centered'>
+                   <iframe id='acuity' src="https://luvmystory.as.me/schedule.php?owner=29595938&firstName={{userData['firstName']}}&lastName={{userData['lastName']}}&email={{userData['email']}}" title="Schedule Appointment" frameborder="0" height="1250" width="100%"></iframe><script src="/assets/js/vendor/acuity-embed.js" type="text/javascript"></script>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
+</div>
+<div class="extender-lines gray"></div>
+
+{% include 'js.html.twig' %}
+
+//  <script>
+
+// //     var popup = window.open('hhttps://app.acuityscheduling.com/login.php?', "popupWindow", "width=600,height=600,scrollbars=yes");
+
+// //     console.log();
+
+// //     setInterva,(() => {
+// //         console.log(window.location.href);
+// //     }, 10000);
+
+
+// var myFrame = document.getElementById('acuity');
+
+// myFrame.contentWindow.foo = function(){
+//        console.log ("Look at me, executed inside an iframe!");
+// }
+// // </script>
+
+{% endblock %}
+

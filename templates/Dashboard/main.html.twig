@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    {% include 'Dashboard/header.html.twig' %}
+
+    <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            <div class="off-canvas position-left reveal-for-large sidebar-container" id="my-info" data-off-canvas data-position="left">
+                <div class="row column">
+                <ul class="vertical menu" data-responsive-menu="drilldown medium-accordion" style="max-width: 250px;">
+                        {% if userData['type'] == 'Super Admin' %}
+                            <li><a href="{{ path('user_index')}}" class='text-white'><i class="fa-user fa-solid fa-user"></i> USERS</a></li>
+
+                        {% elseif  userData['type'] == 'Admin' %}
+                            <li><a href="{{ path('schedule_index')}}" class='text-white'><i class="fa-solid fa-arrow-rotate-left"></i> SCHEDULES</a></li>
+                        {% else %}
+                            <li><a href="{{ path('story_index')}}" class='text-white {{ current_path == 'story_index' ? 'active-link' : ''}}'><i class="fa-sharp fa-solid fa-book-open"></i> MY STORIES</a></li>
+                            <li><a href="{{ path('story_share')}}" class='text-white {{ current_path == 'story_share' ? 'active-link' : ''}}'><i class="fa fa-share"></i> SHARED STORIES</a></li>
+                            <li><a href="{{ path('dashboard_schedules')}}" class='text-white {{ current_path == 'dashboard_schedules' ? 'active-link' : ''}}'><i class="fa-solid fa-calendar-days"></i></i> SCHEDULES  </a></li>
+                            <li><a href="{{ path('dashboard_my_profile')}}" class='text-white {{ current_path == 'dashboard_my_profile' ? 'active-link' : ''}}'><i class="fa-regular fa-user"></i> MY PROFILE</a></li>
+                            {# <li><a href="{{ path('dashboard_transactions')}}" class='text-white  {{ current_path == 'dashboard_transactions' ? 'active-link' : ''}}'><i class="fa-solid fa-arrow-rotate-left"></i> TRANSACTIONS</a></li> #}
+                            <li><a href="{{ path('dashboard_book_now')}}" class='text-white  {{ current_path == 'dashboard_book_now' ? 'active-link' : ''}}'><i class="fa-solid fa-book"></i> BOOK NOW</a></li>   
+                        {% endif %}
+                        
+                         
+                        {# <li><a href="{{ path('dashboard_index')}}" class='text-white'><i class="fa-solid fa-table-cells-large"></i> DASHBOARD</a></li>                     #}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="off-canvas-content" data-off-canvas-content>
+                <div class="title-bar hide-for-large">
+                    <div class="title-bar-left">
+                        <button class="menu-icon" type="button" data-open="my-info"></button>
+                    </div>
+                </div>
+                {% block content %}{% endblock %} 
+            </div>
+        </div>
+    </div>
+{% endblock %}    
