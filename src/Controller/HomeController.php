@@ -221,28 +221,28 @@ class HomeController extends AbstractController
     }
 
      /**
-     * @Route("travel", name="home_travel")
+     * @Route("/travel", name="home_travel")
      */
     public function travelAction(){
         return $this->render('Home/travel.html.twig');
     }
 
       /**
-     * @Route("welcome", name="home_welcome")
+     * @Route("/welcome", name="home_welcome")
      */
     public function welcomeAction(){
         return $this->render('Home/welcome.html.twig');
     }
 
     /**
-     * @Route("me", name="home_me")
+     * @Route("/me", name="home_me")
      */
     public function meAction(){
         return $this->render('Home/me.html.twig');
     }
 
       /**
-     * @Route("book_now", name="home_book_now")
+     * @Route("/book_now", name="home_book_now")
      */
     public function book_nowAction(AuthService $authService){
 
@@ -258,7 +258,7 @@ class HomeController extends AbstractController
 
     
     /**
-     * @Route("login", name="home_login")
+     * @Route("/login", name="home_login")
      */
     public function loginAction(Request $request, AuthService $authService){
 
@@ -339,11 +339,20 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("registration_success", name="home_registration_success")
+     * @Route("/registration_success", name="home_registration_success")
      */
     public function registrationSuccessAction(){
         return $this->render('Home/registration_success.html.twig');
     }
+
+    /**
+     * @Route("/the_luv1_conversation", name="home_the_luv1_conversation")
+     */
+    public function the_luv1_conversationAction(){
+        return $this->render('Home/the_luv1_conversation.html.twig');
+    }
+
+    
 
     /**
      * @Route("forgot_password", name="home_forgot_password")
