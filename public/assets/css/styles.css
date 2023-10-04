@@ -1,6 +1,11 @@
 html, body {
     font-family: 'Montserrat', sans-serif;
     background: #F3F1F1 0% 0% no-repeat padding-box;
+    width: -webkit-fill-available;
+}
+
+[type='submit'], [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
+   height: 3rem;
 }
 
 
@@ -1161,7 +1166,7 @@ div.active {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #f2a321;
+        background-color: #F2A321;
         z-index: 2;
         cursor: pointer;
         opacity: .4;
@@ -1214,7 +1219,7 @@ div.active {
       }
 
       /*for login new version*/
-
+.contact-us-left-side,
 .login-left-side {
     max-height: 100vh;
     height: 100%;
@@ -1224,6 +1229,21 @@ div.active {
     font-family: Montserrat;
 }
 
+.contact-us-left-side,
+.login-left-side {
+    max-height: 100vh;
+    height: 100%;
+    background:url("../img/loginimg.png") no-repeat transparent center center;
+    position: relative;
+    overflow-y: hidden;
+    font-family: Montserrat;
+}
+
+.contact-us-left-side{
+    background: unset!important;
+}
+
+
 .login-left-side img.logo_login {
     position: absolute;
     left:50%;
@@ -1231,6 +1251,8 @@ div.active {
     transform: translate(-50%,-50%);
     width:200px;
 }
+
+
 
 .registration-right-side,
 .login-right-side {
@@ -2149,4 +2171,60 @@ div.active {
 
 .primary-button{
     background-color: #0094C9;
+}
+
+.page-title-container{
+    position: relative;
+    height: 100%;
+}
+
+.page-title-container img{
+    height: 100%;
+    width: 100%;
+}
+
+
+.page-title-container h3{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%, -50%);
+    color: #fff;
+    font-family: "Montserrat";
+    z-index: 999;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.page-form-container {
+    height: 100%;
+    display: flex;
+}
+
+.page-form-container form{
+    width: 60%;
+    margin: auto;
+}
+
+.page-form-container form h6{
+    font-size: 35px;
+}
+
+.page-form-container form p{
+    font-size: 16px;
+}
+
+.page-form-container form input,
+.page-form-container form textarea {
+    border: unset!important;
+    font-size: 17px;
+    line-height: 20px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.page-form-container form  .button{
+    background: #D90D85 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    width: 100%;
 }
