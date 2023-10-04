@@ -2146,3 +2146,7 @@ div.active {
 .text-white{
     color: #fff!important;
 }
+
+.primary-button{
+    background-color: #0094C9;
+}

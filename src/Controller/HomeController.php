@@ -252,7 +252,7 @@ class HomeController extends AbstractController
             return $this->redirect($this->generateUrl('home_registration'), 302);
         }
 
-        $this->redirect($this->generateUrl('dashboard_book_now'), 302);
+        return $this->redirect($this->generateUrl('dashboard_book_now'), 302);
         //return $this->render('Home/book_now.html.twig');
     }
 
