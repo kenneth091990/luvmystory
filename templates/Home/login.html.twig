@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'Home/main.html.twig' %}
 
-{% block main %}
-
+{% block content %}
+{# 
     <div class="grid-x">
       <div class="cell large-5 medium-12 small-12">
         <div class="login-left-side">
@@ -39,7 +39,50 @@
           </div>
         </div>
       </div>
+    </div> #}
+
+    <div class='main-content'>
+
+  <div class="grid-x ">
+    <div class="cell medium-12 large-5">
+      <div class='page-title-container login-title-container'>
+
+          <img src="/assets/img/login_color.png" />
+          <img src="/assets/img/mystory-logo-pink.png" class="logo" />
+      </div>
     </div>
+     <div class="cell medium-12 large-7">
+          <div class='hide-for-large mt-5'></div>
+          <div class='page-form-container mb-5  '>
+            <form action={{ path('home_login') }} method="POST">
+                <h6>Sign in to LuvMyStory</h6>
+
+                <div class="grid-x ">
+                  <div class="small-12 cell">
+                        {{ form_widget(form.email) }}
+                  </div>
+                  <div class="small-12 cell">
+                        {{ form_widget(form.password) }}
+                  </div>
+                  <div class="small-12 cell">
+                      <input type="submit" Value="Sign in" class="button">
+                  </div>
+                  <div class="small-12 cell">
+                    <a href="{{ path('home_forgot_password')}}" class="forgotpass-link">Forgot Password?</a>
+                    <p><span>Not A Member?</span>&nbsp;<a href="{{ path('home_registration')}}" class="signup-link">Sign up Here</a></p>
+                  </div>
+                </div>
+                
+                {{ form_widget(form._token) }}
+
+            </form>
+          </div> 
+          <div class='hide-for-large mt-5'></div>
+
+     </div>
+  </div>
+</div>
+<div class='clear-fix'></div>
 
  {% include 'js.html.twig' %}
    

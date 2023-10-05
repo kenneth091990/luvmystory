@@ -1319,7 +1319,6 @@ div.active {
 .forgotpass-link {
     color:#4D4D4D;
     margin-top:40px;
-    margin-bottom:15px;
     display: block;
 }
 
@@ -2183,7 +2182,7 @@ div.active {
     width: 100%;
 }
 
-
+.page-title-container .logo,
 .page-title-container h3{
     position: absolute;
     left: 50%;
@@ -2194,6 +2193,12 @@ div.active {
     z-index: 999;
     font-size: 50px;
     font-weight: 600;
+}
+
+
+.page-title-container .logo{
+    width: 180px;
+    height: auto;
 }
 
 .page-form-container {
@@ -2227,4 +2232,9 @@ div.active {
     background: #D90D85 0% 0% no-repeat padding-box;
     border-radius: 8px;
     width: 100%;
+}
+
+.login-title-container{
+    background: url('/assets/img/loginimg.png') no-repeat transparent center center;
+    background-size: cover;
 }
