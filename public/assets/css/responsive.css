@@ -1,6 +1,7 @@
 @media screen and (min-width:320px) and (max-width:414px) {
+  
     body {
-        padding-top: 120px;
+        padding-top: 90px;
     }
     .header-container {
         padding: 20px 20px;
@@ -257,40 +258,21 @@
         line-height: 26px;
     }
 
-
+    .ask-signupq{
+        display: none;
+    }
 
  }
 
+
+
   @media screen and (min-width:1400px) {
-
-
-    .main-content{
-        height: 81.7vh;
-    }
-
     .page-title-container img{
         position: absolute;
     }
-
-    .main-content .grid-x{
-        height: 100%;
-    }
-
-
-
  }
  
  @media screen and (min-width:1024px) and (max-width:1400px) {
-
-
-    .main-content{
-        height: 81.7vh;
-    }
-
-    .main-content .grid-x{
-        height: 100%;
-    }
-
 
  }
 
@@ -302,6 +284,8 @@
         margin: auto;
     }
 
+    
+
 
     
 
@@ -309,10 +293,15 @@
 
  @media screen and (max-width:1023px)  {
 
-    .page-form-container {
-        height: auto;
-    }
+ 
     
+
+ }
+
+ 
+ @media screen and (min-width:1024px) and (max-width:1400px)  {
+
+  
 
  }
 

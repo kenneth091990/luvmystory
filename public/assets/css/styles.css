@@ -2,7 +2,11 @@ html, body {
     font-family: 'Montserrat', sans-serif;
     background: #F3F1F1 0% 0% no-repeat padding-box;
     width: -webkit-fill-available;
+    height: 100%;
 }
+
+
+
 
 [type='submit'], [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
    height: 3rem;
@@ -25,6 +29,10 @@ html, body {
     border-bottom: unset!important;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 /* Global Margins - margin-# or m# increments of five until 50px then jumps to 50px */
 .m0,.margin-0 { margin: 0px; }
@@ -339,8 +347,20 @@ ul.menu-style {
 }
 
 ul.menu-style li {
-    margin-right:40px;
-    font-weight:600;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    color: #4D4D4D;
+    margin-right: 15px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+ul.menu-style li.right {
+    font-family: 'Montserrat';
+    color: #4D4D4D;
+    margin-left: 30px;
 }
 
 ul.menu-style li a{
@@ -1138,8 +1158,7 @@ div.active {
     }
 
     .header-logo{
-        padding:0.7rem 1rem;
-        max-width: 180px;
+        max-width: 142px;
     }
     
     /* .tabs-panel {
@@ -2238,3 +2257,30 @@ div.active {
     background: url('/assets/img/loginimg.png') no-repeat transparent center center;
     background-size: cover;
 }
+.main-container{
+    
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  
+}
+.header-container {
+    flex: 0 1 auto;
+}
+.main-content {
+    flex: 1 1 auto;
+}
+
+.main-content .form-grid{
+    height: 100%;
+}
+.footer-container {
+    flex: 0 1 auto;
+}
+.container-box {
+    display: contents;
+    overflow-y: scroll;
+}
+
+
+

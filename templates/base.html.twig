@@ -26,7 +26,12 @@
 
     {% set userData = app.session.get('userData') %}
     {% set current_path = app.request.get('_route') %}
-    {% block main %}{% endblock %} 
+    <div class='main-container'>
+      <div class='container-box'>
+      
+        {% block main %}{% endblock %} 
+      </div>
+    </div>
 
   </body>
 </html>

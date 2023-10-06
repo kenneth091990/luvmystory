@@ -1,9 +1,9 @@
  <div class="grid-x header-container">
-      <div class="cell large-2 medium-4 small-6">
-        <a href="{{ path('home_index')}}" > <img  src="/assets/img/mystory-logo-pink.png" class='header-logo'></a>
-      </div>
-      <div class="cell large-7 medium-8 small-6">
+      <div class="cell large-9 medium-12 small-12">
         <ul class="menu menu-style show-for-large dropdown nav-menu" data-dropdown-menu>
+          <li>   <a href="{{ path('home_index')}}" > <img  src="/assets/img/mystory-logo-pink.png" class='header-logo'></a>
+</a></li>
+          <li><a class='text-gray' href="{{ path('home_index')}}">Home</a></li>
           <li >
             <a class='text-gray' href="{{ path('home_stories')}}">Choose your Story</a>
             <ul class="menu">
@@ -18,8 +18,8 @@
 
             </ul>
           </li>
-          <li><a class='text-gray' href="{{ path('home_why_tell_your_story')}}">Why and How</a></li>
-          <li><a class='text-gray' href="{{ path('home_the_steps')}}">The Steps</a></li>
+          {# <li><a class='text-gray' href="{{ path('home_why_tell_your_story')}}">Why and How</a></li>
+          <li><a class='text-gray' href="{{ path('home_the_steps')}}">The Steps</a></li> #}
           <li>
             <a class='text-gray' href="{{ path('home_about_us')}}">About Us</a>
               {# <ul class="menu">
@@ -38,10 +38,10 @@
          
 
           {% if userData %}
-            <li><a href="{{ path('dashboard_my_profile')}}" class='button  radius-rounded teal text-white pl20 pr20'>MY PROFILE</a></li>
+            <li class="right"><a href="{{ path('dashboard_my_profile')}}" class='button  radius-rounded teal text-white pl20 pr20'>MY PROFILE</a></li>
           {% else %}
-            <li><div class='sign-up-nav-container'> Not A Member? <a href="{{ path('home_registration')}}" class='text-pink sign-up-a'> Sign up here</a></div></li>
-            <li><a href="{{ path('home_login')}}" class='button primary-button radius-rounded teal text-white pl20 pr20'>SIGN IN</a></li>
+            <li ><div class='sign-up-nav-container'> <span class='ask-signupq'>Not A Member? </span> <a href="{{ path('home_registration')}}" class='text-pink sign-up-a ml10'> Sign up here</a></div></li>
+            <li class="right"><a href="{{ path('home_login')}}" class='button primary-button radius-rounded teal text-white pl20 pr20'>SIGN IN</a></li>
           {% endif %}
        </ul>
          
@@ -87,7 +87,5 @@
       </div>
     </div>
 
-    </div>
 
       <!--content -->
-    </div>
