@@ -10,6 +10,7 @@
             global.bindFormSubmitted(); 
             global.check_notification();
             global.init_modal();
+            global.resizeHeaderContainer();
         },
         init_modal: function(){
             
@@ -273,4 +274,13 @@
                 });
             }
         },
+
+        resizeHeaderContainer: function(){
+            
+            $('#header-subd').css('padding-top', $('.header-container')[0].scrollHeight);
+
+            $(window).resize(function() {
+                $('#header-subd').css('padding-top', $('.header-container')[0].scrollHeight );
+            });
+        }
     };

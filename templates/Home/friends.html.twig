@@ -1,61 +1,48 @@
-
- {% extends "main.html.twig" %}
+{% extends 'Home/main.html.twig' %}
 
 {% block content %}
+<div class='main-content'>
+    <div class="grid-x form-grid">
+      <div class="cell large-6 medium-12 small-12 blue">
+        <div class='page-title-container'>
+          <div class="page-text-container travel_content">
+            <h4>Capture Your Adventures in a Keepsake Narrative</h4>
+            <p>
+                  Every journey holds a story, and your vacation memories deserve to be told in the most compelling way. Capture the magic of your travels with a LuvMyTravel session. Our seasoned Story Guides are here to delve deep into the soul of your adventures, whether you
+                  are reminiscing about that sun-soaked vacation in Hawaii or the breathtaking backpacking journey through Thailand.
+            </p> 
+            <p>
+                  Imagine revisiting the wonders of the Alaskan cruise of 2001, but with a narrative finesse that captures the very essence of your experiences. We breathe life into your journeys, weaving together the most vibrant threads of your travel tapestry into tales that
+                  resonate, inspire, and transport.                   
+            </p> 
+            <p>
+                  Don't just remember your travels, relive them with a vividness that only a crafted narrative can provide.
 
-<div class="grid-x">
-      <div class="cell large-6 medium-12 small-12 small-order-2 large-order-1">
-        <div class="content-container page-content-cage blue">
-            <div class="grid-x">
-                <div class="cell large-5 medium-12 small-12 small-order-2 large-order-1">
-                    {# <div class="button-container">
-                        <a class="button text-blue">LEARN MORE</a>
-                    </div> #}
-                </div>
-                <div class="cell large-12 medium-12 small-12 small-order-1 large-order-2">
-                    <div class="page-text-container">
-                        <h3>Bring Your Friend Stories to Life!</h3>
-                        <p>
-                            Everyone has that unforgettable story with a friend – the serendipity of your first meeting, the hilariously chaotic double date, or that mesmerizing trip to Paris. But how often do these tales get lost in the clutter of daily life? With a LuvMyFriend session,
-                            we ensure your stories shine as bright as the memories themselves. Our professional Story Guides, experienced broadcasters, delve deep into your memories, interviewing you to draw out the most vivid, heartwarming details of your friendship adventures. 
-                        </p>   
-                        <p>
-                            Don't let your stories fade into whispers. Choose a LuvMyFamily session today and capture those cherished moments.  
-                        </p>  
-                        <p class="bolder">
-                            Act now and book your LuvMyFriend session. Give your friendship tales the stage they truly deserve!
+            </p>   
+            <p>
+              Book a LuvMyTravel session now, and let the world be enchanted by your travel stories.
+            </p> 
 
-
-                        </p>  
-                    </div>
-                       <div class="mt30 p40 text-sm-center">
-                    <a class="btn-a text-white primary-button  font-sm-13">Book now</a>
-                </div>
-                    
-                </div>
-            </div>
+            <div class="mt30 p40 text-sm-center b-container">
+              <a class="btn-a text-white primary-button  font-sm-13" href="/book_bow">Book Now</a>
+           </div>
+        </div>
+     
         </div>
       </div>
-      <div class="cell large-6 medium-12 small-12 right-content small-order-1 large-order-2">
-        {# <img class="img-logo" src="/assets/img/lovemystory_friends.svg" > #}
-        <div class="content-container page-content-container page-content-cage">
-            <div class="img-container blue"><img src="/assets/img/friends_new.png"></div>
+      <div class="cell large-6 medium-12 small-12   ">
+        <div class='page-title-container'>
+           <img src="/assets/img/friends_new.png">
         </div>
-      </div>
+       </div>
     </div>
-        {# <div class="grid-x grid-main ">
-        <div class="cell large-12">
-            <div class="container">
-                <div class="text-container p30 ">
-                    <div class='content-text mt20'>
-                        Everybody loves a good small business story. From idea to start-up to success, your customers and future customers want to hear the story of your journey and the story behind the business they love. Giving your customers your story will inspire them, create stronger loyalty, and give them a new story to share with friends and family about your business!
-                    </div>
-                    <div class='content-text mt10 content-text-label'>LuvMyStory captures the story of your business, brings to light your journey and the essence of your products and services. This audio can also be used in an email to customers or as a podcast to showcase your work and help to catapult you to the next level of success.</div>
-                </div>
-            </div>
-        </div>
-    </div> #}
 
+  </div>
 {% include 'js.html.twig' %}
 
+<script type='text/javascript'>
+
+
+</script>    
+    
 {% endblock %}

@@ -4,7 +4,9 @@ html, body {
     width: -webkit-fill-available;
     height: 100%;
 }
-
+.header-sub{
+    height: 88px;
+}
 
 
 
@@ -260,14 +262,7 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(217, 13, 133, 0.25);
 }
 
-.sign-up-nav-container{
-    
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0.7rem;
-    line-height: 1;
 
-}
 
 .bg-secondary-pink{
     background: rgba(153, 36, 112, 0.1);
@@ -355,6 +350,10 @@ ul.menu-style li {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+ul.menu-style li:nth-last-child(2){
+   margin-left: auto;
 }
 
 ul.menu-style li.right {
@@ -481,11 +480,22 @@ ul.menu-style li a{
 }
 
 .burger-menu {
-    text-align: right;
+   
+}
+.burger-menu a 
+{
+    float: left;
+    height: fit-content
+}
+
+.burger-menu a  img
+{
+    width: -webkit-fill-available;
 }
 
 .burger-menu img{
-    width:35px;
+    width: 35px;
+    float: right;
 }
 
 .footer-container {
@@ -557,14 +567,22 @@ ul.ftr-socials li{
 
 
 .page-text-container {
-    padding:66px;
-    color:#fff;
+    padding: 27px;
+    color: #fff;
+    height: 100%;
+    position: relative;
 }
 
-.page-text-container h3{
+.page-text-container h4{
     font-size:38px;
     margin-bottom:50px;
 }
+.page-text-container  .b-container {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+ }
 
 .page-text-container p {
     font-size:20px;
@@ -2265,7 +2283,8 @@ div.active {
   
 }
 .header-container {
-    flex: 0 1 auto;
+    position: fixed;
+    z-index: 9999;
 }
 .main-content {
     flex: 1 1 auto;
@@ -2280,6 +2299,10 @@ div.active {
 .container-box {
     display: contents;
     overflow-y: scroll;
+}
+
+#header-subd{
+    width: 100%;
 }
 
 
