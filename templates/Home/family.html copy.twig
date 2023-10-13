@@ -1,0 +1,61 @@
+
+ {% extends "main.html.twig" %}
+
+{% block content %}
+
+   <div class="grid-x">
+      <div class="cell large-6 medium-12 small-12 small-order-2 large-order-1">
+        <div class="content-container page-content-cage purple">
+            <div class="grid-x">
+                {# <div class="cell large-5 medium-12 small-12 small-order-2 large-order-1">
+                    <div class="button-container">
+                        <a class="button text-purple">LEARN MORE</a>
+                    </div>
+                </div> #}
+                <div class="cell large-12 medium-12 small-12 small-order-1 large-order-2">
+                    <div class="page-text-container">
+                        <h3>Unlock the Legends Within Your Family</h3>
+
+                        <p >
+                           Every family has a tapestry of tales, woven with laughter, tears, and moments that define generations. At LuvMyStory™, we are driven by a single passion: to bring those stories alive. Whether it’s the tale of your family’s most memorable vacation, the magic
+                            of Christmas 2009, or the resilience shown during Hurricane Katrina, our professional Story Guides are here to help capture and narrate every emotion, every nuance.
+                        </p>
+
+                         <p >
+Don’t let these memories fade into the sands of time. Let's immortalize them. Choose a LuvMyFamily session. today and give your descendants the gift of legacy.</p>  
+
+                        <p class='bolder'>
+Book now! Let's turn your family moments into timeless tales. </p>  
+
+                        
+                    </div>
+                    <div class="mt30 p40 text-sm-center">
+                        <a class="btn-a text-white primary-button  font-sm-13" href="{{path('home_book_now')}}">Book now</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="cell large-6 medium-12 small-12 right-content small-order-1 large-order-2">
+          {# <div class="pink-overlay"> </div> #}
+
+        {# <img class="img-logo" src="/assets/img/lovemystory_family.svg" > #}
+        <div class="content-container page-content-container page-content-cage">
+            <div class="img-container purple"><img src="/assets/img/family_new.png"></div>
+        </div>
+      </div>
+    </div>
+     {# <div class="grid-x grid-main ">
+    <div class="cell large-12">
+        <div class="container">
+            <div class="text-container p30 ">
+                <div class='content-text mt10 content-text-label'>Stories can be shared by a family member or brought together as a family unit to capture a personal story. These can also be used a record of an important piece of family history.</div>
+            </div>
+        </div>
+    </div>
+</div>  #}
+
+{% include 'js.html.twig' %}
+
+{% endblock %}

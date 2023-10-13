@@ -1,0 +1,161 @@
+{% extends "Home/main.html.twig" %}
+
+{% block content %}
+
+ <div class="grid-x grid-main ">
+        <div class="cell large-4">
+            <div class="content-container  show-for-large">
+                <div class="text-container yellow">
+                    <div class="text-cage">
+                        <h3>You have a story to tell.</h3>
+                        <p> 
+                          Experience the magic of personal storytelling with LuvMyStory™. Our dedicated Story Guides expertly transform your cherished moments - be it a romantic encounter, a monumental wedding day, or a tale of resilience - into captivating narratives.
+                        </p>
+                    </div>
+                </div>
+                <div class="img-container yellow"><img src="/assets/img/homepage1_new.png"></div>
+            </div>
+        </div>
+        <div class="cell large-4">
+            <div class="content-container show-for-large">
+                <div class="img-container ">
+                                    <div class="wrapper-video">
+
+      <video width="100%"  height="100%" controls="false"  class="v1">
+                        <source src="/assets/video/removeperiodandeditlogo.mp4" type="video/mp4"></video>
+                         <div class="playpause"></div>
+</div>
+         
+                </div>
+                <div class="img-container logo-img purple myluvstory-img-container">
+                        <img src="/assets/img/luv1-story_white 1 (1).png">
+                        <div class="mt30 ">
+                            <a class="btn-a white text-pink index" href="{{path('dashboard_book_now')}}">Book Today</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell large-4">
+            <div class="content-container show-for-large">
+                <div class="text-container teal">
+                    <div class="text-cage">
+                        <h3>Your story expertly shaped.</h3>
+                        <p> 
+                         Our team crafts each narrative with meticulous editing and superior sound engineering, giving life to your stories in a way you've never heard before. This is your chance to preserve personal history, to share a laugh, a lesson, or a legacy with generations to come.
+                        </p>    
+                            <p> 
+Don't let your treasured moments fade away. Bring your story to life with <span class='bolder'> LuvMyStory™ </span> session.                        </p>    
+                        <p>  Book now - your timeless journey begins at <span class='bolder'>LuvMyStory™</span>.  </p>
+                    </div>
+                </div>
+                <div class="img-container teal">
+                    
+                                            <img src="/assets/img/homepage2_new.png">
+
+              
+                </div>
+            </div>
+        </div>
+        <div class="cell large-4">
+            <div class="content-container show-for-sm hide-for-large">
+                <div class="img-container logo-img purple"><img src="/assets/img/luv1-story_white 1 (1).png"></div>
+                <div class="img-container purple">
+                                       <div class="wrapper-video">
+
+      <video width="100%"  height="100%" controls="false"  class="v1">
+                        <source src="/assets/video/removeperiodandeditlogo.mp4" type="video/mp4"></video>
+                         <div class="playpause"></div>
+</div>
+                </div>
+            </div>
+        </div>
+        <div class="cell large-4">
+            <div class="content-container  show-for-sm hide-for-large">
+                <div class="text-container yellow">
+                    <div class="text-cage">
+                             <h3>Everyone has a story to tell<br/> and only you can tell yours.</h3>
+                        <p> 
+                            When you tell your story,
+                            record it clearly and
+                            powerfully so people joyfully
+                            hear it once or a thousand
+                            times if they wish.
+                        </p>
+                    </div>
+                </div>
+                <div class="img-container yellow"><img src="/assets/img/beauty-2483155_1920 2 (1).png"></div>
+            </div>
+        </div>
+    
+        <div class="cell large-4">
+            <div class="content-container show-for-sm hide-for-large">
+                <div class="text-container teal">
+                    <div class="text-cage">
+                          <h3>Feel the joy of telling your<br/> story, in your voice, today.</h3>
+                        <p> 
+                           We all love a compelling tale.
+                            You may just need a little
+                            help telling yours.
+                            At LuvMyStory, we are
+                            storytelling experts. Our
+                            Story Guides help you tell
+                            powerful stories from the
+                            heart, full of juicy details. We
+                            then sound engineer the
+                            recording to produce a
+                            keepsake that will be
+                            enjoyed for many years.
+                        </p> 
+                    </div>
+                </div>
+                <div class="img-container teal">
+                      
+                    <img src="/assets/img/beauty-2483155_1920 1 (1).png">
+
+                </div>
+            </div>
+        </div>
+</div>
+ <div class="grid-x grid-main ">
+    <div class="cell large-12">
+        <div class="container">
+            <div class="text-container text-center p30 bg-secondary-pink">
+                <div class='header-text text-secondary-pink'>…And we all love a compelling tale.</br>You may just need a little help telling yours.</div>
+                <div class='content-text mt20'>At LuvMyStory, we are storytelling experts. We use professionally edited audio to create </br>powerful stories that are insightful, inspirational, and speak to the heart. Storytelling is </br>humanity’s most ancient form of entertainment and knowledge sharing, and we know how to</br> get a message across that is authentic, captivating, and moving to the core.</div>
+                <div class='content-text text-secondary-pink mt20 content-text-label'><a class='content-text text-secondary-pink mt20 content-text-label' href="{{ path('home_stories')}}">LuvMyStory. LuvMy Life..</a></div>
+                <div class='content-text mt5'>Let LuvMyStory Help You Share Your Story, Your Way </div>
+                <div class="mt30 ">
+                     <a class="btn-a pink text-white" href="{{path('home_book_now')}}">TELL MY STORY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+{% include 'js.html.twig' %}
+<script>
+    $(document).ready(function(){
+        
+        $.each($('.wrapper-video'),function(){
+            var _this = $(this);
+            _this.unbind('click').bind('click',function(){
+                var vid = _this.find('video');
+                var playBtn = _this.find('.playpause');
+                if (vid[0].paused){
+                
+                    vid[0].play();
+                    playBtn.toggleClass('hide');
+                } else {
+                    
+                    setTimeout(() => {
+                    
+                    vid[0].pause();
+                    playBtn.toggleClass('hide');
+                    }, 500);
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

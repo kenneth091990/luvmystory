@@ -23,13 +23,7 @@
     .text-cage {
         padding: 0px 50px;
     }
-    .content-container .text-container h3{
-        font-size:28px;
-    }
-    .content-container .text-container p{
-        font-size:24px;
-        line-height: 30px;
-    }
+   
 
     .footer-menu {
         margin-bottom:50px;
@@ -233,10 +227,10 @@
 
 
  @media screen and (min-width:1024px) and (max-width:1600px) {
-    p {
+    /* p {
         font-size:95% !important;
         line-height:180% !important;
-    }
+    } */
     ul.menu-style li {
         margin-right: 0;
         font-size: 16px;
@@ -266,10 +260,20 @@
     .page-title-container img{
         position: absolute;
     }
+
+
  }
  
  @media screen and (min-width:1024px) and (max-width:1400px) {
+    .content-container .text-container h3 {
+        font-size: 26px;
+        font-weight: 600;
+    }
 
+    .content-container .text-container p {
+        font-size: 14px;
+        line-height: 20px;
+    }
  }
 
  @media screen and (max-width:1024px)  {
@@ -287,11 +291,28 @@
 
  }
 
- @media screen and (max-width:1023px)  {
+ @media screen and (min-width:1023px) and  (max-width:1400px) {
 
- 
+    .n-steps-no{
+        position: relative;
+        height: 54px;
+        width: 54px;
+    }
     
+    .steps-no{
+        font-size: 20px;
+    }
+    
+    .steps-cell{
+        margin: auto;
+     }
 
+ }
+
+ @media screen and (max-width:1023px){
+    .n-steps-no{
+       margin: auto;
+    }
  }
 
  
@@ -300,6 +321,9 @@
     .page-text-container  .b-container {
         position: unset;
      }
+
+
+ 
 
  }
 
@@ -320,26 +344,13 @@
 
  }
 
- @media screen and (max-width:460px)  {
 
-
-
-
-    .page-title-container h3{
-
-        font-size: 25px;
-    }
-
-
-
-
- }
 
  @media screen and (min-width:1600px) and (max-width:1900px) {
-    p {
+    /* p {
         font-size:100% !important;
         line-height:180% !important;
-    }
+    } */
  }
 
  /* ----------- Non-Retina Screens ----------- */
@@ -349,13 +360,7 @@ and (max-width: 1900px)  {
     .text-cage {
         padding:40px;
     }
-    .text-cage h3 {
-        font-size: 17px !important;
-    }
-    .text-cage p {
-        font-size: 12px !important;   
-        line-height: 18px !important;
-    }
+
     .steps-content p {
         line-height: 20px !important;
     }
@@ -367,6 +372,20 @@ and (max-width: 1900px)  {
     }
 
 }
+
+@media screen 
+and (max-width: 2100px)  { 
+
+    /* .text-cage h3 {
+        font-size: 22px !important;
+    }
+    .text-cage p {
+        font-size: 12px !important;   
+        line-height: 18px !important;
+    } */
+
+}
+
 
 @media screen 
 and (min-width: 313px) 
@@ -391,3 +410,28 @@ and (max-width: 1900px)  {
 
 
 
+@media screen and (max-width:540px)  {
+
+
+
+
+
+    .content-container .text-container h3 {
+        font-size: 24px;
+    }
+
+    .content-container .text-container p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    #main-banner h2 {
+        font-size: 30px;
+        font-weight: 200;
+    }
+
+    .tabs-title{
+        width: 100%;
+    }
+
+ }

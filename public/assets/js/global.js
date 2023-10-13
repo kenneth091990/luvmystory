@@ -276,11 +276,22 @@
         },
 
         resizeHeaderContainer: function(){
+
+            var headerScrollHeight = $('.header-container')[0].scrollHeight;
+            var  windowHeight = $(window).height();
             
-            $('#header-subd').css('padding-top', $('.header-container')[0].scrollHeight);
+            $('#header-subd').css('padding-top', headerScrollHeight);
+
+            if($('#main-banner').length){
+                $('#main-banner .content-container').css('height' , windowHeight - headerScrollHeight);
+            }
 
             $(window).resize(function() {
-                $('#header-subd').css('padding-top', $('.header-container')[0].scrollHeight );
+                $('#header-subd').css('padding-top', headerScrollHeight );
+
+                if($('#main-banner').length){
+                    $('#main-banner .content-container').css('height' , windowHeight - headerScrollHeight);
+                }
             });
         }
     };
