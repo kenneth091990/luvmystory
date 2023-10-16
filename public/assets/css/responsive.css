@@ -313,6 +313,10 @@
     .n-steps-no{
        margin: auto;
     }
+
+    .stories-container .accordion-content .cell .img-container{
+        text-align: center;
+    }
  }
 
  
@@ -411,9 +415,6 @@ and (max-width: 1900px)  {
 
 
 @media screen and (max-width:540px)  {
-
-
-
 
 
     .content-container .text-container h3 {

@@ -75,6 +75,6 @@
 
 {% if  javascripts is defined %}
     {% for script in javascripts %}
-        <script src="{{ script }}?v=1.0.3"></script>
+        <script src="{{ script }}?v={{assets_version}}"></script>
     {% endfor  %}
 {% endif %}

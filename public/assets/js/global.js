@@ -287,6 +287,10 @@
             }
 
             $(window).resize(function() {
+
+                 headerScrollHeight = $('.header-container')[0].scrollHeight;
+                 windowHeight = $(window).height();
+
                 $('#header-subd').css('padding-top', headerScrollHeight );
 
                 if($('#main-banner').length){

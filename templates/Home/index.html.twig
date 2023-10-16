@@ -174,9 +174,9 @@
                                                         <h2 class="mb50">TESTIMONIALS</h2>
 
                                   <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-                                    <div class="orbit-wrapper">
-                                        <ul class="orbit-container">
-                                            <li class="is-active orbit-slide p10p">
+                                    <div class="orbit-wrapper p10p">
+                                        <ul class="orbit-container ">
+                                            <li class="is-active orbit-slide ">
                                                 <div class="grid-x grid-main " >
                                                     <div class='cell large-12'>
                                                     
@@ -194,15 +194,6 @@
                                                                         Nefertari Vivi
                                                                     </p>
                                                                 </div>
-                                                                <nav class="orbit-bullets">
-                                                                    <button class="is-active" data-slide="0">
-                                                                    <span class="show-for-sr">First slide details.</span>
-                                                                    <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-                                                                    </button>
-                                                                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-                                                                    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-                                                                    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-                                                                </nav>
                                                             </div>
 
                                                            
@@ -211,6 +202,18 @@
                                                 </div>
                                             </li>
                                         </ul>
+
+                                         <nav class="orbit-bullets">
+                                                                    <button class="is-active" data-slide="0">
+                                                                        <span class="show-for-sr">First slide details.</span>
+                                                                        <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                                                                    </button>
+                                                                    
+                                                                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                                                                    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+                                                                    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+                                                                </nav> 
+                                                               
                                     </div>
                           
                                  </div>
@@ -244,7 +247,7 @@
                     
                     vid[0].pause();
                     playBtn.toggleClass('hide');
-                    }, 500);
+                    }, 1000);
                 }
             });
         });

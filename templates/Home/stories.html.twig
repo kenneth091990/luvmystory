@@ -1,40 +1,201 @@
 {% extends 'Home/main.html.twig' %}
 
 {% block content %}
-<div class='main-content'>
+<div class='main-content stories-container'>
     <div class="grid-x form-grid">
-      <div class="cell large-6 medium-12 small-12 yellow">
-        <div class='page-title-container'>
-          <div class="page-text-container travel_content">
-                <h4>Everyone has a story to tell. We help you tell yours.</h4>
-                <p> 
-                     Discover the joy of narrating your personal stories with LuvMyStory™, where we bring your cherished memories to life in the most enchanting way possible. Our skilled Story Guides, professional broadcasters with a knack for uncovering the heart of every tale,
-                    assist you in weaving your narrative seamlessly. Whether it's a heartwarming personal journey, an exciting travel adventure, or a triumphant career milestone, we craft each episode with the finesse it deserves.
-                </p>  
-                <p>Embrace a rich, auditory experience where every emotion is captured and magnified through expert sound engineering. Select from a range of storytelling sessions, including Personal, Family, Friends, Travel, Career, or Business, designed to resonate deeply with
-                    both the teller and the listeners. Opt for a heartfelt individual session or bond over a group session with up to 3 people.your narrative seamlessly. Whether it's a heartwarming personal journey, an exciting travel adventure, or a triumphant career milestone, we craft each episode with the finesse it deserves.
-                </p>  
-                <p>
-                    Don't just tell a story, immerse your loved ones in a keepsake episode, a timeless treasure that reverberates with love, passion, and life's unforgettable moments. 
-                </p>  
-                <p class="">
-                    Book now, and entrust your tale to LuvMyStory™, where every story is narrated with love, preserved with care, and celebrated for generations.
-                </p>   
-            <div class="mt30 p40 text-sm-center b-container">
-              <a class="btn-a text-white primary-button  font-sm-13" href="/book_bow">Book Now</a>
+      <div class="cell large-8 medium-12 centered-cell ">
+          <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell large-12 medium-12">
+                    <h2 class='mt50 mb50'>Choose Your Story</h2>
+                </div>
+
+                <div class="cell large-12 mt20">
+                
+                  <ul class="accordion faq" data-accordion data-allow-all-closed="true">
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>My Story</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story1.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12 ">
+                                <div class-'text-container'>
+                                  <h3>Personal Memories, Magnified Audibly</h3>
+                                  <p>
+                                    Experience the magic of personal storytelling with LuvMyStory™. Our dedicated Story Guides expertly help you transform your cherished moments and memories - be it a romantic encounter, a monumental wedding day, or a tale of resilience - into captivating narratives. Immerse in the delightful journey of revisiting life's milestones, crafted meticulously into an episode to stand the test of time. Don't just reminisce, relive your precious moments with heightened emotion and depth.
+                                  </p>
+                                  <h4>Book a LuvMyStory Personal session today, and let us craft the timeless audio memoir you deserve.</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>The Luv1 Conversation™</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12 ">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story2.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12">
+                                <div class-'text-container'>
+                                  <h3>Preserve Your Family’s Legacy and Memories</h3>
+                                  <p>
+                                    Unlock personal and family stories with Luv1 Conversation™ session. Guided by a seasoned Story Guide, dive into intimate conversations with love ones that weave memorable moments into polished, podcast-style narratives. Whether it’s reminiscing a father's military tales, asking questions about your mother's immigrant story,or dialoguing about a family member’s heartfelt battles, each narrative is unique and cherished. The different conversations between loved ones is endless- father-son, mother-daughter, grandchildren-grandparents. Capture and share these timeless audible memories as gifts for your family, connecting generations, connecting love ones.                                  </p>
+                                  <h4>Book your Luv1 Conversation™ session now. Celebrate stories and strengthen familial bonds forever.</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>Family</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story3.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12">
+                                <div class-'text-container'>
+                                  <h3>Family</h3>
+                                  <p>
+                                    Every family holds treasured tales. With a LuvMyFamily session, we capture those moments that define generations. From unforgettable vacations to enduring adversities like Hurricane Katrina, our professional Story Guides are expertly trained to help you masterfully tell and record your narrative. Preserve these precious memories and pass them down with pride.
+                                  </p>
+                                  <h4>Book a LuvMyFamily session. Start your timeless tale today.</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>Friends</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story4.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12 ">
+                                <div class-'text-container'>
+                                  <h3>Your Friend Stories, Amplified!</h3>
+                                  <p>
+                                      Every friendship has a story – the unforgettable first meet, the hilarious double date, or that Paris getaway. Don’t let these incredible moments fade! In a LuvMyFriends session, our expert Story Guides interview you, your friend, or both of you together, bringing out the magic in every memory. Celebrate your stories like never before.
+                                  </p>
+                                  <h4>Book a LuvMyFriend session now and give your cherished friendship tales the spotlight they deserve!</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>Travel</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story5.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12">
+                                <div class-'text-container'>
+                                  <h3>Capture Your Adventures in a Keepsake Narrative</h3>
+                                  <p>
+                                    Every journey has a story, and your travels deserve to shine. With a LuvMyTravel session, our Story Guides capture the essence of your adventures, from Hawaiian beaches to Thai treks. Relive the magic of past vacations and journeys with a narrative touch that truly encapsulates your experiences. We transform your travel memories into inspiring recorded tales that resonate. Don’t just recall your journeys— experience them anew in a keepsake episode.                                  
+                                  </p>
+                                  <h4>Book a LuvMyTravel session and share your enchanting travel tales with friends and family.</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>Business</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story6.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12">
+                                <div class-'text-container'>
+                                  <h3>The Heartbeat of Your Business is Your Story</h3>
+                                  <p>
+                                      Transform your entrepreneurial tale into a captivating episode with the expertise of seasoned broadcasters. We craft, edit, and sound-engineer your journey, presenting a compelling narrative that resonates with both new and loyal customers. Dive deeper than just what you sell— share the essence and passion that fuels your brand.
+                                  </p>
+                                  <h4>Book a LuvMyBusiness Session Now! Let us make your story a part of your brand's legacy.</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item mb20 bg-lighter-skyb " data-accordion-item>
+                        <a href="#" class="accordion-title text-gray  bg-lighter-skyblue">
+                            <div class='title-container'>Career</div>
+                        </a>
+                        <div class="accordion-content text-gray" data-tab-content>
+                           <div class="grid-x grid-margin-y grid-padding-x">
+                              <div class="cell large-4 medium-12">
+                                <div class='img-container'>
+                                  <img src='/assets/img/choose_story7.png' />
+                                </div>
+                              </div>
+                              <div class="cell large-8 centered-cell medium-12">
+                                <div class-'text-container'>
+                                  <h3>Unleash Your Unique Career Journey</h3>
+                                  <p>
+                                     Make your resume unforgettable with a LuvMyCareer session. Transform your career journey into a compelling audio story, crafted and sound-engineered to perfection. Instead of traditional resumes, present a narrative that not only lists but celebrates your achievements. Dive into the modern job application era with an audio experience that captivates employers. It's more than a CV; it's your story, amplified. Attach the audio to you LinkedIn profile to stand out amongst a competitive crowd.
+                                  </p>
+                                  <h4>Book a LuvMyBusiness Session Now! Let us make your story a part of your brand's legacy.</h4>
+                                  <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt20'>BOOK NOW</a>
+
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                    </li>
+                </ul>
+              </div>
             </div>
         </div>
-     
-        </div>
-      </div>
-      <div class="cell large-6 medium-12 small-12   ">
-        <div class='page-title-container'>
-           <img src="/assets/img/stories_new.png">
-        </div>
-       </div>
     </div>
-
   </div>
+</div>
+
+
 {% include 'js.html.twig' %}
 
 <script type='text/javascript'>

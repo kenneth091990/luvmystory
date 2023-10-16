@@ -1160,7 +1160,7 @@ div.active {
         padding: 1.25rem 1rem;
         border-bottom: 0;
         font-size: 0.75rem;
-        line-height: 1;
+        line-height: 1.4;
         color: #fff;
         background-color: #0094C9;
         font-size:20px;
@@ -1172,12 +1172,12 @@ div.active {
     }
     
     .accordion-title:hover, .accordion-title:focus{
-        background-color: #0094C9;
-        color:#fff;
+        background-color: #0094C9!important;
+        color:#ffff!important;
     }
 
-    .privacy .accordion-title:hover, .accordion-title:focus{
-        background-color: #D80A85;
+    .privacy .accordion-title:hover,.privacy  .accordion-title:focus{
+        background-color: #D80A85!important;
         color:#ffff!important;
     }
 
@@ -2288,6 +2288,8 @@ div.active {
 .page-form-container form{
     width: 60%;
     margin: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .page-form-container form h6{
@@ -2551,4 +2553,31 @@ div.active {
 
 .centered-cell{
     margin: auto;
+}
+
+
+/* stories-container  */
+
+.stories-container {
+    background: #fff;
+}
+.stories-container h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+.stories-container h4{
+    font-weight: 800;
+    font-size: 20px;
+}
+
+
+.stories-container p{
+    font-size: 20px;
+    font-weight: 200;
+    color: #4D4D4D;
+}
+
+.stories-container h2{
+    color: #D90D85;
+    font-weight: 400;
 }
