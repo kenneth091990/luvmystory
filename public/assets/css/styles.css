@@ -2533,8 +2533,9 @@ div.active {
 /* testimonial */
 
 .testimony .img-container img{
-    max-width: 125px;
+    width: 125px;
     border-radius: 50%;
+    height: 125px;
 }
 
 
