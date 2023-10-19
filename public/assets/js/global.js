@@ -11,6 +11,7 @@
             global.check_notification();
             global.init_modal();
             global.resizeHeaderContainer();
+            global.toggleClass();
         },
         init_modal: function(){
             
@@ -288,8 +289,10 @@
 
             $(window).resize(function() {
 
-                 headerScrollHeight = $('.header-container')[0].scrollHeight;
-                 windowHeight = $(window).height();
+                 headerScrollHeight = $('.header-container')[0].scrollHeight - $('.dashboard-menu-device')[0].scrollHeight;
+                 windowHeight = $(window).height() - $('.dashboard-menu-device')[0].scrollHeight;
+                 
+
 
                 $('#header-subd').css('padding-top', headerScrollHeight );
 
@@ -297,5 +300,38 @@
                     $('#main-banner .content-container').css('height' , windowHeight - headerScrollHeight);
                 }
             });
+        }, 
+        toggleClass: function(){
+          
+            $(".notification-bell").click(function(){
+                $(".notification").toggle(500);
+            });
+
+            $(".burger-menu").click(function(){
+                $(".menu-device").toggle(500);
+            });
+
+            $(".notification-bell").blur(function(){
+
+                if($('.notification').is(':visible')){
+                    $(".notification").toggle(500);
+
+                }
+            });
+
+
+        
+            $(".burger-menu").blur(function(){
+
+                    if( $(".menu-device").is(':visible')){
+                        $(".menu-device").toggle(500);
+
+                    }
+              
+            });
+
+            
+
+
         }
     };

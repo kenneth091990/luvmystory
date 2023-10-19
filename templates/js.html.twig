@@ -7,7 +7,7 @@
 <script src="/plugins/mask/mask.min.js"></script>
 <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/plugins/devbridge/devbridge.js"></script>
-<script src="/assets/js/global.js?v=3.2.0"></script>
+<script src="/assets/js/global.js?v={{assets_version}}"></script>
 <script src="/assets/toastr/toastr.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -16,13 +16,9 @@
         global.settings.notification_url ='{{ global_url ~ path("notification_list")}}';
 
         global.init();
-        $(".burger-menu").click(function(){
-            $(".menu-device").toggle(500);
-        });
 
-        $(".notification-bell").click(function(){
-            $(".notification").toggle(500);
-        });
+
+
     
 
     });

@@ -1,0 +1,72 @@
+<div class="grid-x header-container">
+
+  <div class="cell large-12">
+    <ul class="menu menu-style show-for-large dropdown nav-menu auth-detail-nav" data-dropdown-menu>
+     <li>
+                <a href="{{ path('home_index')}}" > <img  src="/assets/img/mystory-logo-pink.png" class='header-logo'></a>
+
+          </li>
+         <li>
+             <div class='bell-container'>
+                 <a href="javascript:void(0);" class='notification-bell'>
+                     <i class="fa-regular fa-bell"></i>
+                     <div class='notifCtr'>1</div>
+                 </a>
+              </div>
+          </li>
+          <li>
+             <div class='profilePhoto'>
+                 <a href="{{ path('dashboard_my_profile')}}">
+                     <img src="{{ userData['profilePhoto'] != '' ? userData['profilePhoto'] : '/assets/img/default-profile-pic.jpg' }}" class='profilePic'/>
+                 </a>
+              </div>
+          </li>
+          <li>
+              <a href="javascript:void(0);" class='pl20 pr20'>{{ userData.fullName|upper}}</a>
+              <a href="{{ path('home_logout')}}" class='pl20 pr20 is-link'>Sign Out</a>
+          </li>
+          <li>
+            <div class="burger-menu ">
+              <img  src="/assets/img/burger menu.png">
+            </div>
+          </li>
+      
+    </ul>      
+  </div>
+
+    <!--responsive menu-->
+  <div class="grid-x dashboard-menu-device menu-device">
+    <div class="cell large-12 medium-12 small-12">
+      <ul class='p10'>
+        <li><a href="{{ path('home_index')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_home.svg"></div> Home </a></li>
+        <li><a href="{{ path('dashboard_my_profile')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_profile.svg"></div> Profile</a></li>
+        <li><a href="{{ path('home_stories')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_stories.svg"></div> Stories</a></li>
+        <li><a href="{{ path('home_the_steps')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_steps.svg"></div> The Steps</a></li>
+        <li><a href="{{ path('home_about_us')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_aboutus.svg"></div> About Us</a></li>
+        <li><a href="{{ path('home_faq')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_faqs.svg"></div> FAQ</a></li>
+        <li><a href="{{ path('home_book_now')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_booknow.svg"></div> Book Now</a></li>
+        <li class='li-separator'>&nbsp;</li>
+        <li><a href="{{ path('home_contact_us')}}" class='pl20 pr20 pt50 pb0'>Contact Us</a></li>
+        <li><a href="{{ path('home_terms_of_service')}}" class='pl20 pr20 pt0 pb0'>Term Of Service</a></li>
+        <li><a href="{{ path('home_privacy')}}" class='pl20 pr20 pt0 pb0'>Privacy</a></li>
+        <li><a href="{{ path('home_help')}}" class='pl20 pr20 pt0 pb0'>Help</a></li>
+      </ul>
+    </div>
+    <div class="cell large-12 medium-12 small-12">
+        <div class='social-icon-container p10'>
+          <ul class="ftr-socials">
+              <li><img src="/assets/img/facebook (1).png"></li>
+              <li><img src="/assets/img/Instagram.png"></li>
+              <li><img src="/assets/img/LinkedIn.png"></li>
+              <li><img src="/assets/img/tiktok.png"></li>
+              <li><img src="/assets/img/twitter.png"></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="notification-container notification">
+    <div class='notification-content text-center'>
+       
+    </div>
+  </div>
+</div>

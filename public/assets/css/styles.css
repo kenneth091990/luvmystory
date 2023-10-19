@@ -370,6 +370,23 @@ ul.menu-style li:nth-last-child(2){
    margin-left: auto;
 }
 
+.dashboard-header ul.menu-style li:nth-last-child(2){
+    margin-left:unset ;
+}
+
+.dashboard-header ul.menu-style li:nth-last-child(4){
+    margin-left:auto ;
+
+}
+.dashboard-header ul.menu-style li:nth-last-child(4),
+.dashboard-header ul.menu-style li:nth-last-child(2){
+    margin-right: 10px;
+}
+
+.dashboard-header ul.menu-style li .user-info a{
+    padding: 0px;
+}
+
 ul.menu-style li.right {
     font-family: 'Montserrat';
     color: #4D4D4D;
@@ -1665,6 +1682,10 @@ div.active {
     top: 76px!important;
     z-index: 999!important;
     padding:18px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 15px #00000014;
+    border-radius: 14px;
+    opacity: 1;
 }
 
 .dashboard-menu-device .nav-icon-container{
@@ -1782,6 +1803,29 @@ div.active {
     position: relative;
 }
 
+.bell-container  a{
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+.bell-container  a i{
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgb(204,234,244);
+    opacity: 1;
+}
+
+.bell-container  a i::before{
+    color: rgb(0,148,201);
+}
+
+
+
+
 .bell-container .notifCtr{
     position: absolute;
     top: 2px;
@@ -1797,13 +1841,7 @@ div.active {
     display: none;
 
 }
-.bell-container a .fa-regular{
-    font-size: 24px;
-    padding: 11px;
-    border-radius: 50%;
-    background: #cceaf4;
-    color: #0094c9;
-}
+
 
 #updatePasswordForm input,
 #forgotPasswordForm input{
