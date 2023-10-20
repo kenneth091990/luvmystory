@@ -84,7 +84,7 @@ class HomeController extends AbstractController
           
           
             $msg = $this->renderView('Email/contact_us.html.twig', ['msg' =>  $r]);
-            $emailSevice->send($r['email'], $r['subject'], $msg);
+            $emailSevice->send('support@luvmystory.com', $r['subject'], $msg);
             $this->get('session')->getFlashBag()->add('success_messages', 'Your Message is successfully sent to our support we will back to you within 24 hours. ');
       
         }
