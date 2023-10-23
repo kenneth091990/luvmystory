@@ -317,6 +317,59 @@
     .stories-container .accordion-content .cell .img-container{
         text-align: center;
     }
+
+    #main-banner h2 {
+        font-size: 24px;
+        font-weight: 200;
+    }
+
+    .main-content p,
+    .main-content .content-text {
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        line-height: 30px;
+    }
+
+    .p10p{
+        padding: 5%!important;
+    }
+
+    .content-container .text-container h3 {
+        font-size: 20px;
+    }
+
+    .content-container .text-container p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .testimony-container .text-container p {
+        font-size: 20px;
+        font-style: italic!important;
+    }
+
+    .testimony-container .text-container p.name {
+        font-size: 16px!important;
+    }
+    
+    .n-steps-container .description {
+        font-size: 16px;
+        color: #4D4D4D;
+        opacity: 0.7;
+    }
+
+    .n-steps-no {
+        position: relative;
+        height: 34px;
+        width: 34px;
+    }
+
+    .steps-no{
+        font-size: 22px;
+    }
+
+
+    
  }
 
  
@@ -426,13 +479,10 @@ and (max-width: 1900px)  {
         line-height: 24px;
     }
 
-    #main-banner h2 {
-        font-size: 30px;
-        font-weight: 200;
-    }
-
+ 
     .tabs-title{
         width: 100%;
     }
+    
 
  }

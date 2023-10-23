@@ -10,7 +10,7 @@ html, body {
 
 .off-canvas-content{
     overflow: scroll;
-    height: 100vhs;
+    height: 100vh;
 }
 .main-content h2,
 #main-banner h3{
@@ -2471,6 +2471,7 @@ div.active {
     position: relative;
     height: 82px;
     width: 82px;
+    float: left;
 }
 
 .n-steps-no::before{
@@ -2490,6 +2491,11 @@ div.active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.steps-info-container{
+    float: right;
+    width: 80%;
 }
 .step-bg-1::before{
     background-color: #66B2AD;
@@ -2624,4 +2630,16 @@ div.active {
 .stories-container h2{
     color: #D90D85;
     font-weight: 400;
+}
+
+
+
+
+.index-content .text-container{
+    height: 100%!important;
+}
+
+
+.index-content .img-container{
+    height: 100%!important;
 }
