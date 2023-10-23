@@ -99,7 +99,7 @@ class HomeController extends AbstractController
     }
 
      /**
-     * @Route("privacy", name="home_privacy")
+     * @Route("privacy_policy", name="home_privacy")
      */
     public function privacy(){
         return $this->render('Home/privacy.html.twig');
