@@ -256,7 +256,126 @@
 
 
 
-  @media screen and (min-width:1400px) {
+
+
+ 
+ @media screen and (max-width:1400px)  {
+
+    .page-text-container  .b-container {
+        position: unset;
+     }
+
+
+ 
+
+ }
+
+ @media screen and (min-width:1024px) and (max-width:1450px)  {
+
+
+
+
+    .page-title-container .title-header h3{
+
+        font-size: 35px;
+    }
+
+    .page-title-container .title-header h4{
+
+        font-size: 25px;
+    }
+
+
+    .page-form-container form h6{
+        font-size: 20px;
+    }
+
+
+ }
+
+
+
+ @media screen and (min-width:1600px) and (max-width:1900px) {
+    /* p {
+        font-size:100% !important;
+        line-height:180% !important;
+    } */
+ }
+
+ /* ----------- Non-Retina Screens ----------- */
+@media screen 
+and (min-width: 1024px) 
+and (max-width: 1900px)  { 
+    .text-cage {
+        padding:40px;
+    }
+
+    .steps-content p {
+        line-height: 20px !important;
+    }
+
+    .reg-success-msg-container{
+        max-width: 60%;
+        padding: 4em;
+        background: #fff;border-radius:25px;
+    }
+
+}
+
+@media screen 
+and (max-width: 2100px)  { 
+
+    /* .text-cage h3 {
+        font-size: 22px !important;
+    }
+    .text-cage p {
+        font-size: 12px !important;   
+        line-height: 18px !important;
+    } */
+
+}
+
+
+@media screen 
+and (min-width: 313px) 
+and (max-width: 799px)  { 
+    .reg-success-msg-container{
+        max-width: 80%;
+        padding: 4em;
+        background: #fff;border-radius:25px;
+    }
+
+}
+@media screen 
+and (min-width: 1024px) 
+and (max-width: 1900px)  { 
+    .reg-success-msg-container{
+        max-width: 40%;
+        padding: 4em;
+        background: #fff;border-radius:25px;
+    }
+
+}
+
+
+
+@media screen and (max-width:540px)  {
+
+
+    .content-container .text-container h3 {
+        font-size: 24px;
+    }
+
+    .content-container .text-container p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+
+
+ }
+
+ @media screen and (min-width:1400px) {
     .page-title-container img{
         position: absolute;
     }
@@ -276,20 +395,7 @@
     }
  }
 
- @media screen and (max-width:1024px)  {
 
-
-    .page-form-container form{
-        width: 79%;
-        margin: auto;
-    }
-
-    
-
-
-    
-
- }
 
  @media screen and (min-width:1023px) and  (max-width:1400px) {
 
@@ -318,9 +424,28 @@
         text-align: center;
     }
 
+   
     #main-banner h2 {
         font-size: 24px;
         font-weight: 200;
+    }
+
+    .main-content h2{
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .main-content .tabs-title a{
+        font-size: 14px;
+    }
+    
+    .page-title-container h4,
+    .accordion-title,
+    .accordion-content,
+    .page-content-card .pp-content-header,
+    .tabs-panel .title-container,
+    .tabs-panel .accordion-content{
+         font-size: 16px!important;
     }
 
     .main-content p,
@@ -368,121 +493,92 @@
         font-size: 22px;
     }
 
-
-    
- }
-
- 
- @media screen and (max-width:1400px)  {
-
-    .page-text-container  .b-container {
-        position: unset;
-     }
-
-
- 
-
- }
-
- @media screen and (max-width:1450px)  {
-
-
-
-
-    .page-title-container h3{
-
-        font-size: 35px;
+    .page-title-container .logo, .page-title-container .title-header {
+        position: unset; 
+        left: unset; 
+        top: unset; 
+        transform: unset; 
+        font-family: "Montserrat";
+        z-index: 999;
+        font-size: 50px;
+        font-weight: 600;
     }
 
-    .page-form-container form h6{
+    .login-title-container .title-header {
+        width: unset;
+        padding: 80px;
+    }
+
+    .page-form-container form {
+        text-align: center;
+        width: 80%;
+    }
+
+    .page-title-container h3{
+        font-size: 20px!important;
+    }
+
+    .page-form-container form h6 {
         font-size: 20px;
     }
 
-
- }
-
-
-
- @media screen and (min-width:1600px) and (max-width:1900px) {
-    /* p {
-        font-size:100% !important;
-        line-height:180% !important;
-    } */
- }
-
- /* ----------- Non-Retina Screens ----------- */
-@media screen 
-and (min-width: 800px) 
-and (max-width: 1900px)  { 
-    .text-cage {
-        padding:40px;
+    .registration-right-side .title-img {
+        height: unset; 
+        bottom: unset;
+        position: unset;
+        display: unset;
+        width: unset;
     }
 
-    .steps-content p {
-        line-height: 20px !important;
-    }
-
-    .reg-success-msg-container{
-        max-width: 60%;
-        padding: 4em;
-        background: #fff;border-radius:25px;
-    }
-
-}
-
-@media screen 
-and (max-width: 2100px)  { 
-
-    /* .text-cage h3 {
-        font-size: 22px !important;
-    }
-    .text-cage p {
-        font-size: 12px !important;   
-        line-height: 18px !important;
-    } */
-
-}
-
-
-@media screen 
-and (min-width: 313px) 
-and (max-width: 799px)  { 
-    .reg-success-msg-container{
-        max-width: 80%;
-        padding: 4em;
-        background: #fff;border-radius:25px;
-    }
-
-}
-@media screen 
-and (min-width: 800px) 
-and (max-width: 1900px)  { 
-    .reg-success-msg-container{
-        max-width: 40%;
-        padding: 4em;
-        background: #fff;border-radius:25px;
-    }
-
-}
-
-
-
-@media screen and (max-width:540px)  {
-
-
-    .content-container .text-container h3 {
-        font-size: 24px;
-    }
-
-    .content-container .text-container p {
-        font-size: 14px;
-        line-height: 24px;
-    }
-
- 
-    .tabs-title{
-        width: 100%;
+    .registration-right-side .title-header {
+        height:unset; 
+        position: unset;
+        width: unset;
+        top: unset;
     }
     
+   .contact-us .title-header h3{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+    }
+    .registration-right-side .title-header h3{
+        font-size: 20px;
+    }
 
+    .registration-right-side .title-header h4{
+        font-size: 16px;
+    }
+
+    .reg-success-msg-container{
+        max-width: 90%;
+        padding: 2em;
+    }
+    .reg-success-msg-container,
+    .reg-success-msg-container a,
+    .reg-success-msg-container h5{
+        font-size: 16px;
+    }
+
+    .reg-success-msg-container h5{
+        margin-top: 12px;
+    }
+    .reg-success-msg-container h4{
+        font-size: 20px;
+    }
+
+    .reg-success-msg-container img{
+        top: -48px;
+        max-width: 85px;
+    }
+
+    #updatePasswordForm button, #forgotPasswordForm button {
+
+        width: 100%;
+    }
+
+
+    
  }

@@ -1,57 +1,22 @@
 {% extends 'Home/main.html.twig' %}
 
 {% block content %}
-{# 
-    <div class="grid-x">
-      <div class="cell large-5 medium-12 small-12">
-        <div class="login-left-side">
-          <img src="/assets/img/login_color.png" />
-          <img src="/assets/img/mystory-logo-pink.png" class="logo_login" />
-        </div>
-      </div>
-      <div class="cell large-7 medium-12 small-12">
-        <div class="grid-x login-right-side">
-          <div class="login-form-cage">
-            <h3>Sign in to LuvMyStory</h3>
-            <div style="clear:both"></div>
-            <!--Form-->
-            <form action={{ path('home_login') }} method="POST">
-                <div class="grid-x login-form-container">
-                  <div class="small-12 cell">
-                        {{ form_widget(form.email) }}
-                  </div>
-                  <div class="small-12 cell">
-                        {{ form_widget(form.password) }}
-                  </div>
-                  <div class="small-12 cell">
-                      <input type="submit" Value="Sign in" class="button">
-                  </div>
-                  <div class="small-12 cell">
-                    <a href="{{ path('home_forgot_password')}}" class="forgotpass-link">Forgot Password?</a>
-                    <p><span>Not A Member?</span>&nbsp;<a href="{{ path('home_registration')}}" class="signup-link">Sign up Here</a></p>
-                  </div>
-                </div>
-                
-                {{ form_widget(form._token) }}
 
-            </form>
-            <!--end form-->
-          </div>
-        </div>
-      </div>
-    </div> #}
 
     <div class='main-content'>
 
   <div class="grid-x form-grid">
-    <div class="cell medium-12 large-5 show-for-large">
+    <div class="cell medium-12 large-5 small-order-2 large-order-1">
       <div class='page-title-container login-title-container '>
+          <div class="title-header text-center">
+              <h3 class=" text-white">Extend your legacy </br> and share a story </h3>
+              <h4 class=" text-white mt30">Book a LuvMyStory session today!</h4>
+              <a href="{{ path('dashboard_book_now')}}" class='button primary-button radius-rounded teal text-white mt50'>BOOK NOW!</a>
 
-          <img src="/assets/img/login_color.png" />
-          <img src="/assets/img/mystory-logo-pink.png" class="logo" />
+          </div>
       </div>
     </div>
-     <div class="cell medium-12 large-7">
+     <div class="cell medium-12 large-7 small-order-1 large-order-2">
           <div class='hide-for-large mt-5'></div>
           <div class='page-form-container mb-5  '>
             <form action={{ path('home_login') }} method="POST">

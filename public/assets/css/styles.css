@@ -1314,6 +1314,8 @@ div.active {
         opacity: .4;
       }
 
+      
+
       /*for login new version*/
 .contact-us-left-side,
 .login-left-side {
@@ -2305,7 +2307,7 @@ div.active {
 }
 
 .page-title-container .logo,
-.page-title-container h3{
+.page-title-container .title-header{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -2314,6 +2316,19 @@ div.active {
     font-family: "Montserrat";
     z-index: 999;
     font-size: 50px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.page-title-container .title-header h3{
+    font-size: 50px;
+}
+.page-title-container .title-header h4{
+    font-size: 30px;
+}
+
+.page-title-container .title-header h3,
+.page-title-container .title-header h4{
     font-weight: 600;
 }
 
@@ -2385,8 +2400,20 @@ div.active {
 }
 
 .login-title-container{
-    background: url('/assets/img/loginimg.png') no-repeat transparent center center;
+    background:url('/assets/img/signin.png') no-repeat #0094C9 center center;
     background-size: cover;
+}
+
+.login-title-container .title-header{
+    width: 90%;
+}
+
+.login-title-container .title-header a{
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    opacity: 1;
+    background: transparent;
+    padding: 18px;
 }
 .main-container{
     
@@ -2428,7 +2455,7 @@ div.active {
 
 .content-container .section-1-2{
     
-    background: transparent  url('/assets/img/main-banner-section12.png') 0% 0%;
+    background: transparent  url('/assets/img/luvmystory.png') 0% 0%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
@@ -2455,7 +2482,7 @@ div.active {
 
 .content-container .section-3-2{
     
-    background: transparent  url('/assets/img/main-banner-section32.png') 0% 0%;
+    background: transparent  url('/assets/img/luvmybusiness.png') 0% 0%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
@@ -2553,6 +2580,14 @@ div.active {
     margin-bottom: 0px;
 }
 
+.our-story-section{
+    background-image: url(../img/homepage-about-us.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    
+}
+
 .our-story-section .title-btn{
     padding: 9px 20px;
     border: 2px solid #FFFFFF;
@@ -2642,4 +2677,31 @@ div.active {
 
 .index-content .img-container{
     height: 100%!important;
+}
+
+.play-audio-container a{
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #fff;
+    font-size: 16px;
+    padding-top: 30px;
+    position: relative!important;
+    top: unset!important;
+    left: unset!important;
+}
+
+.progress-bar{
+    background: green;
+    border-radius: 8px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+}
+
+.progress{
+    display: none;
+    height: unset;
+    border-radius: 8px;
+
 }

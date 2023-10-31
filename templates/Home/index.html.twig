@@ -24,6 +24,13 @@
                             <div class="text-container section-1-2">
                                  <div class="text-cage">
                                     <h3>LuvMyStory</h3>
+                                     <div class='play-audio-container'>
+                                        <a href="javascript:void(0);"  class='play-btn' data-audiodesc='luvmystory'>
+                                            <img src='/assets/img/play-btn-index.png' />
+                                            PLAY AUDIO
+                                        </a>
+                                        <audio  src="/assets/audio/luvmystory.mp3" type="audio/ogg" id='luvmystory'></audio>  
+                                    </div>
                                 </div>
                             {# <img src="/assets/img/homepage1_new.png"> #}
                             </div>
@@ -33,10 +40,11 @@
                         <div class="content-container index-content">
                             <div class="img-container ">
                                 <div class="wrapper-video">
-                                    <video width="100%"  height="100%" controls="false"  class="v1">
+                                    <video width="100%"  height="100%" controls="false"   id='index-video'>
                                     <source src="/assets/video/removeperiodandeditlogo.mp4" type="video/mp4"></video>
-                                    <div class="playpause"></div>
                                 </div>
+                                <div class="playpause"></div>
+
                             </div>
                         </div>
                     </div>
@@ -46,6 +54,12 @@
                             <div class="text-container section-2-2">
                                  <div class="text-cage">
                                     <h3>Travel Adventure</h3>
+                                    <div class='play-audio-container'>
+                                        <a href="javascript:void(0);" class='play-btn'>
+                                            <img src='/assets/img/play-btn-index.png' />
+                                            PLAY AUDIO
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,6 +81,13 @@
                             <div class="text-container section-3-2">
                                 <div class="text-cage">
                                     <h3>LuvMyBusiness</h3>
+                                     <div class='play-audio-container'>
+                                        <a href="javascript:void(0);"  class='play-btn' data-audiodesc='luvmybusiness'>
+                                            <img src='/assets/img/play-btn-index.png' />
+                                            PLAY AUDIO
+                                        </a>
+                                        <audio  src="/assets/audio/luvmybusiness.mp3" type="audio/ogg" id='luvmybusiness'></audio>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +202,7 @@
                     <div class="cell large-12 ">
                         <div class="container p10p bg-skyblue text-white text-center" >
                             <div class='testimony-container p10p'>
-                                                        <h2 class="mb50">TESTIMONIALS</h2>
+                                 <h2 class="mb50">TESTIMONIALS</h2>
 
                                   <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
                                     <div class="orbit-wrapper ">
@@ -189,51 +210,43 @@
                                             <li class="is-active orbit-slide ">
                                                 <div class="grid-x grid-main " >
                                                     <div class='cell large-12'>
-                                                    
-                                                            <div class='testimony p20'>
-                                                                <div class='img-container'>
-                                                                    <img src="/assets/img/Jodie.png" />
-                                                                </div>
-                                                                <div class='text-container mt50'>
-                                                                    <p>
-                                                                        "LuvMyStory turned my special memories into an amazing audio episode. I'll cherish them always. Truly wonderful work."
-                                                                    </p>
-                                                                </div>
-                                                                 <div class='text-container mt50'>
-                                                                    <p class='name'>
-                                                                        Jodie H.
-                                                                    </p>
-                                                                </div>
+                                                        <div class='testimony p20'>
+                                                            <div class='img-container'>
+                                                                <img src="/assets/img/Jodie.png" />
                                                             </div>
-
-                                                           
+                                                            <div class='text-container mt50'>
+                                                                <p>
+                                                                    "LuvMyStory turned my special memories into an amazing audio episode. I'll cherish them always. Truly wonderful work."
+                                                                </p>
+                                                            </div>
+                                                                <div class='text-container mt50'>
+                                                                <p class='name'>
+                                                                    Jodie H.
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
                                                 </div>
                                             </li>
                                             <li class="is-active orbit-slide ">
                                                 <div class="grid-x grid-main " >
                                                     <div class='cell large-12'>
-                                                    
-                                                            <div class='testimony p20'>
-                                                                <div class='img-container'>
-                                                                    <img src="/assets/img/Maddie.png" />
-                                                                </div>
-                                                                <div class='text-container mt50'>
-                                                                    <p>
-                                                                        "LuvMyStory helped turn my memories into a great story. Their team made every moment feel special and alive again. I truly cherish it."
-                                                                    </p>
-                                                                </div>
-                                                                 <div class='text-container mt50'>
-                                                                    <p class='name'>
-                                                                        Maddie S.
-                                                                    </p>
-                                                                </div>
+                                                        <div class='testimony p20'>
+                                                            <div class='img-container'>
+                                                                <img src="/assets/img/Maddie.png" />
                                                             </div>
-
-                                                           
+                                                            <div class='text-container mt50'>
+                                                                <p>
+                                                                    "LuvMyStory helped turn my memories into a great story. Their team made every moment feel special and alive again. I truly cherish it."
+                                                                </p>
+                                                            </div>
+                                                                <div class='text-container mt50'>
+                                                                <p class='name'>
+                                                                    Maddie S.
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
                                                 </div>
                                             </li>
                                             <li class="is-active orbit-slide ">
@@ -316,26 +329,103 @@
 
 <script>
     $(document).ready(function(){
+        var currentPlaying = '';
         
-        $.each($('.wrapper-video'),function(){
-            var _this = $(this);
-            _this.unbind('click').bind('click',function(){
-                var vid = _this.find('video');
-                var playBtn = _this.find('.playpause');
-                if (vid[0].paused){
+        
+        function playVideo(){
                 
-                    vid[0].play();
-                    playBtn.toggleClass('hide');
-                } else {
+           $.each($('video'), function(){
+                var _this = $(this);
+                _this.on('pause' , function(e){
                     
-                    setTimeout(() => {
+                   $('.playpause').toggleClass('hide');
+                });
+
+           });
+
+                       
+            $('.playpause').unbind('click').bind('click',function(){
+
+                var _this = $(this);
+             
+           
+                var playBtn = _this.parent().find('.wrapper-video').find('video');
+                var vid = playBtn[0];
+                    if (vid.paused){
                     
-                    vid[0].pause();
-                    playBtn.toggleClass('hide');
-                    }, 1000);
+                        vid.play();
+                       _this.toggleClass('hide');
+                        $.each($('audio'), function(){
+                            
+                            var a = $(this);
+                            a[0].pause();
+                            a.parent().find('a').html("<img src='/assets/img/play-btn-index.png' /> PLAY AUDIO");
+                            
+                        });
+
+                    } else {
+                        
+                        
+                        vid.pause();
+                       _this.toggleClass('hide');
+                    }
+                });
+        }
+
+        function playAudio(){
+           
+           $.each($('.play-btn'),function(){
+
+                var _this = $(this);
+                var audio = _this.parent().find('audio')[0];
+                
+
+                if(typeof audio != 'undefined'){
+                    _this.unbind('click').bind('click',function(){
+                        currentPlaying = _this.data('audiodesc');
+
+                        $.each($('audio'), function(){
+                            
+                            var a = $(this);
+                            if(currentPlaying != a.prop('id')){
+                                a[0].pause();
+                                a.parent().find('a').html("<img src='/assets/img/play-btn-index.png' /> PLAY AUDIO");
+                            }
+                        });
+
+                        var elemAudi = $('#' + currentPlaying)[0];
+
+          
+                        if(elemAudi.paused){
+                            elemAudi.play();
+                            $(this).html('PAUSED AUDIO');
+
+                            $.each($('video'), function(){
+                            
+                                var a = $(this);
+                                a[0].pause();
+
+                                a.parent().find('.playpause')
+                                
+                            });
+
+                        } else {
+
+                            elemAudi.pause();
+                            $(this).html("<img src='/assets/img/play-btn-index.png' /> PLAY AUDIO");
+                            currentPlaying = '';
+                        }
+                    });
+                
                 }
             });
-        });
+            
+        }
+
+     
+
+        playAudio();
+        playVideo();
     });
 </script>
     

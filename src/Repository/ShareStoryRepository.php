@@ -22,6 +22,7 @@ class ShareStoryRepository extends \Doctrine\ORM\EntityRepository
             array('sd.`schedule_type`', "sd.`schedule_type`", "scheduleDesc"),
             array('CONCAT(us.`first_name` , " ", us.`last_name`)', 'CONCAT(us.`first_name` , " ", us.`last_name`)', 'sharer'),
             array('ss.`id`', "ss.`id`"),
+            array('s.`id`', "s.`id`" , "storyId"),
         );
         
 
@@ -123,11 +124,12 @@ class ShareStoryRepository extends \Doctrine\ORM\EntityRepository
         foreach($result as $row) {
 
             $id = base64_encode($row['id']);
+            $storyId = base64_encode($row['storyId']);
   
             $values = array(
                 $row['scheduleDesc'],
                 $row['sharer'],
-                "<a href='/story/telling/".base64_encode($row['id'])."' class='button action-button-success'>View</a>" . "<a href='javascript:void(0)' data-id='". base64_encode($row['id'])."' data-action='d' class='button btn-delete action-button-danger'>Delete</a>"
+                "<a href='/story/telling/".$storyId."' class='button action-button-success'>View</a>" . "<a href='javascript:void(0)' data-id='". base64_encode($row['id'])."' data-action='d' class='button btn-delete action-button-danger'>Delete</a>"
             );
             
         
