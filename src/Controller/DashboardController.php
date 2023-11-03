@@ -151,4 +151,5 @@ class DashboardController extends AbstractController
 
         return $this->render('Dashboard/book_now.html.twig');
     }  
+
 }

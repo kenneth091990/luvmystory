@@ -39,6 +39,17 @@ class StoryController extends AbstractController
     }
 
      /**
+     * @Route("/arhive", name="story_archive")
+     */
+    public function archive(AuthService $authService){
+
+        if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
+        
+        return $this->render('Story/archive.html.twig', [
+        ]);
+    }
+
+     /**
      * @Route("/share", name="story_share")
      */
     public function storyShare(AuthService $authService){
