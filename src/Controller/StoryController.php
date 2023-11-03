@@ -321,8 +321,8 @@ class StoryController extends AbstractController
             if(!$user){
            
                 $msg = $this->renderView('Email/share_story.html.twig', ['email' => $email, 'story' => $story]);
-                $emailService->send($email, 'Share Story', $msg);
-                $result['msg'] = 'Email has been sent.';
+                $emailService->send($email, 'An Unforgettable Story You Have To Hear!', $msg);
+                $result['msg'] = 'Story has been shared.';
             } else {
                 
                 $sharedStory = $em->getRepository(ShareStoryEntity::class)->findOneBy(['isDeleted' => 0, 'user' => $user , 'story' => $story]);

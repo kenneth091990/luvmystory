@@ -9,12 +9,13 @@
 <title>LuvMyStory</title>
 <body>
 
-    <div style='margin-bottom:25px'>Hey there!</div>
+    <div style='margin-bottom:25px'>Hello!</div>
     
-    <div>Hello, I am inviting you to listen to my story "{{ story.schedule.scheduletype}}" on cool</div>
-    <div>LuvMyStory Website</div>
-    <div> <a href="{{ global_url }}">Click here </a> to register or sign-in and afterwards you will be redirected to my story page.</div>
-    <div  style='margin-top:15px;'>Best Regards,</div>
+    <div>I’m inviting you to listen to one of my favorite personal stories at LuvMyStory™️.  It’s free to </br>
+         sign-up and listen. <a href="{{ path('home_registration') }}"></a>
+    </div>
+    <div style='margin-top:10px;'>I hope you enjoy my story as much as enjoyed recording it.</div>
+    <div  style='margin-top:15px;'>Warm regards,</div>
     <div>{{story.schedule.user.fullname}}</div>
 </body>
 </html>

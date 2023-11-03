@@ -6,12 +6,12 @@
             <div class='bell-container'>
                 <a href="javascript:void(0);" class='notification-bell'>
                     <i class="fa-regular fa-bell"></i>
-                    <div class='notifCtr'>1</div>
+                    <div class='notifCtr'>0</div>
                 </a>
             </div>
         </li>
           <li>
-                <div class='profilePhoto'>
+            <div class='profilePhoto'>
                 <a href="{{ path('dashboard_my_profile')}}">
                     <img src="{{ userData['profilePhoto'] != '' ? userData['profilePhoto'] : '/assets/img/default-profile-pic.jpg' }}" class='profilePic'/>
                 </a>
@@ -20,7 +20,7 @@
         <li>
             <div class='user-info'> 
               <a href="javascript:void(0);" class='pl20 pr20'>{{ userData.fullName|upper}}</a>
-                <a href="{{ path('home_logout')}}" class='pl20 pr20 is-link'>Sign Out</a>
+                <a href="{{ path('home_logout')}}" class='pl20 pr20 is-link logout'>Sign out</a>
             <div>
         </li>
         <li>
@@ -36,43 +36,46 @@
       </div>
   </div>
   <div class="grid-x dashboard-menu-device menu-device">
-    <div class="cell large-12 medium-12 small-12 hide-for-large">
-      <ul class='p10'>
-        {% if userData['type'] == 'Super Admin' %}
-            <li><a href="{{ path('user_index')}}" class='pl20 pr20'>USERS</a></li>
-
-        {% elseif  userData['type'] == 'Admin' %}
-            <li><a href="{{ path('schedule_index')}}"class='pl20 pr20'>SCHEDULES</a></li>
-        {% else %}
-            <li><a href="{{ path('story_index')}}" class='pl20 pr20 {{ current_path == 'story_index' ? 'active-link' : ''}}'> MY STORIES</a></li>
-            <li><a href="{{ path('story_share')}}" class='pl20 pr20 {{ current_path == 'story_share' ? 'active-link' : ''}}'>SHARED STORIES</a></li>
-            <li><a href="{{ path('dashboard_schedules')}}" class='pl20 pr20 {{ current_path == 'dashboard_schedules' ? 'active-link' : ''}}'>SCHEDULES  </a></li>
-            <li><a href="{{ path('dashboard_my_profile')}}" class='pl20 pr20 {{ current_path == 'dashboard_my_profile' ? 'active-link' : ''}}'> MY PROFILE</a></li>
-            {# <li><a href="{{ path('dashboard_transactions')}}" class='text-white  {{ current_path == 'dashboard_transactions' ? 'active-link' : ''}}'><i class="fa-solid fa-arrow-rotate-left"></i> TRANSACTIONS</a></li> #}
-            <li><a href="{{ path('dashboard_book_now')}}" class='pl20 pr20  {{ current_path == 'dashboard_book_now' ? 'active-link' : ''}}'>BOOK NOW</a></li>   
-        {% endif %}
-        <li class='li-separator'>&nbsp;</li>
-
-      </ul>
-    </div>
+  
     <div class="cell large-12 medium-12 small-12">
       <ul class='p10'>
+        <li class='burger-user-info'>
+            <a href="{{ path('dashboard_my_profile')}}" class='pl20 pr20'> 
+              <img src="{{ userData['profilePhoto'] != '' ? userData['profilePhoto'] : '/assets/img/default-profile-pic.jpg' }}" class='profilePic'/> 
+              <div class='user-name'>{{ userData.fullName|upper}}</div>
+              <div class='clear-fix'></div>
+           </a>
+        </li>
+        <li><div class='separator'></div></li>
         <li><a href="{{ path('home_index')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_home.svg"></div> Home </a></li>
-        <li><a href="{{ path('dashboard_my_profile')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_profile.svg"></div> Profile</a></li>
         <li><a href="{{ path('home_stories')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_stories.svg"></div> Stories</a></li>
-        {# <li><a href="{{ path('home_the_steps')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_steps.svg"></div> The Steps</a></li>
-        <li><a href="{{ path('home_about_us')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_aboutus.svg"></div> About Us</a></li> #}
         <li><a href="{{ path('home_faq')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_faqs.svg"></div> FAQ</a></li>
-        <li><a href="{{ path('home_book_now')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_booknow.svg"></div> Book Now</a></li>
-        <li class='li-separator'>&nbsp;</li>
+           {% if userData['type'] == 'Super Admin' %}
+            <li class='hide-for-large'><a href="{{ path('user_index')}}" class='pl20 pr20'>USERS</a></li>
+        {% elseif  userData['type'] == 'Admin' %}
+            <li class='hide-for-large'><a href="{{ path('schedule_index')}}"class='pl20 pr20'>SCHEDULES</a></li>
+        {% else %}
+            <li  class='hide-for-large'><a href="{{ path('home_stories')}}" class='pl20 pr20'><div class='nav-icon-container pink'><img src="/assets/img/book-open.svg"></div>Me And My Stories</a></li>
+            <li  class='hide-for-large'><a href="{{ path('dashboard_book_now')}}" class='pl20 pr20 {{ current_path == 'dashboard_book_now' ? 'active-link' : ''}}'><div class='nav-icon-container pink'><img src="/assets/img/bookmark.svg"></div>Book Now</a></li>
+            <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/globe-africa.svg"></div>Public Library</a></li>
+            <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/shopping-bag.svg"></div>LuvMyStory Merch</a></li>
+            <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/archive.svg"></div>Archive</a></li>
+            <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/hands-helping.svg"></div> HELP UKRAINE</a></li>
+        {% endif %}
+        <li><div class='separator'></div></li>
+    
+      
+      </ul>
+      <ul class='p10  footer-ul'>
         <li><a href="{{ path('home_contact_us')}}" class='pl20 pr20 pt50 pb0'>Contact Us</a></li>
         <li><a href="{{ path('home_terms_of_service')}}" class='pl20 pr20 pt0 pb0'>Term Of Service</a></li>
         <li><a href="{{ path('home_privacy')}}" class='pl20 pr20 pt0 pb0'>Privacy</a></li>
         <li><a href="{{ path('home_help')}}" class='pl20 pr20 pt0 pb0'>Help</a></li>
+     
+        <li class='li-separator'>&nbsp;</li>
+
       </ul>
-    </div>
-    <div class="cell large-12 medium-12 small-12">
-        <div class='social-icon-container p10'>
+      <div class='social-icon-container p10 pb50'>
           <ul class="ftr-socials">
               <li><img src="/assets/img/facebook (1).png"></li>
               <li><img src="/assets/img/Instagram.png"></li>

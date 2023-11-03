@@ -12,10 +12,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\UserEntity;
 use App\Entity\ScheduleEntity;
 use App\Entity\StoryEntity;
+use App\Entity\NotificationEntity;
 
-use App\Form\RegistrationForm;
-use App\Form\ProfileForm;
-use App\Form\ScheduleForm;
 
 use App\Service\EmailService;
 use App\Service\AuthService;
@@ -144,6 +142,24 @@ class ChunkController extends AbstractController
                     $result['fileWebPath'] = $schedule->getFileWebPath();
                     
                     rename("{$filePath}.part", $uploadFile); 
+
+                    $story = $em->getRepository(StoryEntity::class)->findOneBy(['schedule' => $schedule]);
+
+                    if(!$story){
+                        $story =  new StoryEntity();
+                        $story->setSchedule($schedule);
+                        $story->setIsRead(false);
+                        $em->persist($story);
+                        $em->flush();
+
+                        $notification =  new NotificationEntity();
+                        $notification->setNotificationType('Story');
+                        $notification->setUser($schedule->getUser());
+                        $notification->setStory($story);
+                        $notification->setIsRead(false);
+                        $em->persist($notification);
+                        $em->flush();
+                    }
 
                 }
 

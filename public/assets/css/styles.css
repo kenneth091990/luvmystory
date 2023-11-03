@@ -4,6 +4,8 @@ html, body {
     width: -webkit-fill-available;
     height: 100%;
 }
+
+
 .header-sub{
     height: 88px;
 }
@@ -390,6 +392,28 @@ ul.menu-style li:nth-last-child(2){
 
 .dashboard-header ul.menu-style li .user-info a{
     padding: 0px;
+}
+
+.dashboard-header ul.menu-style li .user-info a.logout{
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+.burger-user-info a img{
+    height: 55px;
+    width: 55px;
+    float: left;
+    border-radius: 50%;
+}
+
+.burger-user-info a .user-name{
+    float: left;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 55px;
 }
 
 ul.menu-style li.right {
@@ -1000,7 +1024,6 @@ ul.ftr-socials li{
     margin:0 0 0 0;
     display: block;
     list-style-type: none;
-    text-align: center;
     padding:15px 10px;
     color:#000;
     font-family: 'Montserrat', sans-serif; 
@@ -1153,6 +1176,7 @@ div.active {
       .menu-device {
         display: none;
         width: 100%;
+        padding: 40px 38px;
     }
     
     .menu-device ul {
@@ -1164,15 +1188,15 @@ div.active {
     
     .menu-device ul li a{
         padding: 0 0 0 0;
-        margin:0 0 0 0;
+        margin: 0 0 0 0;
         display: block;
         list-style-type: none;
-        text-align: center;
-        padding:15px 10px;
-        color:#000;
-        font-family: 'Montserrat', sans-serif; 
-        font-weight: 700;
-        font-size: 17px;
+        /* text-align: center; */
+        padding: 10px 0px;
+        color: #000;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
     }
     
    
@@ -1574,12 +1598,67 @@ div.active {
 .sidebar-container ul{
     margin: 0 auto;
     margin-top: 50px;
+    width: 90%;
+}
+
+.sidebar-container ul .nav-icon-container {
+    float: left;
+    margin-right: 16px;
+    border-radius: 4px;
+    font-size: unset!important;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: #575757 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+}
+.sidebar-container ul .nav-icon-container img{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+.sidebar-container ul li {
+    padding: 10px;
 }
 
 .sidebar-container ul li a{
-    font-weight: 800;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: #fff;
 }
 
+.sidebar-container .user-info .user-name {
+    float: left;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 110px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 24px;
+}
+.sidebar-container .user-info img{
+    width: 110px;
+    height: 110px;
+    float: left;
+    border-radius: 50%;
+    border: .1px solid #FFFFFF;
+    background: transparent;
+    padding: 7px;
+}
 .self-align-centered{
     align-self: center;
 }
@@ -1684,7 +1763,7 @@ div.active {
 
 .dashboard-menu-device{
     position: absolute!important;
-    width: 320px!important;
+    width: 428px!important;
     right: 47px!important;
     top: 76px!important;
     z-index: 999!important;
@@ -1695,28 +1774,53 @@ div.active {
     opacity: 1;
 }
 
+.dashboard-menu-device ul{ 
+    padding: 15px;
+}
+.menu-device .nav-icon-container,
 .dashboard-menu-device .nav-icon-container{
-    float:left;
+    float: left;
     margin-right: 16px;
     border-radius: 4px;
+    font-size: unset!important;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    text-align: center;
+    position: relative;
 }
 
+.footer-ul{
+    margin-top: 30px!important;
+}
+.footer-ul li a{
+    font-size: 16px!important;
+}
+
+.menu-device .nav-icon-container img,
 .dashboard-menu-device .nav-icon-container img{
-    padding: 4px;
-    width: 25px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
-
+.menu-device ul li a,
 .dashboard-menu-device ul li a{
     text-align: left!important;
-    font-size: .7em;
+    font-size: 20px;
 }
 
 .dashboard-menu-device ul li a:hover{
     background-color: #fdf3f9;
 }
 
-.li-separator{
+.separator{
     border-bottom: 2px solid #f9f9f9;
+    width: 100%;
+    padding-bottom:10px;
+    padding-top: 10px;
 }
 
 .dashboard-menu-device ul.ftr-socials{
@@ -2705,3 +2809,20 @@ div.active {
     border-radius: 8px;
 
 }
+
+
+ul li a.button {
+    text-align: center!important;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.off-canvas{ 
+    width: 455px; 
+}
+
+.has-reveal-left{
+    margin-left: 455px!important;
+}
+

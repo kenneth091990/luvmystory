@@ -334,11 +334,12 @@
 
         
             $(".burger-menu").blur(function(){
+                console.log('dd');
 
-                    if( $(".menu-device").is(':visible')){
-                        $(".menu-device").toggle(500);
+                if( $(".menu-device").is(':visible')){
+                    $(".menu-device").toggle(500);
 
-                    }
+                }
               
             });
 
