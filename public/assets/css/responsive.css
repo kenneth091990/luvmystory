@@ -585,6 +585,14 @@ and (max-width: 1900px)  {
        border-radius: unset;
     }
 
+    .profileContainer{
+        width: unset;
+    }
+
+    #dashboardConntentContainer{
+        height: auto;
+    }
+
     
  }
 

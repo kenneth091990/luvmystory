@@ -52,7 +52,7 @@ class DashboardController extends AbstractController
 
 
     /**
-     * @Route("/my_profile", name="dashboard_my_profile")
+     * @Route("/me_and_my_story", name="dashboard_my_profile")
      */
     public function myProfile(AuthService $authService){
 

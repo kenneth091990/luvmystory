@@ -61,6 +61,17 @@ class StoryController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/public_library", name="story_public_library")
+     */
+    public function publicLibrary(AuthService $authService){
+
+        if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
+        
+        return $this->render('Story/public_library.html.twig', [ 
+        ]);
+    }
+
    /**
     * @Route("/ajax_list", name="story_ajax_list")
     */

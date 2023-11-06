@@ -10,10 +10,7 @@ html, body {
     height: 88px;
 }
 
-.off-canvas-content{
-    overflow: scroll;
-    height: 100vh;
-}
+
 .main-content h2,
 #main-banner h3{
     font-weight: 600;
@@ -1663,8 +1660,16 @@ div.active {
     align-self: center;
 }
 .off-canvas-content{
-    min-height: 91vh;
-    background:  #F9F9F9 0% 0% no-repeat padding-box;;
+    min-height: auto;
+    background:  #F9F9F9 0% 0% no-repeat padding-box;
+    height: 100vh;
+}
+
+#dashboardConntentContainer{
+    flex-flow: column;
+    display: grid;
+    height: calc(100% - 191px);
+    overflow-y: auto;
 }
 
 .profileContainer{
@@ -1673,11 +1678,27 @@ div.active {
     border-radius: 25px;
     padding: 50px;
     margin-top: 21px;
+    width: 597px;
+    margin: 0 auto;
+    margin-top: 57px;
+}
+
+.profileContainer h3{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.profileContainer h4{
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .profilePicContainer img{
-    width: 150px;
-    height: 150px;
+    width: 194px;
+    height: 197px;
+    border-radius: 50%;
 }
 
  .profilePhoto img{
@@ -1687,6 +1708,39 @@ div.active {
     padding: 2px;
     border: 2px solid #D0D979;
 }
+
+.profileContainer .social-icons{
+    width: 100%;
+}
+
+.profileContainer .social-icons ul{
+    list-style: none;
+    margin: 0 auto;
+    display: table;
+}
+
+.profileContainer .social-icons ul li{
+    float: left;
+    margin:10px 30px;
+}
+
+.profileContainer .social-icons ul li img{
+    height: 35px;
+    width: 35px;
+}
+
+.profileContainer .action-btn .button{
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 20px;
+}
+
+.profileContainer .action-btn .button i{
+    margin-right: 10px;
+}
+
+
 .updateProfileContainer{
     border-radius: 25px;
     padding: 50px;
@@ -1707,9 +1761,6 @@ div.active {
     background-color: #0094C9;
 }
 
-.profileContainer img{
-    border-radius: 50%;
-}
 
 .profileContainer button{
     padding:15px;
@@ -1717,11 +1768,7 @@ div.active {
     font-weight: bold;
 }
 
-.profileContainer a{
-    padding:15px;
-    border-radius: 8px;
-    font-weight: bold;
-}
+
 
 .profileContainer .bio{
     font-size: .8em;
@@ -1732,13 +1779,20 @@ div.active {
 }
 
 .icon-container .img-container{
-    padding: 4px 8px;
     background-color: #0094c9;
     border-radius: 4px;
+    width: 43px;
+    height: 43px;
+    position: relative;
 }
 
 .icon-container .img-container img{
-    width: 20px;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .det-container{
@@ -1747,17 +1801,17 @@ div.active {
 }
 
 .det-container .title{
-   font-size: .9em;
-   font-weight: 800;
+    font-size: 16px;
+    font-weight: 800;
 }
 
 .det-container .value{
-    font-size: .7em;
+    font-size: 14px;
 }
 
 .profile-info-container{
-    background-color: #ffff;
-    padding: 7px;
+    background-color: #e0f2f8;
+    padding: 7px 7px 7px 13px;
     border-radius: 7px;
 }
 
@@ -2826,3 +2880,8 @@ ul li a.button {
     margin-left: 455px!important;
 }
 
+#homeFooter .footer-container{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

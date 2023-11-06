@@ -4,15 +4,36 @@
 
 <div class="grid-container fluid">
   <div class="grid-x grid-margin-x">
-    <div class="cell small-12 medium-12 large-3" >&nbsp;</div>
-    <div class="cell small-12 medium-12 large-6">
+    <div class="cell small-12 medium-12 large-12">
         <div class='profileContainer'>
             <div class='profilePicContainer'>
                 <img src="{{ user.getFileWebPath != '' ? user.getFileWebPath : '/assets/img/default-profile-pic.jpg' }}" class='profilePic'/>
             </div>
-            <div class='mt10'><h3 class='bold'>{{ user.fullname}}</h3></div>
             <div class='mt10'>
-                <a class='button pink' href="{{ path('dashboard_update_profile')}}"><i class="fa-solid fa-pencil"></i> Edit Profile</a>
+                <h3 >{{ user.fullname}}</h3>
+                <h4 >New York, USA</h4>
+            </div>
+            <div class='mt10 social-icons'>
+               <ul >
+                    <li><img src="/assets/img/facebook (1).png"></li>
+                    <li><img src="/assets/img/profile-twitter-icon.png"></li>
+                    <li><img src="/assets/img/profile-instagram-icon.png"></li>
+                </ul>
+                <div class='clear-fix'></div>
+
+            </div>
+
+            <div class='mt10'>
+                <div class="action-btn">
+                    <div class="grid-x grid-margin-x">
+                         <div class="cell small-12 medium-12 large-6">
+                             <a class='button teal' href="{{ path('story_index')}}"> View Stories</a>
+                        </div>
+                        <div class="cell small-12 medium-12 large-6">
+                             <a class='button pink' href="{{ path('dashboard_update_profile')}}"><i class="fa-solid fa-pencil"></i> Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class='mt30'>
                 <div class='text-left'>
@@ -36,21 +57,7 @@
                     <div class='clear-fix'></div>
                 </div>
             </div>
-               <div class='mt10'>
-                <div class='text-left profile-info-container'>
-                    <div class='icon-container'>
-                        <div class='img-container'>
-                            <img src='/assets/img/transgender.svg' />
-                        </div>
-                    </div>
-                    <div class='det-container'>
-                        <div class='title'>Gender</div>
-                        <div class='value'>{{ user.gender}}</div>
-                    </div>
-                    <div class='clear-fix'></div>
-                </div>
-            </div>
-               <div class='mt10'>
+            <div class='mt10'>
                 <div class='text-left profile-info-container'>
                     <div class='icon-container'>
                         <div class='img-container'>
@@ -64,16 +71,27 @@
                     <div class='clear-fix'></div>
                 </div>
             </div>
+            <div class='mt10'>
+                <div class='text-left profile-info-container'>
+                    <div class='icon-container'>
+                        <div class='img-container'>
+                            <img src='/assets/img/zodiac-sign-icon.svg' />
+                        </div>
+                    </div>
+                    <div class='det-container'>
+                        <div class='title'>Zodiac Sign</div>
+                        <div class='value'>Cancer</div>
+                    </div>
+                    <div class='clear-fix'></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="cell small-12 medium-12 large-3">&nbsp;</div>
   </div>
 </div>
          
   
 
 {% include 'js.html.twig' %}
-
-
 
 {% endblock %}
