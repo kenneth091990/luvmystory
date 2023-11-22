@@ -7,7 +7,7 @@
        <div class='cell large-12'>
            <div class='p50'>
                 <div>
-                    <h4 class='bold'>MY STORIES</h4>
+                    <h4 class='bold'>ALL STORIES</h4>
                 </div>
                 <div>
                      <table id="stories-datalist" class=" nowrap" style="width:100%" width="100%;">
@@ -32,6 +32,7 @@
 //<![CDATA[
     $(document).ready(function(){
         stories.settings.ajaxUrl = '{{ path('story_ajax_list') }}';
+        stories.settings.ajaxDeleteUrl = '{{ path('story_ajax_delete') }}';
         stories.init();
     });
 //]]>

@@ -23,12 +23,12 @@
                         {% else %}
 
                             {# <li><a href="{{ path('dashboard_my_profile')}}" class='text-white {{ current_path == 'story_index' ? 'active-link' : ''}}'><i class="fa-sharp fa-solid fa-book-open"></i> ME AND MY STORIES</a></li> #}
-                            <li><a href="{{ path('dashboard_my_profile')}}" class='pl20 pr20'><div class='nav-icon-container white'><img src="/assets/img/book-open.svg"></div>ME AND MY STORIES</a></li>
-                            <li><a href="{{ path('dashboard_book_now')}}" class='pl20 pr20 {{ current_path == 'dashboard_book_now' ? 'active-link' : ''}}'><div class='nav-icon-container white'><img src="/assets/img/bookmark.svg"></div>BOOK NOW</a></li>
-                            <li><a href="{{ path('story_public_library')}}" class='pl20 pr20 '><div class='nav-icon-container white'><img src="/assets/img/globe-africa.svg"></div>PUBLIC LIBRARY</a></li>
-                            <li><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container white'><img src="/assets/img/shopping-bag.svg"></div>LUVMYSTORY MERCH</a></li>
-                            <li><a href="{{ path('story_archive')}}" class='pl20 pr20 '><div class='nav-icon-container white'><img src="/assets/img/archive.svg"></div>ARCHIVE</a></li>
-                            <li><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container white'><img src="/assets/img/hands-helping.svg"></div> HELP UKRAINE</a></li>
+                            <li><a href="{{ path('dashboard_my_profile')}}" class='sLink pl20 pr20 {{ current_path == 'dashboard_my_profile' ? 'active-link' : ''}}'><div class='nav-icon-container white'><img src="/assets/img/book-open.svg"></div>ME AND MY STORIES</a></li>
+                            <li><a href="{{ path('dashboard_book_now')}}" class='sLink pl20 pr20 {{ current_path == 'dashboard_book_now' ? 'active-link' : ''}}'><div class='nav-icon-container white'><img src="/assets/img/bookmark.svg"></div>BOOK NOW</a></li>
+                            <li><a href="{{ path('story_public_library')}}" class='sLink pl20 pr20 {{ current_path == 'story_public_library' ? 'active-link' : ''}}'><div class='nav-icon-container white'><img src="/assets/img/globe-africa.svg"></div>STORY LIBRARY</a></li>
+                            {# <li><a href="javascript:void(0);" class='sLink pl20 pr20 '><div class='nav-icon-container white'><img src="/assets/img/shopping-bag.svg"></div>LUVMYSTORY MERCH</a></li> #}
+                            <li><a href="{{ path('story_archive')}}" class='sLink pl20 pr20  {{ current_path == 'story_archive' ? 'active-link' : ''}}'><div class='nav-icon-container white'><img src="/assets/img/archive.svg"></div>ARCHIVE</a></li>
+                            {# <li><a href="javascript:void(0);" class='sLink pl20 pr20 '><div class='nav-icon-container white'><img src="/assets/img/hands-helping.svg"></div> HELP UKRAINE</a></li> #}
                        {% endif %}
                     </ul>
                 </div>

@@ -35,6 +35,18 @@ class StoryEntity extends BaseEntity
     protected $isPublic;
 
     /**
+     * @ORM\Column(name="title", type="string")
+     */
+    protected $title;
+
+    
+    /**
+     * @ORM\Column(name="about", type="text", nullable=true)
+     */
+    protected $about;
+
+
+    /**
      * @ORM\Column(name="file_desc", type="string", nullable=true)
      */
     protected $fileDesc;
@@ -70,6 +82,11 @@ class StoryEntity extends BaseEntity
      * @ORM\OneToMany(targetEntity="StoryLikeEntity", mappedBy="story", cascade={"remove"})
      */
     protected $storyLikes;
+
+     /**
+     * @ORM\OneToMany(targetEntity="StoryViewEntity", mappedBy="story", cascade={"remove"})
+     */
+    protected $storyViews;
    
     public function __construct($data = null)
     {
@@ -77,6 +94,7 @@ class StoryEntity extends BaseEntity
         $this->shareStories = new ArrayCollection();
         $this->notifications = new ArrayCollection();
         $this->storyLikes = new ArrayCollection();
+        $this->storyViews = new ArrayCollection();
     }
 
     /*--------------------------------------------------------------------------------------------------------*/
@@ -92,6 +110,24 @@ class StoryEntity extends BaseEntity
         $ids = [];
 
         foreach ($this->storyLikes as $c){
+
+            if(!$c->isIsDeleted()){
+                $ids[] = $c->getUser()->getId();
+            }
+        }
+
+        return $ids;
+    }
+
+      /**
+     * Get storyViewUserIds
+     *
+     * @return array
+     */
+    public function storyViewUserIds() {
+        $ids = [];
+
+        foreach ($this->storyViews as $c){
 
             if(!$c->isIsDeleted()){
                 $ids[] = $c->getUser()->getId();
@@ -369,6 +405,60 @@ class StoryEntity extends BaseEntity
                 $storyLike->setStory(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StoryViewEntity>
+     */
+    public function getStoryViews(): Collection
+    {
+        return $this->storyViews;
+    }
+
+    public function addStoryView(StoryViewEntity $storyView): self
+    {
+        if (!$this->storyViews->contains($storyView)) {
+            $this->storyViews[] = $storyView;
+            $storyView->setStory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStoryView(StoryViewEntity $storyView): self
+    {
+        if ($this->storyViews->removeElement($storyView)) {
+            // set the owning side to null (unless already changed)
+            if ($storyView->getStory() === $this) {
+                $storyView->setStory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->about;
+    }
+
+    public function setAbout(?string $about): self
+    {
+        $this->about = $about;
 
         return $this;
     }

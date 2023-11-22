@@ -1,137 +1,113 @@
-{% extends 'Home/main.html.twig' %}
+{% extends "Dashboard/main.html.twig" %}
 
 {% block content %}
-<div class="grid-container">
 
-  <div class="grid-x grid-margin-x mt50 mb50">
-
-        <div class='cell large-4 '>
-            <div class="grid-x grid-margin-x">
-                <div class="cell large-12" >
-                    <div id="storyDetailsLeftContainer" class="text-center">
-                        <div class='imgContainer'>
-                            <img id="imgStoryTellerPic" src="{{ story.schedule.user.getFileWebPath != '' ?  story.schedule.user.getFileWebPath : '/assets/img/placeholder-image.png' }}" class='profilePic'/>
-                        </div>
-                        <div class="mt50">
-                            <h6>{{ story.schedule.user.fullname|upper}}</h6>
-                            <small>Story Teller</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell large-12" >
-                    <div class="mt20 audio-player-container">
-                        <div ><h6 class='m0'>Play Audio</h6></div>
-                        <div>
-                            <audio controls style='width:100%' class="w-100">
-                            <source src="{{ story.schedule.getFileWebPath != '' ? story.schedule.getFileWebPath : '/assets/audio/default.mp3' }}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-                <div class="cell  large-12" >
-                    <div class="mt20 share-container">
-                        <div class='title'>Share this on:</div>
-                        <div class='input-div'>
-                            <span id='clipboard'>{{ global_url ~ path('story_telling', { id:story.idencoded})}}</span><a href="javascript:void(0);" class="button" id="copyToClipBoard">COPY LINK</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='cell large-8'>
-            <div class="grid-x grid-margin-x">
-                <div class="cell large-12" >
-                    <div id='storyTellingRightContainer' class='bg-white'>
-                        <div class='imgContainer text-center'>
-                            <img src="{{ story.getFileWebPath != '' ? story.getFileWebPath : '/assets/img/placeholder-image.png' }}" />
-                        </div>
-
-                        <div class='mt40'>
-                            <div class='cell large-12'>
-                                <div class='mt10'>
-                                    <div class='text-left profile-info-container'>
-                                        <div class='det-container'>
-                                            <h5>{{ story.schedule.scheduletype}}</h5>
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+       <div class='cell large-12'>
+           <div class='p50'>
+                <div class="grid-x grid-margin-x align-center">
+                    <div class="cell large-10 medium-12 small-12">
+                        <div class="story-details-container">
+                            <div class="img-story-detail">
+                                <div class="card-option-container">
+                                    <div class="card-option-holder">
+                                        <div class="card-options">
+                                            <ul>
+                                                <li><a href="javascript:void(0);" class="link-share share-story-btn" data-id='{{story.idencoded}}'>Share</a></li>
+                                                {% if userData['id'] == story.schedule.user.id %}
+                                                    <li><a href="{{ path('story_details', { id: story.idencoded })}}" class="link-edit">Edit</a></li>
+                                                    <li><a href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{story.idencoded}}'>Archive</a></li>
+                                                    <li><a href="{{ path('story_download', { id: story.idencoded})}}" class="link-download">Download</a></li>
+                                                {% endif %}
+                                         
+                                            </ul>
+                                            <div class="clear-fix"></div>
                                         </div>
-                                        <div class='float-right'>
-                                            <div class='title text-right'>
-                                                <button class="button button-like {{ userData.id in story.storyLikeUserIds ? 'liked' : ''}}">
-                                                  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                                    <span>Like</span>
-                                                </button>
-
-                                                <div class='like-ctr'>
-                                                 <span >
-                                                    {% if likeCtr['ctr'] > 0 %}
+                                        <div class ="option-dot"></div><!-- this is the 3 dots-->
+                                    </div>
+                                </div>
+                                <div class="audio-container">
+                                    <div class="audio-header">
+                                        <div class="audio-title">Play Audio</div>
+                                        <div class="audion-btn-container">
+                                            <ul>
+                                                <li><img class="audio-icon audio-replay-btn" src="/assets/img/icon_audio_replay.svg"></li>
+                                                <li class='play-btn'><img class="audio-icon" src="/assets/img/icon_audio_play_btn.svg"></li>
+                                                <li class='pause-btn'><img class="audio-icon" src="/assets/img/icon_audio_pause_btn.svg"></li>
+                                                <li class='volume-con'><img class="audio-icon volume-btn" src="/assets/img/icon_audio_active_volume.svg"> <input type="range" class="volume-control" max="1" min="0" value="1"  step=".1"/></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clear-fix"></div>
+                                    </div>
+                                    <div class="audio-player">
+                                        <div class="audio-flow-scale">
+                                            <input type="range" class="audio-flow" max="100" min="0" value="0"  step="0.05"/>
+                                        </div>
+                                    </div>
+                                    <div class="audio-counter">00:00</div>
+                                    <div class="audio-playback-speed">
+                                        <a class='speed-rate-btn'><span></span> Playback speed</a>
+                                    </div>
+                                </div>
+                                <img src="{{ story.getFileWebPath != '' ? story.getFileWebPath : '/assets/img/placeholder-image.png' }}">
+                            </div>
+                            <div class="grid-x grid-margin-x">
+                                <div class='cell large-8 medium-12 small-12'>
+                                    <div class="story-details-title">
+                                        <h1>{{ story.title}}</h1>
+                                    </div>
+                                    <div class="story-owner-date-container">
+                                        <div class="story-details-owner">
+                                            <div class="owners-profile-container">
+                                                <img src="{{ story.schedule.user.getFileWebPath != '' ?  story.schedule.user.getFileWebPath : '/assets/img/placeholder-image.png' }}">
+                                            </div>
+                                            <label>{{ story.schedule.user.fullname|upper}}</label>
+                                        </div>
+                                        <div class="dot-spacer"></div>
+                                        <div class="story-details-date"><label>Created {{ story.schedule.datecreated|date('F d, Y') }}</label></div>
+                                        <div class="clear-fix"></div>
+                                    </div>
+                                </div>
+                                <div class='cell large-4 medium-12 small-12'>
+                                    <div class="like-holder">
+                                        <a class="story-like-btn button-like {{ userData.id in story.storyLikeUserIds ? 'liked' : ''}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> like</a>
+                                        <div class="like-counter">   
+                                         {% if likeCtr['ctr'] > 0 %}
                                                    {{likeCtr['likers'] ~ ' ' ~ (likeCtr['ctr'] > 3 ? ' and  '  ~ ( likeCtr['ctr'] - 3) ~ ' people '  : '')}} like this story.
-                                                    {% endif %}
-                                                    </span> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='clear-fix'></div>
+                                        {% endif %}</div>
+                                        <div class="clear-fix"></div>
+
+
+
                                     </div>
                                 </div>
                             </div>
-                            {% for k, field in story.schedule.scheduleforms %}
-                                <div class='cell large-12'>
-                                    <div class='mt10'>
-                                        <div class='text-left profile-info-container'>
-                                            <div class='det-container'>
-                                                <div class='title'>{{field.fieldname}}</div>
-                                                <div class='value'>{{ field.fieldvalue}}</div>
-                                            </div>
-                                            <div class='clear-fix'></div>
-                                        </div>
-                                    </div>
+                            <div class="story-details-desc">
+                                <p>{{ story.about|nl2br}}</p>
+                           </div>
+                            <div class="comments-section">
+                                <h4>Comments</h4>
+                                <div class="comments-container">
+                                    
                                 </div>
-                            {% endfor %}
-                            <div class='cell large-12'>
-                                <div class='mt10'>
-                                    <div class="">
-                                        <div class="tabs-panel is-active">
-                                            <h6>Comments ({{commentCtr}})</h6>
-                                            <div id='commentBox' class='mt20  mb10 linear-background'>
-                                                
-                                            </div>
-                                             
-                                           <form id='commentForm'>
-                                             {# {%  if userData is null %}
-                                               <label>
-                                                    Name
-                                                    <input type='text' id="name"  name="comment[name]" required/>
-                                                </label>
-                                                <label>
-                                                    Email
-                                                    <input type='email' id="email" name="comment[email]" required />
-                                                </label>    
-                                            {% endif %} #}
+                                <div class="comment-box-container">
+                                    <form id='commentForm'>
 
-                                            <div class="textarea-container">
-                                                <textarea placeholder="Write a public comment here..." style=" height: 69px;white-space: pre-wrap!important;" name='comment[message]' id='commentInput'></textarea>
-                                                <input type='hidden' id="id" name="comment[story_id]" required value="{{story.idencoded}}"/>
-                                                <button type="submit" disabled>
-                                                    <img src="/assets/img/send-message.png"  class='red pointer'/>
-                                                </button>
-                                            </div>
-                                           </form>
-                                        </div>
-                                    </div>
+                                        <textarea type="message" rows="3" placeholder="Write a comment..."  name='comment[message]' id='commentInput'></textarea>
+                                        <input type='hidden' id="id" name="comment[story_id]" required value="{{story.idencoded}}"/>
+                                        <input class="send-btn" type="submit" value="" action="_blank" disabled/> 
+                                        <div class="clear-fix"></div>
+                                    </form
                                 </div>
                             </div>
                         </div>
                     </div>
-
-               
                 </div>
-            </div>
-        </div>
-        </div>
+           </div>
+       </div>
     </div>
 </div>
-
 
 
 {% include 'js.html.twig' %}
@@ -144,7 +120,9 @@
         telling.settings.commentFormAjaxUrl = '{{ path("comment_ajax_form_process")}}';
         telling.settings.commentsListAjaxUrl = '{{ path("story_comments_ajax_list")}}';
         telling.settings.likeActionUrl = '{{ path("story_like_like")}}';
-
+        telling.settings.audioFileUrl = "{{ story.schedule.getFileWebPath != '' ? story.schedule.getFileWebPath : '/assets/audio/default.mp3' }}";
+        telling.settings.ajaxShareStoryFormUrl = "{{ path('story_ajax_share_form')}}";
+        telling.settings.ajaxArchiveStoryFormUrl = "{{ path('story_ajax_archive_form')}}"; 
         telling.init();
     });
 //]]>

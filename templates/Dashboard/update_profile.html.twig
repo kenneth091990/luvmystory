@@ -7,11 +7,11 @@
     <div class="cell small-12 medium-12 large-12">
         <div class='updateProfileContainer '>
             <form id='profileForm' action="{{ path('dashboard_update_profile')}}" method="POST" enctype='multipart/form-data' >
-                <div class='photo-container'>
+                <div class='photo-container text-center medium-text-left'>
                     <h3>Update Profile</h3>
-                    <div class="grid-x grid-margin-x">
+                    <div class="grid-x grid-margin-x grid-margin-y">
                         <div class="cell small-12 medium-4" >
-                            <div class='profilePicContainer'>
+                            <div class='profilePicContainer medium-text-center'>
                                 <img id="imgProfilePic" src="{{ user.getFileWebPath != '' ? user.getFileWebPath : '/assets/img/default-profile-pic.jpg' }}" class='profilePic'/>
                             </div>
                         </div>
@@ -53,33 +53,54 @@
                         </div>
                     </div>
                 </div>
-                 <div class='inputContainer mt10'>
+                <div class='inputContainer mt10'>
                       <div class="grid-x grid-padding-x">
                         <div class="small-3 cell">
-                            {{ form_label(form.phone_no) }}
+                            {{ form_label(form.country) }}
                         </div>
                         <div class="small-9 cell">
-                         {{ form_widget(form.phone_no) }}
+                         {{ form_widget(form.country) }}
                         </div>
                     </div>
                 </div>
                 <div class='inputContainer mt10'>
                       <div class="grid-x grid-padding-x">
                         <div class="small-3 cell">
-                            {{ form_label(form.birth_date) }}
+                            {{ form_label(form.facebook_url) }}
                         </div>
                         <div class="small-9 cell">
-                         {{ form_widget(form.birth_date) }}
+                         {{ form_widget(form.facebook_url) }}
                         </div>
                     </div>
                 </div>
                 <div class='inputContainer mt10'>
                       <div class="grid-x grid-padding-x">
                         <div class="small-3 cell">
-                            {{ form_label(form.gender) }}
+                            {{ form_label(form.twitter_url) }}
                         </div>
                         <div class="small-9 cell">
-                         {{ form_widget(form.gender) }}
+                         {{ form_widget(form.twitter_url) }}
+                        </div>
+                    </div>
+                </div>
+                <div class='inputContainer mt10'>
+                    <div class="grid-x grid-padding-x">
+                        <div class="small-3 cell">
+                            {{ form_label(form.instagram_url) }}
+                        </div>
+                        <div class="small-9 cell">
+                         {{ form_widget(form.instagram_url) }}
+                        </div>
+                    </div>
+                </div>
+              
+                <div class='inputContainer mt10'>
+                      <div class="grid-x grid-padding-x">
+                        <div class="small-3 cell">
+                            {{ form_label(form.zodiac_sign) }}
+                        </div>
+                        <div class="small-9 cell">
+                         {{ form_widget(form.zodiac_sign) }}
                         </div>
                     </div>
                 </div>

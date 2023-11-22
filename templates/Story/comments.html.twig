@@ -1,18 +1,18 @@
  
-<div class="grid-container fluid">
 
     {% for comment in comments %}
 
-        <div class="grid-x grid-margin-x pt5 pb5 mb30">
-            <div class='cell large-2'>
-                <div class="circular--portrait">         
+        <div class="grid-x grid-margin-x">
+            <div class='cell large-1 medium-1 small-4'>
+                <div class="cmt-users-pictures">
                     <img  src="{{ comment.profilePic}}">
                 </div>
             </div>
-            <div class='cell large-10'>
-                <h6>{{ comment.commentUser}}</h6>
-                <p>{{ comment.message|nl2br}}</p>
+            <div class='cell large-11 medium-11 small-12'>
+                <div class="cmt-text-container">
+                    <h6>{{ comment.commentUser}}</h6>
+                     <p>{{ comment.message|nl2br}}</p>
+                </div>
             </div>
         </div>
     {% endfor %}
-</div>

@@ -1,0 +1,63 @@
+{% for list in storyLists %}
+    <div class="cell large-4 medium-6 small-12" id="storyDetails{{list.storyId}}">
+            <div class="card-container page-list-card" data-id={{list.storyId}}>
+                <div class="card-img-container" >
+                    <a href="{{path('story_telling', {'id' : list.storyId|base64Encode})}}" >
+
+                        <img src="{{ list.storyImg ?  '/uploads/story/' ~ list.storyImg : '' }}">
+                    </a>
+
+                </div>
+                <div class="card-details">
+                    <div class="card-option-container">
+                        <div class="card-option-holder" data-id="{{ list.storyId}}">
+                            <div class="card-options">
+                                <ul>
+                                    <li><a href="javascript:void(0);" class="link-share share-story-btn" data-id='{{list.storyId|base64Encode}}'>Share</a></li>
+                                    {% if not list.isShared %}
+                                        <li><a href="{{ path('story_details', { id: list.storyId|base64Encode})}}" class="link-edit">Edit</a></li>
+                                        <li><a  href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{list.storyId|base64Encode}}'>Archive</a></li>
+                                        <li><a href="{{ path('story_download', { id: list.storyId|base64Encode})}}" class="link-download">Download</a></li>
+                                    {% endif %}
+                              
+                                </ul>
+                                <div class="clear-fix"></div>
+                            </div>
+                            <div class ="option-dot"></div><!-- this is the 3 dots-->
+                        </div>
+                    </div>
+                    <div class="title-holder">{{ list.storyTitle |length > 20 ? list.storyTitle |slice(0, 20) ~ '...' : list.storyTitle  }}</div>
+                    <div class="card-ftr">
+                        <ul>
+                            <li class="created-date">Created  {{ list.createdDate }}</li>
+                            <li class="views-count">Views {{ (list.storyViewCtr ? list.storyViewCtr : '0')  }}</li>
+                            <li class="action-access">{{ list.isPublic ? 'Public' : 'Private'}}</li>
+                            <div class="clear-fix"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endfor %}
+
+<script language="javascript">
+    //<![CDATA[
+
+        $(document).ready(function(){
+            if(typeof public_library != 'undefined' ){
+                 public_library.toggleStoryOption();
+                 public_library.shareStory();
+                 public_library.archiveStory();
+
+
+            }
+            if(typeof index != 'undefined' ){
+                 index.toggleStoryOption();
+                 index.shareStory();
+                 index.archiveStory();
+            }
+
+        });
+
+    //]]>
+</script>

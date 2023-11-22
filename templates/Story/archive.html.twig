@@ -6,7 +6,51 @@
     <div class="grid-x grid-margin-x">
        <div class='cell large-12'>
            <div class='p50'>
-                This is a archive page
+                <div class="content-hdr">
+                    <h4 class="hdr-txt">archive</h4>
+                </div>
+                <div class="content-bdy">
+                    <table class="responsive-card-table unstriped">
+                        <thead>
+                            <tr>
+                            <th>Story Title</th>
+                            <th>Created</th>
+                            <th>Interviewer</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><p data-label="Story Title">This is a test story</p></td>
+                                <td><p data-label="Created">10/12/2023</p></td>
+                                <td><p data-label="Interviewer">Dean</p></td>
+                                <td>
+                                    <div class="action-container">
+                                        <a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13.714" viewBox="0 0 16 13.714"><path d="M10.643,4.5a6.858,6.858,0,0,0-6.857,6.857H1.5l2.964,2.964.053.107L7.6,11.357H5.31a5.359,5.359,0,1,1,1.57,3.764L5.8,16.2A6.855,6.855,0,1,0,10.643,4.5ZM9.881,8.31v3.81l3.261,1.935.549-.922-2.667-1.585V8.31Z" transform="translate(-1.5 -4.5)" opacity="1"/></svg>
+                                        </a>
+                                        <a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path d="M13.5,1H9.75L9.456.416A.75.75,0,0,0,8.784,0H5.212a.741.741,0,0,0-.669.416L4.25,1H.5a.5.5,0,0,0-.5.5v1A.5.5,0,0,0,.5,3h13a.5.5,0,0,0,.5-.5v-1A.5.5,0,0,0,13.5,1ZM1.662,14.594A1.5,1.5,0,0,0,3.159,16h7.681a1.5,1.5,0,0,0,1.5-1.406L13,4H1Z" transform="translate(0 0)" opacity="1"/></svg>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav aria-label="Pagination">
+                    <ul class="pagination">
+                            <li class="pagination-previous disabled">Previous <span class="show-for-sr">page</span></li>
+                            <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+                            <li><a href="#" aria-label="Page 2">2</a></li>
+                            <li><a href="#" aria-label="Page 3">3</a></li>
+                            <li><a href="#" aria-label="Page 4">4</a></li>
+                            <li class="ellipsis" aria-hidden="true"></li>
+                            <li><a href="#" aria-label="Page 12">12</a></li>
+                            <li><a href="#" aria-label="Page 13">13</a></li>
+                            <li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
            </div>
        </div>
     </div>
@@ -16,8 +60,5 @@
 
 <script language="javascript">
 //<![CDATA[
-    $(document).ready(function(){
-    });
-//]]>
-</script>
+    
 {% endblock %}

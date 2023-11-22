@@ -3,15 +3,15 @@
         <div class="modal-content-container">
             <form id='shareForm'>
                 <div class="modal-hdr">
-                    <h5>Share Story</h5>
+                    <h5>Archive Story</h5>
                 </div>
                 <div class="mdl-form-container">
-                    <input type="email"  name='shareForm[email]' placeholder="Type email address" requiredZZ>
-                    <input type="hidden" name='shareForm[id]' value='{{id}}'>
+                    <h6 style="font-weight:600;">Are you sure you want to archive this story?</h6>
+                    <input type="hidden" name='id' value='{{id}}'>
                 </div>
                 <div class="btn-bottom-container">
-                    <button class="share-btn" type='submit'>Share</button>
-                    <button class="cancel-btn" type='button' class="close-button" data-close aria-label="Close modal">Cancel</button>
+                    <button class="share-btn" type='submit'>Yes</button>
+                    <button class="cancel-btn" type='button' class="close-button" data-close aria-label="Close modal">No</button>
                     <div class="clear-fix"></div>
                 </div>
             </form>
@@ -25,12 +25,10 @@
 
     $(document).ready(function(){
 
-        var userAutoCompleteUrl = '{{ path("user_autocomplete")}}';
-        var shareFormActionAjaxUrl = '{{ path("story_ajax_share_form_action")}}';
+        var formUrl = '{{ path("story_ajax_delete")}}';
 
         global.init();
 
-        global.autocomplete.bind(userAutoCompleteUrl,'#user_desc','#user');
         $('#shareForm').submit(function(e){
 
             e.preventDefault();
@@ -38,7 +36,7 @@
             _this.find(':input[type=submit]').prop('disabled', true);
             var formData = $(this).serialize();
             $.ajax({
-                url: shareFormActionAjaxUrl,
+                url: formUrl,
                 data: formData, 
                 type: "post",
                 dataType: "JSON",
@@ -46,11 +44,14 @@
                     if(r.success){
 
                         toastr.success(r.msg);
-                 //       var html = r.html;
-                   //     $('#share-box-container').append(html);
                         $('#modal').foundation('close');
+               
+                        $('#storyDetails' + r.id).remove();
 
-                        details.init();
+                        if(typeof telling != 'undefined'){
+                            window.location = '/story';
+                        }
+
                     } else {
                       toastr.error(r.msg);
                         _this.find(':input[type=submit]').prop('disabled', false);

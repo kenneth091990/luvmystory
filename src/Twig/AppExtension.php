@@ -11,6 +11,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('timeAgo', [$this, 'timeAgo']),
+            new TwigFilter('base64Encode', [$this, 'base64Encode']),
         ];
     }
 
@@ -42,6 +43,11 @@ class AppExtension extends AbstractExtension
     
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
+
+    function base64Encode($id) {
+       
+        return base64_encode($id);
     }
 }
 

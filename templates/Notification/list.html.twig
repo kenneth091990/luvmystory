@@ -9,7 +9,7 @@
         
             <li>
                 <a href="{{ path(notification.notificationType == 'Story' ? 'story_details' : 'story_telling'  , {id : notification.story.idencoded })}}" class='{{ notification.isread ? "" : "unread"}}'> 
-                    <div> <span> {{ notification.story.schedule.scheduletype }}</span> has been {{ notification.notificationType == 'Story' ? ' uploaded' : ' shared to you' }}.</div>
+                    <div> <span> {{ notification.story.schedule.scheduletype }}</span> has been {{ notification.notificationType == 'Story' ? ' uploaded Click to review' : ' shared with you . Click to review' }}.</div>
                         <div class='notif-ago'> <small class='text-right'>{{notification.createdat|timeAgo}}</small>
                     </div>
                 </a> 

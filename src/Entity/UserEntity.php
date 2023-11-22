@@ -70,6 +70,31 @@ class UserEntity extends BaseEntity
     protected $gender;
 
     /**
+     * @ORM\Column(name="country", type="string", nullable=true)
+     */
+    protected $country;
+    
+    /**
+     * @ORM\Column(name="zodiac_sign", type="string", nullable=true)
+     */
+    protected $zodiacSign;
+    
+    /**
+     * @ORM\Column(name="facebook_url", type="string", nullable=true)
+     */
+    protected $facebookUrl;
+    
+    /**
+     * @ORM\Column(name="twitter_url", type="string", nullable=true)
+     */
+    protected $twitterUrl;
+
+    /**
+     * @ORM\Column(name="instagram_url", type="string", nullable=true)
+     */
+    protected $instagramUrl;
+
+    /**
      * @ORM\Column(name="birth_date", type="datetime", nullable=true)
      */
     protected $birthDate;
@@ -553,6 +578,66 @@ class UserEntity extends BaseEntity
                 $storyLike->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getZodiacSign(): ?string
+    {
+        return $this->zodiacSign;
+    }
+
+    public function setZodiacSign(?string $zodiacSign): self
+    {
+        $this->zodiacSign = $zodiacSign;
+
+        return $this;
+    }
+
+    public function getFacebookUrl(): ?string
+    {
+        return $this->facebookUrl;
+    }
+
+    public function setFacebookUrl(?string $facebookUrl): self
+    {
+        $this->facebookUrl = $facebookUrl;
+
+        return $this;
+    }
+
+    public function getTwitterUrl(): ?string
+    {
+        return $this->twitterUrl;
+    }
+
+    public function setTwitterUrl(?string $twitterUrl): self
+    {
+        $this->twitterUrl = $twitterUrl;
+
+        return $this;
+    }
+
+    public function getInstagramUrl(): ?string
+    {
+        return $this->instagramUrl;
+    }
+
+    public function setInstagramUrl(?string $instagramUrl): self
+    {
+        $this->instagramUrl = $instagramUrl;
 
         return $this;
     }

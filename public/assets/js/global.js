@@ -289,7 +289,12 @@
 
             if($('.index-content').length){
 
-                $('.content-container').css('height' ,( windowHeight - headerScrollHeight) / 2);
+                var addHeightOnMobile = 0; 
+                if ($(window).width() < 1023){
+                    addHeightOnMobile = 120;
+                }
+
+                $('.content-container').css('height' ,(( windowHeight - headerScrollHeight) / 2) + addHeightOnMobile);
 
             }
 
@@ -308,7 +313,12 @@
 
                 if($('.index-content').length){
 
-                    $('.content-container').css('height' ,( windowHeight - headerScrollHeight) / 2);
+                   var addHeightOnMobile = 0; 
+                    if ($(window).width() < 1023){
+                        addHeightOnMobile = 120;
+                    }
+
+                    $('.content-container').css('height' ,(( windowHeight - headerScrollHeight) / 2) + addHeightOnMobile);
     
                 }
             });
@@ -330,9 +340,7 @@
 
                 }
             });
-
-
-        
+            
             $(".burger-menu").blur(function(){
                 console.log('dd');
 
@@ -342,9 +350,5 @@
                 }
               
             });
-
-            
-
-
         }
     };

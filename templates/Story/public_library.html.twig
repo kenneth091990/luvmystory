@@ -6,7 +6,35 @@
     <div class="grid-x grid-margin-x">
        <div class='cell large-12'>
            <div class='p50'>
-                This is a public library page
+                <div class="content-hdr">
+                     <h4 class="hdr-txt">Story Library</h4>
+                    <div class="bdy-nv">
+                        <div class="search-bx-container float-left">
+                            <input type="text" placeholder="Search story title or author" id='q' />
+                        </div>
+                        {# <div class="fltr-left float-right ">
+                            <div  class="flrt-label float-left"><label>Sort by</label></div>
+                            <select  class="inpt-fltr float-left" id='sortByFilter'>
+                                <option value='date'>Latest</option>
+                                <option value='name'>Name</option>
+                            </select>
+                        </div> #}
+                        <div class="fltr-left float-right mr10">
+                            <div  class="flrt-label float-left"><label>Filter by</label></div>
+                            <select  class="inpt-fltr float-left" id='filterBy'>
+                                <option value='all'>All Public Stories</option>
+                                <option value='only_shared_story'>Shared Stories with You</option>
+                                <option value='only_my_story'>My Public Stories</option>
+                            </select>
+                        </div>
+                        <div class="clear-fix"></div>
+                    </div>
+                </div>
+
+
+                <div class="thumbnails-cage">
+                    <div class="grid-x grid-margin-x" id='pageListContainer'></div>
+                </div>
            </div>
        </div>
     </div>
@@ -17,6 +45,12 @@
 <script language="javascript">
 //<![CDATA[
     $(document).ready(function(){
+
+         public_library.settings.ajaxStoryListUrl = "{{ path('story_ajax_page_list')}}";
+         public_library.settings.ajaxShareStoryFormUrl = "{{ path('story_ajax_share_form')}}";
+         public_library.settings.ajaxArchiveStoryFormUrl = "{{ path('story_ajax_archive_form')}}"; 
+         public_library.init();
+        
     });
 //]]>
 </script>

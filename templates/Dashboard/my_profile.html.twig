@@ -11,13 +11,19 @@
             </div>
             <div class='mt10'>
                 <h3 >{{ user.fullname}}</h3>
-                <h4 >New York, USA</h4>
+                <h4 >{{ user.country}}</h4>
             </div>
             <div class='mt10 social-icons'>
-               <ul >
-                    <li><img src="/assets/img/facebook (1).png"></li>
-                    <li><img src="/assets/img/profile-twitter-icon.png"></li>
-                    <li><img src="/assets/img/profile-instagram-icon.png"></li>
+                <ul >
+                   {% if  user.facebookurl %}
+                    <li><a href="{{ user.facebookurl }}" target="_blank"><img src="/assets/img/facebook (1).png"></a></li>
+                   {% endif %}
+                  {% if  user.twitterurl %}
+                   <li><a href="{{ user.twitterurl }}" target="_blank"><img src="/assets/img/profile-twitter-icon.png"></a></li>
+                   {% endif %}
+                   {% if  user.instagramurl %}
+                    <li><a href="{{ user.instagramurl }}" target="_blank"><img src="/assets/img/profile-instagram-icon.png"></a></li>
+                   {% endif %}
                 </ul>
                 <div class='clear-fix'></div>
 
@@ -80,7 +86,7 @@
                     </div>
                     <div class='det-container'>
                         <div class='title'>Zodiac Sign</div>
-                        <div class='value'>Cancer</div>
+                        <div class='value'>{{ user.zodiacsign }}</div>
                     </div>
                     <div class='clear-fix'></div>
                 </div>

@@ -7,9 +7,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\File\MimeType\FileinfoMimeTypeGuesser;
 
 
 use App\Entity\StoryEntity;
+use App\Entity\StoryViewEntity;
 use App\Form\StoryForm;
 use App\Entity\ShareStoryEntity;
 use App\Entity\UserEntity;
@@ -62,13 +66,14 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/public_library", name="story_public_library")
+     * @Route("/story_library", name="story_public_library")
      */
     public function publicLibrary(AuthService $authService){
 
         if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
         
-        return $this->render('Story/public_library.html.twig', [ 
+        return $this->render('Story/public_library.html.twig', [
+            'javascripts' => array('/assets/js/story/public_library.js')  
         ]);
     }
 
@@ -157,7 +162,6 @@ class StoryController extends AbstractController
 
                 $form->handleRequest($request);
                 if ($form->isValid()) {
-
                     $story->setIsPublic(isset($pr['is_public']) ? true : false);
                     $em->flush();
 
@@ -207,9 +211,10 @@ class StoryController extends AbstractController
         if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
 
         $em = $this->getDoctrine()->getManager();
+        $user = $authService->getUser();
         $story = $em->getRepository(StoryEntity::class)->findOneBy(['id' => base64_decode($id)]);
-        $sharedStory = $em->getRepository(ShareStoryEntity::class)->findOneBy(['user' => $authService->getUser(), 'story' => $story]);
-        $notification = $em->getRepository(NotificationEntity::class)->findOneBy(['user' => $authService->getUser(), 'story' => $story]); 
+        $sharedStory = $em->getRepository(ShareStoryEntity::class)->findOneBy(['user' => $user, 'story' => $story]);
+        $notification = $em->getRepository(NotificationEntity::class)->findOneBy(['user' => $user, 'story' => $story, 'isRead' => false]); 
         $likeCtr = $em->getRepository(StoryEntity::class)->getLikeCtr($id);
         $commentCtr = $em->getRepository(StoryEntity::class)->getCommentCtr($id);
         
@@ -219,17 +224,27 @@ class StoryController extends AbstractController
 
         } else {
 
-            if(!$story->isIsPublic() && !in_array($authService->getUser()->getId(), $story->sharedStoriesIds())){
+            if($story->getSchedule()->getUser()->getId() != $user->getId() && !$story->isIsPublic() && !in_array($user->getId(), $story->sharedStoriesIds())){
                
                 $this->get('session')->getFlashBag()->add('error_messages', 'Story Not Found');
                 return $this->redirect($this->generateUrl('home_index'), 302);
             }
         }
 
+
         if($notification && !$notification->isIsRead()){
             $notification->setIsRead(true);
             $em->flush();
             
+        }
+
+        if($story->getSchedule()->getUser()->getId() != $user->getId() && !in_array($user->getId(), $story->storyViewUserIds())){
+
+            $storyView = new StoryViewEntity();
+            $storyView->setStory($story);
+            $storyView->setUser($user);
+            $em->persist($storyView);
+            $em->flush();
         }
 
         return $this->render('Story/telling.html.twig', [
@@ -269,6 +284,24 @@ class StoryController extends AbstractController
     }
 
     /**
+     * @Route("/ajax_archive_form", name="story_ajax_archive_form")
+     */
+    public function ajax_archive_formAction(AuthService $authService, Request $request){
+
+       
+        $result= ['success' => true, 'msg' => '']; 
+  
+        if($authService->isLoggedIn()) {
+
+            $id = $request->query->get('id');
+
+            $result['html'] = $this->renderView('Story/ajax_archive_form.html.twig', ['id' => $id]);
+        }
+  
+        return new JsonResponse($result);
+    }
+
+    /**
      * @Route("/ajax_delete", name="story_ajax_delete")
      */
     public function ajaxDeleteAction(AuthService $authService, Request $request){
@@ -292,6 +325,7 @@ class StoryController extends AbstractController
                 $story->setIsDeleted(true);
                 $em->flush();
                 $result['msg'] = 'Your story is successfully deleted';
+                $result['id'] = $story->getId();
                 
             }
     
@@ -354,6 +388,9 @@ class StoryController extends AbstractController
                     $result['msg'] = 'Story already shared to this person';
                 } else {
 
+                    $msg = $this->renderView('Email/share_story.html.twig', ['email' => $email, 'story' => $story]);
+                    $emailService->send($email, 'An Unforgettable Story You Have To Hear!', $msg);
+                    
                     $shareStory = new ShareStoryEntity();
                     $shareStory->setUser($user);
                     $shareStory->setStory($story);
@@ -439,6 +476,40 @@ class StoryController extends AbstractController
   
         return new JsonResponse($result);
     }
+
+     /**
+     * @Route("/ajax_page_list", name="story_ajax_page_list")
+     */
+    public function ajaxPageListAction(AuthService $authService, Request $request){
+
+       
+        $result= ['success' => true, 'msg' => '']; 
+  
+        if($authService->isLoggedIn()) {
+
+            $q = $request->request->all();
+
+            $em = $this->getDoctrine()->getManager();
+            $storyLists = $em->getRepository(StoryEntity::class)->getPageList( $this->get('session')->get('userData'), $q);
+        
+            $result['html'] = $this->renderView('Story/page_list.html.twig', ['storyLists' => $storyLists]);
+    
+        }
+  
+        return new JsonResponse($result);
+    }
+
+     /**
+     * @Route("/download/{id}", name="story_download")
+     */
+    public function downloadsAction(AuthService $authService, $id, Request $request){
+
+        $story= $this->getDoctrine()->getManager()->getRepository(StoryEntity::class)->find(base64_decode($id));
+        $ext = pathinfo($story->getSchedule()->getFileDesc(), PATHINFO_EXTENSION);
+        return $this->file(dirname(__DIR__, 2)  . '/public/uploads/audio' .'/'. $story->getSchedule()->getParsedFileDesc(), str_replace(' ' , '_',  $story->getTitle()) .'.' . $ext);
+
+   }
+
 
 
 }

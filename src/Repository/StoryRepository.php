@@ -191,7 +191,6 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
                 LEFT JOIN `user` u ON u.`id` =  sli.`user_id`
                 WHERE (sli.`is_deleted` != 1 OR sli.`is_deleted` IS NULL)
                 GROUP BY sli.`story_id`
-                LIMIT 3
             ) sli ON sli.`story_id` = ".$id."
             WHERE (sl.`is_deleted` != 1 OR sl.`is_deleted` IS NULL)
             AND sl.`story_id` = ".$id."
@@ -222,6 +221,100 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
         $res = $query->executeQuery();
         $result = $res->fetchAllAssociative();
         $result = ($result ? ($result[0]['ctr'] != NULL ? $result[0]['ctr'] : 0) : 0);
+        return $result;
+    }
+
+    public function getPageList($userData, $q){
+
+        $orderBy = '';
+        $andWhere = '';
+        
+        if(isset($q['orderBy'])){
+            if($q['orderBy'] == 'date'){
+                $orderBy .= "ORDER BY sc.`date_created` DESC"; 
+            } else {
+                $orderBy .= "ORDER BY sc.`schedule_type` ASC";
+            }
+        }
+
+        if(isset($q['ids']) && !empty($q['ids'])){
+           $andWhere .= ' AND s.`id` NOT IN  (' . $q["ids"]. ')';
+        }
+
+        if(isset($q['isPublic']) && $q['isPublic'] == 'true'){
+            $andWhere .= ' AND s.`is_public` = 1';
+        }
+
+        if(isset($q['q']) && $q['q'] != ''){
+            $andWhere .= ' AND (s.`title` LIKE "%'.$q['q'].'%" OR CONCAT(u.`first_name` , " ", u.`last_name`) LIKE "%'.$q['q'].'%" )';
+        }
+
+
+        if(isset($q['page']) && $q['page'] == 'my_story'){
+            $andWhere .= "  AND (
+                sc.`user_id` = ".$userData['id']." 
+             )";
+        } else {
+            if(isset($q['filterBy']) && $q['filterBy'] != 'all'){
+
+                if($q['filterBy'] == 'only_shared_story' ){
+                    $andWhere .= "  AND 
+                           s.`id` IN (
+                            SELECT 
+                                GROUP_CONCAT(ss.`story_id`)
+                            FROM `share_story` ss
+                            LEFT JOIN `story` s ON s.`id` = ss.`story_id`
+                            LEFT JOIN `schedule` sc ON sc.`id` = s.`schedule_id`
+                            WHERE s.`is_public` = 1 
+                            AND ss.`user_id` = ".$userData['id']." 
+                            GROUP BY ss.`user_id` 
+                        )
+                    ";
+    
+                } else {
+                    $andWhere .= "  AND (
+                            sc.`user_id` = ".$userData['id']." 
+                    )";
+                }
+              
+            }
+        }
+
+     
+
+        $query = $this->getEntityManager()->getConnection()->prepare("
+            SELECT
+                s.`parsed_file_desc` AS storyImg,
+                s.`title` AS storyTitle,
+                DATE_FORMAT(sc.`date_created`, '%b %d, %Y ') AS createdDate,
+                s.`id` AS storyId,
+                s.`is_public` AS isPublic,
+                sv.storyViewCtr AS storyViewCtr,
+                (CASE
+                    WHEN sc.`user_id` !=  ".$userData['id']."  THEN 1
+                    ELSE 0
+                END) AS isShared
+            FROM `story` s
+            LEFT JOIN `schedule` sc ON sc.`id` = s.`schedule_id`
+            LEFT JOIN `user` u ON u.`id` = sc.`user_id`
+            LEFT JOIN (
+                SELECT 
+                    sv.`story_id`,
+                    COUNT(sv.`id`) AS storyViewCtr
+                FROM `story_view` sv
+                GROUP BY sv.`story_id`
+            ) sv ON sv.`story_id` = s.`id`
+            WHERE   (s.`is_deleted` != 1 OR s.`is_deleted` IS NULL)
+            ".$andWhere."
+            ".$orderBy."
+            LIMIT 6
+        ");
+
+
+       
+        $res = $query->executeQuery();
+        $result = $res->fetchAllAssociative();
+    
         return $result;
     }
 

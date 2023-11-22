@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    global_url: '%env(GLOBAL_URL)%'
 services:
     Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
     Doctrine\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'

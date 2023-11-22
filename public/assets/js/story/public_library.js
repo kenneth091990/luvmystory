@@ -1,43 +1,45 @@
-var index = {
+var public_library = {
     settings: {
         ajaxStoryListUrl: '',
+        ajaxShareStoryFormUrl: '',
+        ajaxArchiveStoryFormUrl: '',
         pageListIds : []
     },
     init: function() {
-        index.getStoryList();
-        index.reRenderList();
-        index.toggleStoryOption();
+        public_library.getStoryList();
+        public_library.reRenderList();
+        public_library.toggleStoryOption();
 
         $('#dashboardConntentContainer').on('scroll', function() {
             if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-               index.getStoryList();
+               public_library.getStoryList();
             }
         })
 
     },
 
     reRenderList: function(){
-        $('#sortByFilter').unbind('change').bind('change', function(){
-            index.settings.pageListIds = [];
+        $('#sortByFilter, #filterBy').unbind('change').bind('change', function(){
+            public_library.settings.pageListIds = [];
             $('#pageListContainer').html('');
-            index.getStoryList();
+            public_library.getStoryList();
 
         });
 
         $('#q').unbind('focusout').bind('focusout', function(){
-            index.settings.pageListIds = [];
+            public_library.settings.pageListIds = [];
             $('#pageListContainer').html('');
-            index.getStoryList();
+            public_library.getStoryList();
 
         });
     },
     getStoryList: function(){
-        index.getPageListIds();
+        public_library.getPageListIds();
 
         $.ajax({
-            url : index.settings.ajaxStoryListUrl,
+            url : public_library.settings.ajaxStoryListUrl,
             type: 'POST',
-            data: { 'orderBy': $('#sortByFilter').val(), 'ids': index.settings.pageListIds.toString(), 'isPublic': true, page: 'my_story', q: $('#q').val(), filterBy: $('#filterBy').val() },
+            data: {  'ids': public_library.settings.pageListIds.toString(), 'isPublic': true, page: 'public_library', q: $('#q').val(), filterBy: $('#filterBy').val() },
             success: function(r){
                 if(r.success){
                     
@@ -55,8 +57,8 @@ var index = {
     getPageListIds: function(){
         $('.page-list-card').each(function () {
 
-            if( $.inArray($(this).data('id'), index.settings.pageListIds) == -1 ){
-                index.settings.pageListIds.push($(this).data('id'));
+            if( $.inArray($(this).data('id'), public_library.settings.pageListIds) == -1 ){
+                public_library.settings.pageListIds.push($(this).data('id'));
              }
         });
     }, 
@@ -95,7 +97,7 @@ var index = {
                 });
             } 
         });
-    },
+    }, 
     shareStory: function(){
         
         $.each($('.share-story-btn'), function(){
@@ -105,7 +107,7 @@ var index = {
 
                 
                 $.ajax({
-                    url: index.settings.ajaxShareStoryFormUrl,
+                    url: public_library.settings.ajaxShareStoryFormUrl,
                     beforeSend: function(){
                         if(_this.hasClass('large')){
                             modal.addClass('large');
@@ -137,7 +139,7 @@ var index = {
 
                 
                 $.ajax({
-                    url: index.settings.ajaxArchiveStoryFormUrl,
+                    url: public_library.settings.ajaxArchiveStoryFormUrl,
                     beforeSend: function(){
                         if(_this.hasClass('large')){
                             modal.addClass('large');

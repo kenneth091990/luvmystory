@@ -114,6 +114,7 @@ class ScheduleController extends AbstractController
 
                         if(!$story){
                             $story =  new StoryEntity();
+                            $story->setTitle($schedule->getScheduleType());
                             $story->setSchedule($schedule);
                             $story->setIsRead(false);
                             $em->persist($story);

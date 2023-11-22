@@ -6,20 +6,24 @@
     <div class="grid-x grid-margin-x">
        <div class='cell large-12'>
            <div class='p50'>
-                <div>
-                    <h4 class='bold'>ALL STORIES</h4>
+                <div class="content-hdr">
+                    <h4 class="hdr-txt">MY STORIES</h4>
+                    <div class="bdy-nv">
+                       <div class="search-bx-container float-left">
+                            <input type="text" placeholder="Search story title or author" id='q' />
+                        </div>
+                        <div class="fltr-left float-right">
+                            <div  class="flrt-label float-left"><label>Sort by</label></div>
+                            <select  class="inpt-fltr float-left" id='sortByFilter'>
+                                <option value='date'>Latest</option>
+                                <option value='name'>Name</option>
+                            </select>
+                        </div>
+                        <div class="clear-fix"></div>
+                    </div>
                 </div>
-                <div>
-                     <table id="stories-datalist" class=" nowrap" style="width:100%" width="100%;">
-                        <thead>
-                            <tr>
-                                <th>Story</th>
-                                <th>Interviewer</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="thumbnails-cage">
+                    <div class="grid-x grid-margin-x" id='pageListContainer'></div>
                 </div>
            </div>
        </div>
@@ -31,9 +35,12 @@
 <script language="javascript">
 //<![CDATA[
     $(document).ready(function(){
-        stories.settings.ajaxUrl = '{{ path('story_ajax_list') }}';
-        stories.settings.ajaxDeleteUrl = '{{ path('story_ajax_delete') }}';
-        stories.init();
+
+         index.settings.ajaxStoryListUrl = "{{ path('story_ajax_page_list')}}";
+         index.settings.ajaxShareStoryFormUrl = "{{ path('story_ajax_share_form')}}";
+         index.settings.ajaxArchiveStoryFormUrl = "{{ path('story_ajax_archive_form')}}"; 
+         index.init();
+        
     });
 //]]>
 </script>

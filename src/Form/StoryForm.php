@@ -36,7 +36,24 @@ class StoryForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
+        $builder
+           
+            ->add('title', TextType::class, array(
+                'label' => 'Title',
+                'label_attr' => array(
+                    'class' => 'middle required'
+                ),
+                'attr' => [ 'class' => 'form-control', 'required' => 'required', 'placeholder' => 'Name your story'],
+                'required' => true,
+            ))
+            ->add('about', TextareaType::class, array(
+                'label' => 'About',
+                'label_attr' => array(
+                    'class' => 'middle'
+                ),
+                'attr' => [ 'class' => 'form-control', 'rows' => 5, 'placeholder' => 'Tell other users about your story'],
+                'required' => false,
+            ));
     }
 
     public function getName()
