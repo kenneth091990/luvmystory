@@ -17,7 +17,7 @@
                                                 <li><a href="javascript:void(0);" class="link-share share-story-btn" data-id='{{story.idencoded}}'>Share</a></li>
                                                 {% if userData['id'] == story.schedule.user.id %}
                                                     <li><a href="{{ path('story_details', { id: story.idencoded })}}" class="link-edit">Edit</a></li>
-                                                    <li><a href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{story.idencoded}}'>Archive</a></li>
+                                                    <li><a href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{story.idencoded}}' data-action="delete">Archive</a></li>
                                                     <li><a href="{{ path('story_download', { id: story.idencoded})}}" class="link-download">Download</a></li>
                                                 {% endif %}
                                          
@@ -62,7 +62,7 @@
                                             <div class="owners-profile-container">
                                                 <img src="{{ story.schedule.user.getFileWebPath != '' ?  story.schedule.user.getFileWebPath : '/assets/img/placeholder-image.png' }}">
                                             </div>
-                                            <label>{{ story.schedule.user.fullname|upper}}</label>
+                                            <label><a href="{{path('dashboard_profile' , {id: story.schedule.user.idencoded})}}">{{ story.schedule.user.fullname|upper}}</a></label>
                                         </div>
                                         <div class="dot-spacer"></div>
                                         <div class="story-details-date"><label>Created {{ story.schedule.datecreated|date('F d, Y') }}</label></div>
@@ -73,9 +73,8 @@
                                     <div class="like-holder">
                                         <a class="story-like-btn button-like {{ userData.id in story.storyLikeUserIds ? 'liked' : ''}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> like</a>
                                         <div class="like-counter">   
-                                         {% if likeCtr['ctr'] > 0 %}
-                                                   {{likeCtr['likers'] ~ ' ' ~ (likeCtr['ctr'] > 3 ? ' and  '  ~ ( likeCtr['ctr'] - 3) ~ ' people '  : '')}} like this story.
-                                        {% endif %}</div>
+                                         
+                                        </div>
                                         <div class="clear-fix"></div>
 
 
@@ -123,6 +122,7 @@
         telling.settings.audioFileUrl = "{{ story.schedule.getFileWebPath != '' ? story.schedule.getFileWebPath : '/assets/audio/default.mp3' }}";
         telling.settings.ajaxShareStoryFormUrl = "{{ path('story_ajax_share_form')}}";
         telling.settings.ajaxArchiveStoryFormUrl = "{{ path('story_ajax_archive_form')}}"; 
+        telling.settings.ajaxLikeInfoUrl = "{{ path('story_like_info')}}";
         telling.init();
     });
 //]]>

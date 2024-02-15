@@ -17,13 +17,19 @@ var transaction = {
             "lengthChange": false,
             "ordering" : false,
             "pageLength": 20,
+            "info" :false,
             'ajax': {
                 'url': transaction.settings.ajaxUrl,
                 'data': function(d) {
                     d.url = global.settings.url;
                 }
             },
-           
+            "language": {
+                "paginate": {
+                  "previous": " Previous ",
+                  "next": "Next ",
+                }
+              },
             drawCallback: function() {
                 callBack();
             },

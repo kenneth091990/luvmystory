@@ -1,0 +1,25 @@
+{% if likeCtr['ctr'] > 0 %}    
+    {% set photos = likeCtr['photos']|split(',')%}
+    {% set likers = likeCtr['likers']|split(',')%}
+
+    {% if likeCtr['ctr'] > 2 %}
+        {% for k, photo in photos %}
+            {% if k < 2 %}
+                        <img src="{{global_url ~ '/uploads/profile_photo/' ~ photo }}" data-allow-html="true" data-tooltip class="top" tabindex="2" title="{{likers[k]}}" data-tooltip-background-color="white"  />
+
+            {% endif %}
+
+        
+        {% endfor %}
+         and {{ likeCtr['ctr'] - 3 }} other people like this story.
+
+    {% else %}
+        {% for k, photo in photos %}
+
+       
+                <img src="{{global_url ~ '/uploads/profile_photo/' ~ photo }}" data-allow-html="true" data-tooltip class="top" tabindex="2" title="{{likers[k]}}" data-tooltip-background-color="white" />
+
+        {% endfor %}
+    {% endif %}
+
+{% endif %}

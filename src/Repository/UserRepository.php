@@ -155,7 +155,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
         $select = "SELECT";
         $from = "FROM `user` u";
-        $sqlWhere = " WHERE u.`type`  NOT IN ('Super Admin', 'Client')";
+        $sqlWhere = " WHERE u.`type`  NOT IN ('Super Admin')";
         $joins = " ";
         $groupBy = "";
         $orderBy = "";

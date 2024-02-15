@@ -2,12 +2,13 @@
     <div class="modal-share-container "><!--hide-->
         <div class="modal-content-container">
             <form id='shareForm'>
-                <div class="modal-hdr">
+                {# <div class="modal-hdr">
                     <h5>Archive Story</h5>
-                </div>
+                </div> #}
                 <div class="mdl-form-container">
-                    <h6 style="font-weight:600;">Are you sure you want to archive this story?</h6>
-                    <input type="hidden" name='id' value='{{id}}'>
+                    <h6 style="font-weight:600;">Are you sure you want to {{q["action"]}} this story?</h6>
+                    <input type="hidden" name='id' value='{{q["id"]}}'>
+                    <input type="hidden" name='action' value='{{q["action"]}}'>
                 </div>
                 <div class="btn-bottom-container">
                     <button class="share-btn" type='submit'>Yes</button>
@@ -45,12 +46,18 @@
 
                         toastr.success(r.msg);
                         $('#modal').foundation('close');
-               
-                        $('#storyDetails' + r.id).remove();
 
-                        if(typeof telling != 'undefined'){
+
+                        if(typeof archive != 'undefined'){
+                            archive.dataList.draw();
+                        } else if(typeof telling != 'undefined'){
                             window.location = '/story';
+
+                        } else {
+                             $('#storyDetails' + r.id).remove();
+
                         }
+
 
                     } else {
                       toastr.error(r.msg);

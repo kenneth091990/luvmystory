@@ -57,6 +57,11 @@ class StoryEntity extends BaseEntity
     protected $parsedFileDesc;
 
     /**
+     * @ORM\Column(name="is_permanent_deleted", type="boolean", nullable=true)
+     */
+    protected $isPermanentDeleted;
+
+    /**
      * @ORM\ManyToOne(targetEntity="ScheduleEntity", inversedBy="stories")
      * @ORM\JoinColumn(name="schedule_id", referencedColumnName="id")
      */
@@ -459,6 +464,18 @@ class StoryEntity extends BaseEntity
     public function setAbout(?string $about): self
     {
         $this->about = $about;
+
+        return $this;
+    }
+
+    public function isIsPermanentDeleted(): ?bool
+    {
+        return $this->isPermanentDeleted;
+    }
+
+    public function setIsPermanentDeleted(?bool $isPermanentDeleted): self
+    {
+        $this->isPermanentDeleted = $isPermanentDeleted;
 
         return $this;
     }

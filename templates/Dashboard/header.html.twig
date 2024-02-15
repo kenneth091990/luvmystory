@@ -55,12 +55,13 @@
         {% elseif  userData['type'] == 'Admin' %}
             <li class='hide-for-large'><a href="{{ path('schedule_index')}}"class='pl20 pr20'>SCHEDULES</a></li>
         {% else %}
-            <li  class='hide-for-large'><a href="{{ path('home_stories')}}" class='pl20 pr20'><div class='nav-icon-container pink'><img src="/assets/img/book-open.svg"></div>Me And My Stories</a></li>
+            <li  class='hide-for-large'><a href="{{ path('dashboard_my_profile')}}" class='pl20 pr20'><div class='nav-icon-container pink'><img src="/assets/img/book-open.svg"></div>Me And My Stories</a></li>
             <li  class='hide-for-large'><a href="{{ path('dashboard_book_now')}}" class='pl20 pr20 {{ current_path == 'dashboard_book_now' ? 'active-link' : ''}}'><div class='nav-icon-container pink'><img src="/assets/img/bookmark.svg"></div>Book Now</a></li>
-            <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/globe-africa.svg"></div>Story Library</a></li>
-            {# <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/shopping-bag.svg"></div>LuvMyStory Merch</a></li> #}
-            <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/archive.svg"></div>Archive</a></li>
-            {# <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/hands-helping.svg"></div> HELP UKRAINE</a></li> #}
+            <li  class='hide-for-large'><a href="{{ path('story_public_library')}}" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/globe-africa.svg"></div>Story Library</a></li>
+           
+            <li  class='hide-for-large'><a href="{{ path('story_archive')}}" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/archive.svg"></div>Archive</a></li>
+            {# <li  class='hide-for-large'><a href="{{ path('dashboard_help_ukraine')}}" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/hands-helping.svg"></div> HELP UKRAINE</a></li>
+             <li  class='hide-for-large'><a href="javascript:void(0);" class='pl20 pr20 '><div class='nav-icon-container pink'><img src="/assets/img/shopping-bag.svg"></div>LuvMyStory Merch</a></li> #}
         {% endif %}
         <li><div class='separator'></div></li>
     
@@ -71,6 +72,8 @@
         <li><a href="{{ path('home_terms_of_service')}}" class='pl20 pr20 pt0 pb0'>Term Of Service</a></li>
         <li><a href="{{ path('home_privacy')}}" class='pl20 pr20 pt0 pb0'>Privacy</a></li>
         <li><a href="{{ path('home_help')}}" class='pl20 pr20 pt0 pb0'>Help</a></li>
+        <li><a href="{{ path('dashboard_help_ukraine')}}" class='pl20 pr20 pt0 pb0'>HELP UKRAINE</a></li>
+        <li><a href="{{ path('dashboard_merch')}}" class='pl20 pr20 pt0 pb0'>LuvMyStory Merch</a></li>
      
         <li class='li-separator'>&nbsp;</li>
 

@@ -320,6 +320,11 @@ and (max-width: 1900px)  {
         background: #fff;border-radius:25px;
     }
 
+    .home-section-inspiration {
+        background-size:40%;
+        height: auto;
+    }
+
 }
 
 @media screen 
@@ -393,6 +398,22 @@ and (max-width: 1900px)  {
         font-size: 14px;
         line-height: 20px;
     }
+
+    .home-section-inspiration {
+        background-size:40%;
+        height: auto;
+    }
+    .home-section-recording {
+        background-size:60%;
+        height: auto;
+    }
+    .home-section-text-container {
+        width: 90%;
+    }
+    .home-section-text-container h3 {
+        font-size: 40px;
+        line-height: 50px;
+    }
  }
 
 
@@ -458,7 +479,10 @@ and (max-width: 1900px)  {
     .p10p{
         padding: 5%!important;
     }
-
+    
+    .home-section-text-container h3, .home-section-text-container p, 
+    .home-section-inspiration-list h3,
+    .home-section-personal-topics h3,
     .content-container .text-container h3 {
         font-size: 20px;
     }
@@ -603,8 +627,23 @@ and (max-width: 1900px)  {
         padding: 30px;
     }
 
-
-    
+    .home-section-inspiration {
+        padding-top:50px;
+        padding-bottom:50px;
+        background-image: none;
+        height: auto;
+    }
+    .home-section-recording {
+        background-image: none;
+        height: auto;
+    }
+    .home-section-text-container {
+        width: 95%;
+    }
+    .home-section-text-container h3 {
+        font-size: 40px;
+        line-height: 50px;
+    }    
  }
 
  @media screen and (max-width: 640px) {
@@ -718,6 +757,14 @@ and (max-width: 1900px)  {
 and (max-width:1024px) {
     .story-details-container .img-story-detail {
         height: 320px;
+    }
+
+    .lms-merch-wraper{
+        flex-direction: column;
+    }
+    .lms-merch-left-column, .lms-merch-right-column{
+        width: auto;
+        height: 50%;
     }
 }
 

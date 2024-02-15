@@ -16,7 +16,7 @@
                                     <li><a href="javascript:void(0);" class="link-share share-story-btn" data-id='{{list.storyId|base64Encode}}'>Share</a></li>
                                     {% if not list.isShared %}
                                         <li><a href="{{ path('story_details', { id: list.storyId|base64Encode})}}" class="link-edit">Edit</a></li>
-                                        <li><a  href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{list.storyId|base64Encode}}'>Archive</a></li>
+                                        <li><a  href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{list.storyId|base64Encode}}' data-action="delete">Archive</a></li>
                                         <li><a href="{{ path('story_download', { id: list.storyId|base64Encode})}}" class="link-download">Download</a></li>
                                     {% endif %}
                               
@@ -55,6 +55,12 @@
                  index.toggleStoryOption();
                  index.shareStory();
                  index.archiveStory();
+            }
+
+            if(typeof teller != 'undefined' ){
+                 teller.toggleStoryOption();
+                 teller.shareStory();
+                 teller.archiveStory();
             }
 
         });

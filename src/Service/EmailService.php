@@ -19,6 +19,7 @@ Class EmailService {
             //Server settings
             $mail->SMTPDebug = 0;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
+            $mail->CharSet = 'UTF-8';
             $mail->Host       = 'mail.luvmystory.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'support@luvmystory.com';                     //SMTP username

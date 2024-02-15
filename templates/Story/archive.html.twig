@@ -10,7 +10,18 @@
                     <h4 class="hdr-txt">archive</h4>
                 </div>
                 <div class="content-bdy">
-                    <table class="responsive-card-table unstriped">
+                    <table id="archive-datalist" class=" nowrap responsive-card-table unstriped" style="width:100%" width="100%;">
+                        <thead>
+                            <tr>
+                                <th>Story Title</th>
+                                <th>Created</th>
+                                <th>Interviewer</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    {# <table class="responsive-card-table unstriped">
                         <thead>
                             <tr>
                             <th>Story Title</th>
@@ -49,7 +60,7 @@
                             <li><a href="#" aria-label="Page 13">13</a></li>
                             <li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
                         </ul>
-                    </nav>
+                    </nav> #}
                 </div>
            </div>
        </div>
@@ -60,5 +71,11 @@
 
 <script language="javascript">
 //<![CDATA[
-    
+    $(document).ready(function(){
+        archive.settings.ajaxUrl = '{{ path('story_ajax_list') }}';
+        archive.settings.storyAjaxArchiveForm = '{{ path('story_ajax_archive_form') }}';
+        archive.init();
+    });
+//]]>
+</script>
 {% endblock %}

@@ -37,7 +37,7 @@ var index = {
         $.ajax({
             url : index.settings.ajaxStoryListUrl,
             type: 'POST',
-            data: { 'orderBy': $('#sortByFilter').val(), 'ids': index.settings.pageListIds.toString(), 'isPublic': true, page: 'my_story', q: $('#q').val(), filterBy: $('#filterBy').val() },
+            data: { 'orderBy': $('#sortByFilter').val(), 'ids': index.settings.pageListIds.toString(), 'isPublic': false, page: 'my_story', q: $('#q').val(), filterBy: $('#filterBy').val() },
             success: function(r){
                 if(r.success){
                     

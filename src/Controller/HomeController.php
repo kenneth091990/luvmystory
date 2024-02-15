@@ -112,6 +112,13 @@ class HomeController extends AbstractController
         return $this->render('Home/help.html.twig');
     }
 
+       /**
+     * @Route("help_ukraine", name="home_help_ukraine")
+     */
+    public function helpUkraine(){
+        return $this->render('Home/help_ukraine.html.twig');
+    }
+
      /**
      * @Route("friends", name="home_friends")
      */
@@ -153,7 +160,7 @@ class HomeController extends AbstractController
      */
     public function registrationAction(Request $request, EmailService $emailSevice, AuthService $authService){
 
-        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_index'), 302);
+        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_book_now'), 302);
 
         $formOptions = [];
 
@@ -254,6 +261,20 @@ class HomeController extends AbstractController
     }
 
       /**
+     * @Route("/merch", name="home_merch")
+     */
+    public function merchAction(){
+        return $this->render('Home/merch.html.twig');
+    }
+
+    /**
+     * @Route("/pricing", name="home_pricing")
+     */
+    public function pricingAction(){
+        return $this->render('Home/pricing.html.twig');
+    }
+
+      /**
      * @Route("/book_now", name="home_book_now")
      */
     public function book_nowAction(AuthService $authService){
@@ -274,7 +295,7 @@ class HomeController extends AbstractController
      */
     public function loginAction(Request $request, AuthService $authService){
 
-        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_index'), 302);
+        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_book_now'), 302);
 
         $formOptions = [];
 
@@ -372,7 +393,7 @@ class HomeController extends AbstractController
     public function forgotPasswordAction(Request $request, EmailService $emailSevice,AuthService $authService){
 
         $token = null;
-        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_index'), 302);
+        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_book_now'), 302);
 
         if($request->getMethod() === 'POST') {
         
@@ -405,7 +426,7 @@ class HomeController extends AbstractController
      */
     public function updatePasswordAction(AuthService $authService,  Request $request, $token){
 
-        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_index'), 302);
+        if($authService->isLoggedIn()) return $this->redirect($this->generateUrl('dashboard_book_now'), 302);
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(UserEntity::class)->findOneBy(['passwordToken' => $token, 'type' => 'Client', 'isDeleted' => 0]);

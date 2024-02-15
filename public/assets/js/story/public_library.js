@@ -34,12 +34,13 @@ var public_library = {
         });
     },
     getStoryList: function(){
-        public_library.getPageListIds();
+        let searchParams = new URLSearchParams(window.location.search)
 
+        public_library.getPageListIds();
         $.ajax({
             url : public_library.settings.ajaxStoryListUrl,
             type: 'POST',
-            data: {  'ids': public_library.settings.pageListIds.toString(), 'isPublic': true, page: 'public_library', q: $('#q').val(), filterBy: $('#filterBy').val() },
+            data: {  'ids': public_library.settings.pageListIds.toString(), 'isPublic': true, page: 'public_library', q: $('#q').val(), filterBy: $('#filterBy').val(), profile:  searchParams.get('profile') ? searchParams.get('profile') : ''  },
             success: function(r){
                 if(r.success){
                     
@@ -148,7 +149,7 @@ var public_library = {
 
                         }
                     },
-                    data: { id: _this.data('id') },
+                    data: { id: _this.data('id'), action: _this.data('action') },
                     success: function(r){
                         if(r.success){
                             

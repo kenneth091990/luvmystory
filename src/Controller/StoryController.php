@@ -42,6 +42,30 @@ class StoryController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/teller/{id}", name="story_teller")
+     */
+    public function teller(AuthService $authService, $id){
+
+        if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $teller = $em->getRepository(UserEntity::class)->find(base64_decode($id));
+
+        if(!$teller){
+                      
+            $this->get('session')->getFlashBag()->add('error_messages', 'Story Not Found');
+            return $this->redirect($this->generateUrl('dashboard_book_now'), 302);
+        }
+
+
+        return $this->render('Story/teller.html.twig', [
+            'teller' => $teller,
+            'javascripts' => array('/assets/js/vendor/datatables/jquery.dataTables.min.js','/assets/js/story/teller.js') 
+        ]);
+    }
+
      /**
      * @Route("/arhive", name="story_archive")
      */
@@ -50,6 +74,7 @@ class StoryController extends AbstractController
         if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
         
         return $this->render('Story/archive.html.twig', [
+            'javascripts' => array('/assets/js/vendor/datatables/jquery.dataTables.min.js','/assets/js/story/archive.js') 
         ]);
     }
 
@@ -68,12 +93,13 @@ class StoryController extends AbstractController
     /**
      * @Route("/story_library", name="story_public_library")
      */
-    public function publicLibrary(AuthService $authService){
+    public function publicLibrary(AuthService $authService, Request $request){
 
         if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
+
         
         return $this->render('Story/public_library.html.twig', [
-            'javascripts' => array('/assets/js/story/public_library.js')  
+            'javascripts' => array('/assets/js/story/public_library.js'),
         ]);
     }
 
@@ -214,7 +240,7 @@ class StoryController extends AbstractController
         $user = $authService->getUser();
         $story = $em->getRepository(StoryEntity::class)->findOneBy(['id' => base64_decode($id)]);
         $sharedStory = $em->getRepository(ShareStoryEntity::class)->findOneBy(['user' => $user, 'story' => $story]);
-        $notification = $em->getRepository(NotificationEntity::class)->findOneBy(['user' => $user, 'story' => $story, 'isRead' => false]); 
+        $notifications = $em->getRepository(NotificationEntity::class)->findBy(['user' => $user, 'story' => $story, 'isRead' => false]); 
         $likeCtr = $em->getRepository(StoryEntity::class)->getLikeCtr($id);
         $commentCtr = $em->getRepository(StoryEntity::class)->getCommentCtr($id);
         
@@ -232,10 +258,14 @@ class StoryController extends AbstractController
         }
 
 
-        if($notification && !$notification->isIsRead()){
-            $notification->setIsRead(true);
-            $em->flush();
-            
+        if(count($notifications)){
+
+            foreach($notifications as $notification){
+                if( !$notification->isIsRead()){
+                    $notification->setIsRead(true);
+                    $em->flush();
+                }
+            }
         }
 
         if($story->getSchedule()->getUser()->getId() != $user->getId() && !in_array($user->getId(), $story->storyViewUserIds())){
@@ -254,6 +284,35 @@ class StoryController extends AbstractController
             'javascripts' => array('/assets/js/story/telling.js') 
 
         ]);
+    }
+
+     /**
+     * @Route("/like_info", name="story_like_info")
+     */
+    public function likeInfoAction(AuthService $authService, Request $request){
+
+       
+        $result= ['success' => true, 'msg' => '']; 
+  
+        if($authService->isLoggedIn()) {
+            
+            $em = $this->getDoctrine()->getManager();
+            $id = $request->query->get('id');
+            $story = $em->getRepository(StoryEntity::class)->find( base64_decode($id));
+            
+            if(!$story){
+              
+                $result['succss']  = false;
+                $result['msg'] = 'Story not found';
+            } else {
+
+                $likeCtr = $em->getRepository(StoryEntity::class)->getLikeCtr($id);
+                $result['html'] = $this->renderView('Story/like_info.html.twig', ['likeCtr'=> $likeCtr]);
+            }
+    
+        }
+  
+        return new JsonResponse($result);
     }
 
           /**
@@ -293,13 +352,14 @@ class StoryController extends AbstractController
   
         if($authService->isLoggedIn()) {
 
-            $id = $request->query->get('id');
+            $q = $request->query->all();
 
-            $result['html'] = $this->renderView('Story/ajax_archive_form.html.twig', ['id' => $id]);
+            $result['html'] = $this->renderView('Story/ajax_archive_form.html.twig', ['q' => $q]);
         }
   
         return new JsonResponse($result);
     }
+    
 
     /**
      * @Route("/ajax_delete", name="story_ajax_delete")
@@ -322,10 +382,33 @@ class StoryController extends AbstractController
                 $result['msg'] = 'Story not found';
             } else {
 
-                $story->setIsDeleted(true);
-                $em->flush();
-                $result['msg'] = 'Your story is successfully deleted';
-                $result['id'] = $story->getId();
+
+                switch($pr['action']){
+                    case 'delete' : 
+
+                        $story->setIsDeleted(true);
+                        $em->flush();
+                        $result['msg'] = 'Your story is successfully deleted';
+                        $result['id'] = $story->getId();
+                        
+                        break;
+                    case 'permanent-delete': 
+
+                        $story->setIsPermanentDeleted(true);
+                        $em->flush();
+                        $result['msg'] = 'Your story is permanent deleted';
+                        $result['id'] = $story->getId();
+                        break; 
+                    case 'restore': 
+                     
+                        $story->setIsDeleted(false);
+                        $em->flush();
+                        $result['msg'] = 'Your story is successfully restore';
+                        $result['id'] = $story->getId();
+                        break;       
+
+                }
+        
                 
             }
     
@@ -391,24 +474,26 @@ class StoryController extends AbstractController
                     $msg = $this->renderView('Email/share_story.html.twig', ['email' => $email, 'story' => $story]);
                     $emailService->send($email, 'An Unforgettable Story You Have To Hear!', $msg);
                     
-                    $shareStory = new ShareStoryEntity();
-                    $shareStory->setUser($user);
-                    $shareStory->setStory($story);
-                    $em->persist($shareStory);
+                    $sharedStory = new ShareStoryEntity();
+                    $sharedStory->setUser($user);
+                    $sharedStory->setStory($story);
+                    $em->persist($sharedStory);
                     $em->flush();
 
-                    $notification =  new NotificationEntity();
-                    $notification->setNotificationType('Share');
-                    $notification->setUser($user);
-                    $notification->setStory($shareStory->getStory());
-                    $notification->setIsRead(false);
-                    $em->persist($notification);
-                    $em->flush();
-
-                    $result['msg'] = 'Story has been shared.';
-                    $result['html'] = $this->renderView('Story/share_box.html.twig', [ 'shareStory' => $shareStory]);
+                
+                   // $result['html'] = $this->renderView('Story/share_box.html.twig', [ 'shareStory' => $shareStory]);
 
                 }
+
+                $notification =  new NotificationEntity();
+                $notification->setNotificationType('Share');
+                $notification->setUser($user);
+                $notification->setStory($sharedStory->getStory());
+                $notification->setIsRead(false);
+                $em->persist($notification);
+                $em->flush();
+
+                $result['msg'] = 'Story has been shared.';
             }
           
         }

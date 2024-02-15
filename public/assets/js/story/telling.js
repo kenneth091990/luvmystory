@@ -8,6 +8,7 @@ var telling = {
         speedRate: 1,
         ajaxShareStoryFormUrl: '',
         ajaxArchiveStoryFormUrl: '',
+        ajaxLikeInfoUrl: ''
     },
     init: function() {
         telling.copyToClipboard();
@@ -17,6 +18,7 @@ var telling = {
         telling.initAudio();
         telling.archiveStory();
         telling.shareStory();
+        telling.initLikeInfo();
 
 
     },
@@ -102,12 +104,14 @@ var telling = {
                     if(r.success){
 
                         var html = '';
-                        if(r.likeCtr.ctr > 0){
-                            var html = r.likeCtr.likers + (r.likeCtr.ctr > 3? ' and ' + (r.likeCtr.ctr - 3) + ' other people ' : '') + ' like this story';
+                        // if(r.likeCtr.ctr > 0){
+                        //     var html = r.likeCtr.likers + (r.likeCtr.ctr > 3? ' and ' + (r.likeCtr.ctr - 3) + ' other people ' : '') + ' like this story';
 
-                        }
-                        _this.parent().find('.like-counter').html(html);
+                        // }
+                        // _this.parent().find('.like-counter').html(html);
                         _this.toggleClass('liked');
+                        telling.initLikeInfo();
+
 
                     } else {
                         $.toaster({ message : r.msg, title : '', priority : 'danger' });
@@ -298,7 +302,7 @@ var telling = {
 
                         }
                     },
-                    data: { id: _this.data('id') },
+                    data: { id: _this.data('id'), action: _this.data('action') },
                     success: function(r){
                         if(r.success){
                             
@@ -310,6 +314,20 @@ var telling = {
                 });
                 
             });
+        });
+    },
+    initLikeInfo: function(){
+      
+        $.ajax({
+            url: telling.settings.ajaxLikeInfoUrl,
+            data: { id: telling.settings.id },
+            success: function(r){
+                console.log(r);
+                if(r.success){
+                    $('.like-counter').html(r.html);
+
+                }
+            }
         });
     }
 };

@@ -5,8 +5,8 @@
 return array (
   'APP_ENV' => 'dev',
   'APP_SECRET' => 'b9b5274af85faea57344dda197ef0be6',
-  'DATABASE_URL' => 'postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=15&charset=utf8',
-  'ASSETS_VERSION' => '1.0.3',
+  'DATABASE_URL' => 'mysql://root:@127.0.0.1:3306/luvmystory?serverVersion=8&charset=utf8mb4',
+  'ASSETS_VERSION' => '1.0.6',
   'GLOBAL_URL' => 'http://dev.luvmystory.com',
   'WKHTMLTOPDF_PATH' => '/usr/local/bin/wkhtmltopdf',
   'WKHTMLTOIMAGE_PATH' => '/usr/local/bin/wkhtmltoimage',

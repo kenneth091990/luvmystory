@@ -1,0 +1,46 @@
+{% extends "Dashboard/main.html.twig" %}
+
+{% block content %}
+
+<div class="grid-container fluid">
+    <div class="grid-x grid-margin-x">
+       <div class='cell large-12'>
+           <div class='p50'>
+                <div class="content-hdr">
+                    <h4 class="hdr-txt">{{ teller.fullname}} Stories</h4>
+                    <div class="bdy-nv">
+                     
+                        <div class="fltr-left float-right">
+                            <div  class="flrt-label float-left"><label>Sort by</label></div>
+                            <select  class="inpt-fltr float-left" id='sortByFilter'>
+                                <option value='date'>Latest</option>
+                                <option value='name'>Name</option>
+                            </select>
+                        </div>
+                        <div class="clear-fix"></div>
+                    </div>
+                </div>
+                <div class="thumbnails-cage">
+                    <div class="grid-x grid-margin-x" id='pageListContainer'></div>
+                </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+{% include 'js.html.twig' %}
+
+<script language="javascript">
+//<![CDATA[
+    $(document).ready(function(){
+
+         teller.settings.id = "{{ teller.idencoded }}";
+         teller.settings.ajaxStoryListUrl = "{{ path('story_ajax_page_list')}}";
+         teller.settings.ajaxShareStoryFormUrl = "{{ path('story_ajax_share_form')}}";
+         teller.settings.ajaxArchiveStoryFormUrl = "{{ path('story_ajax_archive_form')}}"; 
+         teller.init();
+        
+    });
+//]]>
+</script>
+{% endblock %}

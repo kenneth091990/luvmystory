@@ -20,16 +20,24 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
 
         $columns = array(
             array('sc.`schedule_type`', "sc.`schedule_type`", "storyType"),
+            array('sc.`schedule_date`', "sc.`schedule_date`", "scheduleDate"),
             array('sc.`calendar`', "sc.`calendar`", 'interviewer'),
             array('s.`id`', "s.`id`"),
         );
         
 
+        if(isset($get['status']) && $get['status'] == 'archive'){
+            $sqlWhere = " WHERE s.`is_deleted` = 1 AND (s.`is_permanent_deleted` = 0 OR s.`is_permanent_deleted` IS NULL)";
+
+        } else {
+            $sqlWhere = " WHERE s.`is_deleted` = 0";
+
+        }
+
         $asColumns = array();
 
         $select = "SELECT";
         $from = "FROM `story` s";
-        $sqlWhere = " WHERE s.`is_deleted` = 0";
         $joins = " LEFT JOIN `schedule` sc ON sc.`id` = s.`schedule_id`";
         $joins .= " LEFT JOIN `user` u ON u.`id` = sc.`user_id`";
         $groupBy = "";
@@ -125,10 +133,17 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
             $id = base64_encode($row['id']);
   
             $values = array(
-                $row['storyType'],
-                $row['interviewer'],
-                "<a href='/story/details/".base64_encode($row['id'])."' class='button action-button-success'>View</a> " . "<a href='javascript:void(0)' data-id='". base64_encode($row['id'])."' data-action='d' class='button btn-delete action-button-danger'>Delete</a>"
- 
+                "<p data-label='Story Title'>" . $row['storyType'] ."</p>",
+                "<p data-label='Created'>" .$row['scheduleDate'] ."</p>",
+                "<p data-label='Interviewer'>" .$row['interviewer'] ."</p>",
+                '<div class="action-container">
+                    <a href="javascript:void(0);" class="action-btn" data-id="'.$id.'" data-action="restore" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13.714" viewBox="0 0 16 13.714"><path d="M10.643,4.5a6.858,6.858,0,0,0-6.857,6.857H1.5l2.964,2.964.053.107L7.6,11.357H5.31a5.359,5.359,0,1,1,1.57,3.764L5.8,16.2A6.855,6.855,0,1,0,10.643,4.5ZM9.881,8.31v3.81l3.261,1.935.549-.922-2.667-1.585V8.31Z" transform="translate(-1.5 -4.5)" opacity="1"/></svg>
+                    </a>
+                    <a href="javascript:void(0);" class="action-btn" data-id="'.$id.'" data-action="permanent-delete">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16"><path d="M13.5,1H9.75L9.456.416A.75.75,0,0,0,8.784,0H5.212a.741.741,0,0,0-.669.416L4.25,1H.5a.5.5,0,0,0-.5.5v1A.5.5,0,0,0,.5,3h13a.5.5,0,0,0,.5-.5v-1A.5.5,0,0,0,13.5,1ZM1.662,14.594A1.5,1.5,0,0,0,3.159,16h7.681a1.5,1.5,0,0,0,1.5-1.406L13,4H1Z" transform="translate(0 0)" opacity="1"/></svg>
+                    </a>
+                </div>'
             );
             
         
@@ -181,11 +196,13 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()->getConnection()->prepare("
             SELECT
                 COUNT(sl.`id`) AS ctr,
-                sli.likers
+                sli.likers,
+                sli.photos
             FROM `story_like` sl
             LEFT JOIN (
                 SELECT 
                     GROUP_CONCAT(CONCAT(u.`first_name` , ' ', u.`last_name`)) AS likers,
+                    GROUP_CONCAT(u.`parsed_profile_photo_desc`) AS photos,
                     sli.`story_id`
                 FROM `story_like` sli
                 LEFT JOIN `user` u ON u.`id` =  sli.`user_id`
@@ -243,6 +260,11 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
 
         if(isset($q['isPublic']) && $q['isPublic'] == 'true'){
             $andWhere .= ' AND s.`is_public` = 1';
+
+            if(isset($q['profile']) && $q['profile'] != ''){
+                $andWhere .= ' AND sc.`user_id` = '. base64_decode($q['profile']);
+
+            }
         }
 
         if(isset($q['q']) && $q['q'] != ''){
@@ -250,11 +272,19 @@ class StoryRepository extends \Doctrine\ORM\EntityRepository
         }
 
 
-        if(isset($q['page']) && $q['page'] == 'my_story'){
-            $andWhere .= "  AND (
-                sc.`user_id` = ".$userData['id']." 
-             )";
+        if(isset($q['page']) && in_array($q['page'], ['teller' , 'my_story'])){
+
+            if($q['page'] == 'my_story'){
+                $andWhere .= "  AND (
+                    sc.`user_id` = ".$userData['id']." 
+                 )";
+            } else {
+                $andWhere .= ' AND sc.`user_id` = '. base64_decode($q['profile']);
+            }
+         
         } else {
+
+
             if(isset($q['filterBy']) && $q['filterBy'] != 'all'){
 
                 if($q['filterBy'] == 'only_shared_story' ){

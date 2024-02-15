@@ -7,6 +7,8 @@
             <a class='text-gray' href="{{ path('home_stories')}}">Choose your Story</a>
           <li><a class='text-gray' href="{{ path('home_faq')}}">FAQ</a></li>
           <li><a class='text-gray' href="{{ path('dashboard_book_now')}}">Book Now</a></li>
+           <li><a class='text-gray' href="{{ path('home_pricing')}}">Pricing</a></li> 
+
           {% if userData %}
             <li class="right"><a href="{{ path('dashboard_my_profile')}}" class='button  radius-rounded teal text-white pl20 pr20'>MY PROFILE</a></li>
           {% else %}
@@ -31,6 +33,8 @@
             </li>
             <li><a href="{{ path('home_faq')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_faqs.svg"></div> FAQ</a></li>
             <li><a href="{{ path('home_book_now')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_booknow.svg"></div> Book Now</a></li>
+            <li><a href="{{ path('home_pricing')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_pricing.svg"></div> Pricing</a></li>
+
             <li class='pt50 pb50'><div class='separator'></div></li>
 
             {% if userData %}

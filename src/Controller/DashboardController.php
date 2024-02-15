@@ -49,6 +49,19 @@ class DashboardController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/profile/{id}", name="dashboard_profile")
+     */
+    public function profile(AuthService $authService, $id){
+
+        if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $profile = $em->getRepository(UserEntity::class)->find(base64_decode($id));
+      
+        return $this->render('Dashboard/profile.html.twig',[ 'user' => $profile]);
+    }
 
 
     /**
@@ -151,5 +164,30 @@ class DashboardController extends AbstractController
 
         return $this->render('Dashboard/book_now.html.twig');
     }  
+
+    /**
+     * @Route("/merch", name="dashboard_merch")
+     */
+    public function merch_nowAction(AuthService $authService){
+
+        if(!$authService->isLoggedIn()){
+            return $this->redirect($this->generateUrl('home_merch'), 302);
+        }
+
+        return $this->render('Dashboard/merch.html.twig');
+    }  
+
+    /**
+     * @Route("/help_ukraine", name="dashboard_help_ukraine")
+     */
+    public function help_ukraineAction(AuthService $authService){
+
+        if(!$authService->isLoggedIn()){
+            return $this->redirect($this->generateUrl('home_registration'), 302);
+        }
+
+        return $this->render('Dashboard/help_ukraine.html.twig');
+    }  
+
 
 }
