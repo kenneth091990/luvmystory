@@ -330,7 +330,10 @@
             });
 
             $(".burger-menu").click(function(){
-                $(".menu-device").toggle(500);
+                $(".menu-device").toggle(500, function(){
+                    global.initBurgerMenu($(".menu-device"));
+                });
+               
             });
 
             $(".notification-bell").blur(function(){
@@ -342,13 +345,20 @@
             });
             
             $(".burger-menu").blur(function(){
-                console.log('dd');
-
-                if( $(".menu-device").is(':visible')){
-                    $(".menu-device").toggle(500);
-
+                if( $(".burger-menu").is(':visible')){
+                    $(".menu-device").toggle(500, function(){
+                        global.initBurgerMenu($(".menu-device"));
+                    });
                 }
-              
+            
             });
+        },
+
+        initBurgerMenu: function(el){
+            if( el.is(':visible')){
+                $('body').addClass('no-scroll');
+            } else {
+                $('body').removeClass('no-scroll');
+            }
         }
     };

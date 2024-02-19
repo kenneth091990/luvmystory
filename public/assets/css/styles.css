@@ -9,7 +9,9 @@ html, body {
     float: left !important;
 }
 
-
+.no-scroll{
+    overflow: hidden;
+}
 table.dataTable.no-footer {
     border-bottom:unset;
 }

@@ -3,8 +3,9 @@
         <ul class="menu menu-style show-for-large dropdown nav-menu" data-dropdown-menu>
           <li>   <a href="{{ path('home_index')}}" > <img  src="/assets/img/mystory-logo-pink.png" class='header-logo'></a></li>
           <li><a class='text-gray' href="{{ path('home_index')}}">Home</a></li>
-          <li >
+          {# <li >
             <a class='text-gray' href="{{ path('home_stories')}}">Choose your Story</a>
+          </li> #}
           <li><a class='text-gray' href="{{ path('home_faq')}}">FAQ</a></li>
           <li><a class='text-gray' href="{{ path('dashboard_book_now')}}">Book Now</a></li>
            <li><a class='text-gray' href="{{ path('home_pricing')}}">Pricing</a></li> 
@@ -23,14 +24,14 @@
         </div>
       </div>
       <!--responsive menu-->
-      <div class="grid-x menu-device">
+      <div class="grid-x  dashboard-menu-device menu-device">
         <div class="cell large-12 medium-12 small-12">
           <ul>
             <li><a href="{{ path('home_index')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_home.svg"></div> Home </a></li>
 
-            <li>
+            {# <li>
               <a href="{{ path('home_stories')}}" class='pl20 pr20'><div class='nav-icon-container pink'><img src="/assets/img/book-open.svg"></div> Choose your Story</a></a>
-            </li>
+            </li> #}
             <li><a href="{{ path('home_faq')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_faqs.svg"></div> FAQ</a></li>
             <li><a href="{{ path('home_book_now')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_booknow.svg"></div> Book Now</a></li>
             <li><a href="{{ path('home_pricing')}}" class='pl20 pr20'> <div class='nav-icon-container pink'><img src="/assets/img/icon_pricing.svg"></div> Pricing</a></li>
@@ -52,6 +53,8 @@
             <li><a href="{{ path('home_terms_of_service')}}" class='pl20 pr20 pt0 pb0'>Term Of Service</a></li>
             <li><a href="{{ path('home_privacy')}}" class='pl20 pr20 pt0 pb0'>Privacy</a></li>
             <li><a href="{{ path('home_help')}}" class='pl20 pr20 pt0 pb0'>Help</a></li>
+            <li><a href="{{ path('dashboard_help_ukraine')}}" class='pl20 pr20 pt0 pb0'>Help Ukraine</a></li>
+            <li><a href="{{ path('dashboard_merch')}}" class='pl20 pr20 pt0 pb0'>LuvMyStory Merch</a></li>
           </ul>
         </div>
       </div>
