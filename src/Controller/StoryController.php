@@ -234,13 +234,12 @@ class StoryController extends AbstractController
      */
     public function tellingAction(AuthService $authService, $id, Request $request){
       
-        if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
+       // if(!$authService->isLoggedIn()) return $authService->redirectToLogin();
 
         $em = $this->getDoctrine()->getManager();
-        $user = $authService->getUser();
+
         $story = $em->getRepository(StoryEntity::class)->findOneBy(['id' => base64_decode($id)]);
-        $sharedStory = $em->getRepository(ShareStoryEntity::class)->findOneBy(['user' => $user, 'story' => $story]);
-        $notifications = $em->getRepository(NotificationEntity::class)->findBy(['user' => $user, 'story' => $story, 'isRead' => false]); 
+        $notifications = null;
         $likeCtr = $em->getRepository(StoryEntity::class)->getLikeCtr($id);
         $commentCtr = $em->getRepository(StoryEntity::class)->getCommentCtr($id);
         
@@ -250,31 +249,53 @@ class StoryController extends AbstractController
 
         } else {
 
-            if($story->getSchedule()->getUser()->getId() != $user->getId() && !$story->isIsPublic() && !in_array($user->getId(), $story->sharedStoriesIds())){
+
+
+            if($authService->isLoggedIn()){
+                $user = $authService->getUser();
+ 
+                //$sharedStory = $em->getRepository(ShareStoryEntity::class)->findOneBy(['user' => $user, 'story' => $story]);
+                $notifications = $em->getRepository(NotificationEntity::class)->findBy(['user' => $user, 'story' => $story, 'isRead' => false]); 
+                
+                if($story->getSchedule()->getUser()->getId() != $user->getId() && !$story->isIsPublic() && !in_array($user->getId(), $story->sharedStoriesIds())){
                
-                $this->get('session')->getFlashBag()->add('error_messages', 'Story Not Found');
-                return $this->redirect($this->generateUrl('home_index'), 302);
-            }
-        }
+                    $this->get('session')->getFlashBag()->add('error_messages', 'Story Not Found');
+                    return $this->redirect($this->generateUrl('home_index'), 302);
+                }
 
+                
 
-        if(count($notifications)){
+                if(count($notifications)){
 
-            foreach($notifications as $notification){
-                if( !$notification->isIsRead()){
-                    $notification->setIsRead(true);
+                    foreach($notifications as $notification){
+                        if( !$notification->isIsRead()){
+                            $notification->setIsRead(true);
+                            $em->flush();
+                        }
+                    }
+                }
+
+                if($story->getSchedule()->getUser()->getId() != $user->getId() && !in_array($user->getId(), $story->storyViewUserIds())){
+
+                    $storyView = new StoryViewEntity();
+                    $storyView->setStory($story);
+                    $storyView->setUser($user);
+                    $em->persist($storyView);
                     $em->flush();
                 }
+
+            } else {
+
+                if(!$story->isIsPublic()){
+                    
+                    $this->get('session')->getFlashBag()->add('error_messages', 'Story Not Found');
+                    return $this->redirect($this->generateUrl('home_index'), 302);
+                }
+                
+
             }
-        }
 
-        if($story->getSchedule()->getUser()->getId() != $user->getId() && !in_array($user->getId(), $story->storyViewUserIds())){
-
-            $storyView = new StoryViewEntity();
-            $storyView->setStory($story);
-            $storyView->setUser($user);
-            $em->persist($storyView);
-            $em->flush();
+           
         }
 
         return $this->render('Story/telling.html.twig', [

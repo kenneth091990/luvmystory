@@ -10,13 +10,13 @@
                         <img class="hide-for-large"src="assets/img/section_img_lms_old_man.png">
                     </div>
                     <div class="cell large-6 medium-12 small-12 home-section-content large-order-2 medium-order-1 small-order-1">
-                        <div class="home-section-text-container">
-                            <h3>Capture your loved one's journey with the ultimate gift: A personalized audio recording of their stories.</h3>
+                        <div class="home-section-text-container  text-white">
+                            <h2>Capture your loved one's journey with the ultimate gift: A personalized audio recording of their stories.</h2>
                             <p>Create a special recording of a loved one's treasured memories in their own voice. A LuvMyStory<sup>TM</sup> recording is a keepsake that your family will love and remember for many years.</p>
                             <p>Cherish the time you have, book today and start creating a precious family heirloom.</p>
                             <a href='{{path("home_registration")}}' class='text-white'>Personal Sessions Only $139 </a>
                             <div class='mt10'>
-                                <a href='{{path("dashboard_book_now")}}' class='text-white  button pink rounded-medium'>Book Now </a>
+                                <a href='{{path("dashboard_book_now")}}' class='text-white  button pink rounded-medium book-now-btn'>Book Now </a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="cell large-4 medium-12 small-order-2 large-order-1">
                         <div class="content-container index-content">
                             <div class="text-container section-1-1 ">
-                                <div class="text-cage">
+                                <div class="text-cage text-white">
                                     <h3>You have a story to tell.</h3>
                                     <p> 
                                        Before the opportunity passes, preserve your unique memories and family history with LuvMyStory™. Our team will ensure that your one-of-a-kind stories, narrated in your voice, are transformed into meaningful keepsake audio-episodes for you to pass down through the generations.   
@@ -55,10 +55,10 @@
                         </div>
                     </div>
                     <div class="cell large-4 medium-12 small-order-1 large-order-2">
-                        <div class="content-container index-content">
+                        <div class="content-container index-content content-vid">
                             <div class="img-container ">
                                 <div class="wrapper-video">
-                                    <video width="100%"  height="100%" controls="false"   id='index-video'>
+                                    <video width="100%"  height="100%"   id='index-video'>
                                     <source src="/assets/video/LuvMyStory.mp4" type="video/mp4"></video>
                                 </div>
                                 <div class="playpause"></div>
@@ -263,7 +263,7 @@
                 <div class="grid-x home-section-personal-topics">
                     <div class="cell small-12">
                         <div class='mt10 text-center'>
-                            <a href='{{path("dashboard_book_now")}}' class='text-white  button bg-skyblue rounded-medium p20'>Book Now </a>
+                            <a href='{{path("dashboard_book_now")}}' class='text-white  button bg-skyblue rounded-medium p20 book-now-btn'>Book Now </a>
                         </div>
                     </div>
                   
@@ -632,7 +632,6 @@
         
         
         function playVideo(){
-                
            $.each($('video'), function(){
                 var _this = $(this);
                 _this.on('pause' , function(e){
@@ -641,19 +640,19 @@
                 });
 
            });
-
-                       
+            
             $('.playpause').unbind('click').bind('click',function(){
 
                 var _this = $(this);
-             
-           
+                
                 var playBtn = _this.parent().find('.wrapper-video').find('video');
                 var vid = playBtn[0];
                     if (vid.paused){
                     
                         vid.play();
-                       _this.toggleClass('hide');
+                        _this.toggleClass('hide');
+                                    console.log('gg');
+
                         $.each($('audio'), function(){
                             
                             var a = $(this);
@@ -665,10 +664,28 @@
                     } else {
                         
                         
-                        vid.pause();
-                       _this.toggleClass('hide');
+                        vid.pause(function(){
+                            settimeout(function(){
+                        _this.toggleClass('hide');
+
+                            },200)
+                        });
+
                     }
-                });
+            });
+
+             $('#index-video').unbind('touchstart').bind('touchstart',function(e){
+
+                e.preventDefault();
+                $('.playpause').click();
+             });
+
+                       
+      
+
+           
+
+                
         }
 
         function playAudio(){
@@ -678,7 +695,6 @@
                 var _this = $(this);
                 var audio = _this.parent().find('audio')[0];
                 
-
                 if(typeof audio != 'undefined'){
                     _this.unbind('click').bind('click',function(){
                         currentPlaying = _this.data('audiodesc');
@@ -697,7 +713,7 @@
           
                         if(elemAudi.paused){
                             elemAudi.play();
-                            $(this).html('PAUSED AUDIO');
+                            $(this).html('PAUSE AUDIO');
 
                             $.each($('video'), function(){
                             

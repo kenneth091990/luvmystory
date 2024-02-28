@@ -395,7 +395,7 @@ and (max-width: 1900px)  {
     }
 
     .content-container .text-container p {
-        font-size: 14px;
+        font-size: 18px;
         line-height: 20px;
     }
 
@@ -793,5 +793,64 @@ and (max-width:1024px) {
     }
     .story-details-desc {
         margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 74.9375em) {
+    .book-now-btn,
+    .home-section-text-container p{
+        font-size: 25px;
+    }
+    
+    #main-banner h2{
+        font-size: 50px;
+        font-weight: 200;
+    }
+}
+
+@media screen and (max-width: 39.9375em) {
+    .book-now-btn{
+        width: 100%;
+    }
+    .home-section-inspiration-list h3,
+    .home-section-personal-topics h3 {
+     
+        color: #992470;
+        margin: 25px auto 50px auto;
+        line-height: 45px!important;
+        font-size: 40px;
+        width: 100%;
+
+    }
+    .pt-card-container{
+        text-align: center;
+    }
+
+    .pt-card-container .pt-content{
+        padding: unset!important;
+    }
+    .content-vid{
+        height: auto!important;
+    }
+    .wrapper-video{
+        position: relative;
+    }
+
+    .index-content .text-cage{
+        padding: 0 20px!important;
+    }
+}
+
+@media screen and (max-width: 29.9375em) {
+ 
+    .home-section-inspiration-list h3,
+    .home-section-personal-topics h3 {
+     
+        color: #992470;
+        margin: 25px auto 50px auto;
+        line-height: 25px!important;
+        font-size: 20px;
+        width: 100%;
+
     }
 }

@@ -317,7 +317,7 @@ class HomeController extends AbstractController
             if($user && ($user->getPassword() === crypt(md5($reg_form['password']), $user->getPassword()) || $user->getPassword() === $reg_form['password'])) {
 
                 $form->handleRequest($request);
-                if ($form->isValid()) {
+                // if ($form->isValid()) {
                     
                     $session = $this->get('session');
                     $req_uri = $session->has('req_uri') ? $session->get('req_uri') : false;
@@ -355,10 +355,10 @@ class HomeController extends AbstractController
 
                     $response->send();
 
-                } else {
+                // } else {
 
-                    $this->get('session')->getFlashBag()->set('error_messages', 'Something went wrong. Please try again.');
-                }
+                //     $this->get('session')->getFlashBag()->set('error_messages', 'Something went wrong. Please try again.');
+                // }
 
                 
             } else {

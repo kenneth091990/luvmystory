@@ -1,6 +1,7 @@
-{% extends "Dashboard/main.html.twig" %}
+{% extends "Home/main.html.twig" %}
 
 {% block content %}
+<div class='main-content'>
 
 <div class="grid-container fluid">
     <div class="grid-x grid-margin-x">
@@ -10,23 +11,25 @@
                     <div class="cell large-10 medium-12 small-12">
                         <div class="story-details-container">
                             <div class="img-story-detail">
-                                <div class="card-option-container">
-                                    <div class="card-option-holder">
-                                        <div class="card-options">
-                                            <ul>
-                                                <li><a href="javascript:void(0);" class="link-share share-story-btn" data-id='{{story.idencoded}}'>Share</a></li>
-                                                {% if userData['id'] == story.schedule.user.id %}
-                                                    <li><a href="{{ path('story_details', { id: story.idencoded })}}" class="link-edit">Edit</a></li>
-                                                    <li><a href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{story.idencoded}}' data-action="delete">Archive</a></li>
-                                                    <li><a href="{{ path('story_download', { id: story.idencoded})}}" class="link-download">Download</a></li>
-                                                {% endif %}
-                                         
-                                            </ul>
-                                            <div class="clear-fix"></div>
+                                {% if userData %}
+                                    <div class="card-option-container">
+                                        <div class="card-option-holder">
+                                            <div class="card-options">
+                                                <ul>
+                                                    <li><a href="javascript:void(0);" class="link-share share-story-btn" data-id='{{story.idencoded}}'>Share</a></li>
+                                                    {% if userData['id'] == story.schedule.user.id %}
+                                                        <li><a href="{{ path('story_details', { id: story.idencoded })}}" class="link-edit">Edit</a></li>
+                                                        <li><a href="javascript:void(0);" class="link-archive archive-story-btn" data-id='{{story.idencoded}}' data-action="delete">Archive</a></li>
+                                                        <li><a href="{{ path('story_download', { id: story.idencoded})}}" class="link-download">Download</a></li>
+                                                    {% endif %}
+                                            
+                                                </ul>
+                                                <div class="clear-fix"></div>
+                                            </div>
+                                            <div class ="option-dot"></div><!-- this is the 3 dots-->
                                         </div>
-                                        <div class ="option-dot"></div><!-- this is the 3 dots-->
                                     </div>
-                                </div>
+                                {% endif %}
                                 <div class="audio-container">
                                     <div class="audio-header">
                                         <div class="audio-title">Play Audio</div>
@@ -71,14 +74,11 @@
                                 </div>
                                 <div class='cell large-4 medium-12 small-12'>
                                     <div class="like-holder">
-                                        <a class="story-like-btn button-like {{ userData.id in story.storyLikeUserIds ? 'liked' : ''}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> like</a>
-                                        <div class="like-counter">   
-                                         
-                                        </div>
+                                       {% if userData %}
+                                            <a class="story-like-btn button-like {{ userData.id in story.storyLikeUserIds ? 'liked' : ''}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> like</a>
+                                       {% endif %}
+                                        <div class="like-counter"></div>
                                         <div class="clear-fix"></div>
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -87,18 +87,18 @@
                            </div>
                             <div class="comments-section">
                                 <h4>Comments</h4>
-                                <div class="comments-container">
-                                    
-                                </div>
-                                <div class="comment-box-container">
-                                    <form id='commentForm'>
+                                <div class="comments-container"></div>
+                                {% if userData %}
+                                    <div class="comment-box-container">
+                                        <form id='commentForm'>
 
-                                        <textarea type="message" rows="3" placeholder="Write a comment..."  name='comment[message]' id='commentInput'></textarea>
-                                        <input type='hidden' id="id" name="comment[story_id]" required value="{{story.idencoded}}"/>
-                                        <input class="send-btn" type="submit" value="" action="_blank" disabled/> 
-                                        <div class="clear-fix"></div>
-                                    </form
-                                </div>
+                                            <textarea type="message" rows="3" placeholder="Write a comment..."  name='comment[message]' id='commentInput'></textarea>
+                                            <input type='hidden' id="id" name="comment[story_id]" required value="{{story.idencoded}}"/>
+                                            <input class="send-btn" type="submit" value="" action="_blank" disabled/> 
+                                            <div class="clear-fix"></div>
+                                        </form>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -107,6 +107,8 @@
        </div>
     </div>
 </div>
+</div>
+
 
 
 {% include 'js.html.twig' %}
