@@ -74,20 +74,24 @@
                     <div class='clear-fix'></div>
                 </div>
             </div>
-            <div class='mt10'>
-                <div class='text-left profile-info-container'>
-                    <div class='icon-container'>
-                        <div class='img-container'>
-                            <img src='/assets/img/zodiac-sign-icon.svg' />
+            {% if user.zodiacsign %}
+                
+                <div class='mt10'>
+                    <div class='text-left profile-info-container'>
+                        <div class='icon-container'>
+                            <div class='img-container'>
+                                <img src='/assets/img/zodiac-sign-icon.svg' />
+                            </div>
                         </div>
+                        <div class='det-container'>
+                            <div class='title'>Zodiac Sign</div>
+                            <div class='value'>{{ user.zodiacsign }}</div>
+                        </div>
+                        <div class='clear-fix'></div>
                     </div>
-                    <div class='det-container'>
-                        <div class='title'>Zodiac Sign</div>
-                        <div class='value'>{{ user.zodiacsign }}</div>
-                    </div>
-                    <div class='clear-fix'></div>
                 </div>
-            </div>
+            {% endif %}
+          
         </div>
     </div>
   </div>
